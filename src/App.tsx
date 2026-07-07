@@ -144,7 +144,7 @@ export default function App() {
   return (
     <div 
       ref={containerRef}
-      className="min-h-screen bg-bg-dark text-primary-text relative overflow-x-hidden selection:bg-primaryAccent selection:text-white"
+      className="min-h-screen bg-bg-dark text-primary-text relative overflow-x-visible selection:bg-primaryAccent selection:text-white"
     >
       
       {/* Background radial mouse-follow lighting overlay */}
