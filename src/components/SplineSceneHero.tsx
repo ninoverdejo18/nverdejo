@@ -6,7 +6,7 @@ export function SplineSceneHero() {
   // Adjustable Settings
   // ==========================
   const CANVAS_WIDTH = 700;
-  const CANVAS_HEIGHT = 700;
+  const CANVAS_HEIGHT = 800;
   const ROBOT_SCALE = 1.25;
 
   const handleScrollDown = () => {
