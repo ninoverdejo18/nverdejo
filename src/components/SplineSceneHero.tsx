@@ -2,6 +2,13 @@ import { SplineScene } from "./ui/splite";
 import { Spotlight } from "./ui/spotlight";
 
 export function SplineSceneHero() {
+  // ==========================
+  // Adjustable Settings
+  // ==========================
+  const CANVAS_WIDTH = 700;
+  const CANVAS_HEIGHT = 700;
+  const ROBOT_SCALE = 1.25;
+
   const handleScrollDown = () => {
     const target = document.getElementById("split-contact-grid");
 
@@ -22,12 +29,12 @@ export function SplineSceneHero() {
         fill="#8B5CF6"
       />
 
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center justify-between gap-8 px-4 pt-8 pb-8 sm:px-6 lg:flex-row lg:px-8">
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col lg:flex-row items-center justify-between gap-8 px-4 pt-8 pb-8 sm:px-6 lg:px-8">
 
         {/* LEFT */}
         <div className="flex-1 max-w-xl space-y-6 text-center lg:text-left">
 
-          <h1 className="font-display text-4xl font-black uppercase tracking-tighter leading-none text-primaryText sm:text-5xl md:text-6xl lg:text-7xl">
+          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-none text-primaryText">
             ENGAGE THE
             <br />
             <span className="bg-gradient-to-r from-primaryAccent via-purple-400 to-secondaryAccent bg-clip-text text-transparent">
@@ -40,19 +47,28 @@ export function SplineSceneHero() {
         {/* RIGHT */}
         <div className="flex flex-1 justify-center items-center">
 
-          {/* Canvas wrapper */}
           <div
-            className="relative shrink-0"
+            className="relative shrink-0 overflow-visible"
             style={{
-              width: "1320px",
-              height: "1350px",
+              width: `${CANVAS_WIDTH}px`,
+              height: `${CANVAS_HEIGHT}px`,
               maxWidth: "100%",
             }}
           >
-            <SplineScene
-              scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-              className="absolute inset-0 w-full h-full pointer-events-auto"
-            />
+            {/* Scale wrapper */}
+            <div
+              className="absolute inset-0 flex items-center justify-center"
+              style={{
+                transform: `scale(${ROBOT_SCALE})`,
+                transformOrigin: "center center",
+              }}
+            >
+              <SplineScene
+                scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+                className="w-full h-full pointer-events-auto"
+              />
+            </div>
+
           </div>
 
         </div>
