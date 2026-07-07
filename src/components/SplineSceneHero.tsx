@@ -30,7 +30,7 @@ export function SplineSceneHero() {
 
         {/* Right content - Spline Scene */}
         <div className="flex-1 w-full h-[50vh] lg:h-[600px] relative flex items-center justify-center">
-          <div className="w-full h-full relative translate-y-6 lg:translate-y-12">
+          <div className="w-full h-full relative translate-y-16 lg:translate-y-20">
             <SplineScene 
               scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
               className="w-full h-full scale-100 lg:scale-105 pointer-events-auto"
