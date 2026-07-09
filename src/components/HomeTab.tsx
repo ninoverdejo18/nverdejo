@@ -221,7 +221,7 @@ const VA_TASKS = [
 ];
 
 const ENGINE_MODES = [
-  { key: 'one', label: 'NEOSLATE_VIOLET', desc: 'Sinuous gravity field warp', color: 'text-violet-400', glow: 'rgba(139,92,246,0.35)' },
+  { key: 'one', label: 'NEOSLATE', desc: 'Sinuous gravity field warp', color: 'text-[#50C878]', glow: 'rgba(80,200,120,0.35)' },
   { key: 'four', label: 'EMERALD_CYBER', desc: 'High-frequency emerald grid', color: 'text-emerald-400', glow: 'rgba(16,185,129,0.35)' },
   { key: 'five', label: 'SOLAR_FLARE', desc: 'Electromagnetic solar drift', color: 'text-orange-500', glow: 'rgba(249,115,22,0.35)' },
   { key: 'two', label: 'CYBER_CRIMSON', desc: 'Ridge altitude curve velocity', color: 'text-red-500', glow: 'rgba(239,68,68,0.35)' },
@@ -506,7 +506,7 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
     <div className="space-y-16">
       
       {/* 3D HYPERSPEED HERO SECTION */}
-      <div className="relative left-1/2 -translate-x-1/2 w-screen h-screen bg-bg-dark overflow-hidden flex flex-col justify-between items-center p-6 sm:p-12 text-center rounded-none select-none">
+      <div className="relative w-screen left-1/2 -translate-x-1/2 min-h-screen h-screen bg-bg-dark border-b border-neutral-900 rounded-none overflow-hidden flex flex-col justify-between items-center p-6 sm:p-12 text-center select-none">
         {/* Hyperspeed Interactive 3D Canvas Background with smooth scroll-driven opacity fade */}
         <motion.div 
           className="absolute inset-0 z-0"
@@ -520,7 +520,7 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
 
         {/* Center Content Overlay with Framer Motion Staggered Transitions & Smooth Scroll Transform */}
         <motion.div 
-          className="relative z-10 max-w-4xl flex flex-col items-center my-auto space-y-6 px-4"
+          className="relative z-10 max-w-5xl flex flex-col items-center my-auto space-y-6 px-4"
           style={{ y: textY, opacity: textOpacity, scale: textScale }}
           initial="hidden"
           animate="visible"
@@ -541,13 +541,12 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
               hidden: { y: 25, opacity: 0 },
               visible: { y: 0, opacity: 1, transition: { type: 'spring', stiffness: 90, damping: 14 } }
             }}
-            className="font-display text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tighter leading-[0.95]"
+            className="font-display text-[clamp(1.6rem,4.1vw,4.5rem)] font-black uppercase tracking-tighter leading-tight sm:leading-[0.9] text-center"
           >
-            <span className={isLight ? 'text-black' : 'text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-100 to-neutral-400'}>
+            <span className={`block sm:whitespace-nowrap ${isLight ? 'text-black' : 'text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-100 to-neutral-400'}`}>
               WE WEAVE FLUID PIPELINES
             </span>
-            <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primaryAccent via-purple-400 to-secondaryAccent">
+            <span className="block sm:whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-r from-primaryAccent via-green-400 to-secondaryAccent">
               & HIGH-SPEED PRODUCTS
             </span>
           </motion.h1>
@@ -563,7 +562,7 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
             <button
               id="hero-cta-btn"
               onClick={() => setActiveTab('contact')}
-              className="group relative flex items-center justify-center gap-3 bg-primaryAccent hover:bg-primaryAccent/90 text-white font-mono font-bold uppercase tracking-wider text-xs py-3.5 px-8 border-none active:translate-y-0.5 transition-all cursor-pointer shadow-[0_0_20px_rgba(139,92,246,0.35)] rounded-none"
+              className="group relative flex items-center justify-center gap-3 bg-primaryAccent hover:bg-primaryAccent/90 text-white font-mono font-bold uppercase tracking-wider text-xs py-3.5 px-8 border-none active:translate-y-0.5 transition-all cursor-pointer shadow-[0_0_20px_rgba(80,200,120,0.35)] rounded-none"
             >
               START A PROJECT
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -608,9 +607,9 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
       </div>
 
       {/* Interactive Web Design Graphic Sample & Specimen */}
-      <ScrollRevealSection>
+      <div className="w-full">
         <DesignGraphicShowcase />
-      </ScrollRevealSection>
+      </div>
 
       {/* Grid containing operational telemetry center and stats */}
       <ScrollRevealSection>
@@ -671,12 +670,8 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
               </span>
               <span className="font-mono text-[10px] text-primaryText font-bold uppercase tracking-wider">
-                CORE_TELEMETRY.RUNNING
+                SYSTEM ACTIVE
               </span>
-            </div>
-            <div className="flex items-center gap-1 font-mono text-[9px] text-mutedText bg-neutral-900/80 px-2 py-0.5 border border-neutral-850 rounded-none">
-              <Activity className="w-2.5 h-2.5 text-primaryAccent animate-pulse" />
-              TPS: 8.42
             </div>
           </div>
 
@@ -818,10 +813,6 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
     <ScrollRevealSection>
       <div id="design-development-section" className="border-t border-neutral-900 pt-10 space-y-6">
       <div className="space-y-2">
-        <div className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-secondaryAccent/10 border border-secondaryAccent/30 text-secondaryAccent font-mono text-[10px] font-bold uppercase tracking-wider rounded-none">
-          <Code className="w-3 h-3 animate-pulse" />
-          WEB DESIGN & CUSTOM APP DEVELOPMENT
-        </div>
         <h2 className="font-display text-2xl sm:text-3xl font-black text-primaryText uppercase tracking-tight">
           CRAFTING HIGH-CONVERTING DIGITAL PRODUCTS
         </h2>
@@ -934,10 +925,6 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
     <ScrollRevealSection>
       <div className="border-t border-neutral-900 pt-10 space-y-6">
       <div className="space-y-2">
-        <div className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-secondaryAccent/10 border border-secondaryAccent/30 text-secondaryAccent font-mono text-[10px] font-bold uppercase tracking-wider rounded-none">
-          <Cpu className="w-3 h-3 animate-pulse" />
-          OPERATIONAL PIPELINE SIMULATOR
-        </div>
         <h2 className="font-display text-2xl sm:text-3xl font-black text-primaryText uppercase tracking-tight">
           ENGINEERED AUTOMATION DIAGRAMS
         </h2>
@@ -1099,10 +1086,6 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
     <ScrollRevealSection>
       <div id="va-operations-section" className="border-t border-neutral-900 pt-10 space-y-6">
       <div className="space-y-2">
-        <div className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-primaryAccent/10 border border-primaryAccent/30 text-primaryAccent font-mono text-[10px] font-bold uppercase tracking-wider rounded-none">
-          <Settings className="w-3 h-3 animate-spin" style={{ animationDuration: '6s' }} />
-          PERSONAL / VIRTUAL ASSISTANCE
-        </div>
         <h2 className="font-display text-2xl sm:text-3xl font-black text-primaryText uppercase tracking-tight">
           ASSISTANCE ROLES & ACTIVE TASK LEDGER
         </h2>
@@ -1195,10 +1178,6 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
               <span className="font-mono text-[9px] text-primaryAccent font-bold uppercase tracking-widest">
                 Active Assistant Ledger
               </span>
-              <div className="flex items-center gap-1.5 font-mono text-[9px] text-mutedText">
-                <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-ping" />
-                Active Tasks: {VA_TASKS.length}
-              </div>
             </div>
             
             <h3 className="font-display text-lg font-black text-primaryText uppercase">

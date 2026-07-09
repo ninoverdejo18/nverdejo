@@ -30,11 +30,11 @@ const PALETTES: Palette[] = [
     glow: 'rgba(16, 185, 129, 0.15)'
   },
     {
-    name: 'NeoSlate Violet',
-    primary: '#8B5CF6',
-    secondary: '#C084FC',
-    bgGrad: 'from-violet-500/10 to-purple-500/5',
-    glow: 'rgba(139, 92, 246, 0.15)'
+    name: 'NeoSlate',
+    primary: '#50C878',
+    secondary: '#82E0A2',
+    bgGrad: 'from-emerald-500/10 to-green-500/5',
+    glow: 'rgba(80, 200, 120, 0.15)'
   },
   {
     name: 'Solar Flare',
@@ -68,7 +68,7 @@ export default function DesignGraphicShowcase() {
   const trackingClass = letterSpacing === 'tighter' ? 'tracking-tighter' : letterSpacing === 'tight' ? 'tracking-tight' : 'tracking-normal';
 
   return (
-    <div className="bg-neutral-950/40 border border-neutral-900 p-6 space-y-6 rounded-none relative overflow-hidden">
+    <div className="w-full bg-neutral-950/40 border border-neutral-900 p-5 sm:p-6 lg:p-8 space-y-6 relative overflow-hidden">
       {/* Absolute ambient lights mapping to active colors */}
       <div 
         className="absolute -top-40 -left-40 w-96 h-96 rounded-full blur-3xl pointer-events-none transition-all duration-1000 opacity-25"
@@ -80,11 +80,10 @@ export default function DesignGraphicShowcase() {
       />
 
       {/* Header section detailing Design System Controls */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-neutral-900 pb-5 relative z-10">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-neutral-900 pb-5 relative z-10">
         <div>
           <div className="font-mono text-[9px] text-primary-accent uppercase font-bold tracking-widest flex items-center gap-1">
             <Sparkles className="w-3.5 h-3.5" style={{ color: activePalette.primary }} />
-            interactive design studio
           </div>
           <h3 className="font-display text-lg font-black text-primaryText uppercase tracking-tight">
             POLISHED WEB LAYOUT & STYLE SPECIMEN
@@ -147,10 +146,10 @@ export default function DesignGraphicShowcase() {
       </div>
 
       {/* Main Studio Grid split into Control Studio Panel & Graphic Specimen Screen */}
-      <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 relative z-10 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 relative z-10 items-start">
         
         {/* Left Column: Interactive Settings Controller (4 Columns) */}
-        <div className="xl:col-span-4 space-y-4">
+        <div className="lg:col-span-4 space-y-4">
           
           {/* Preset Color Swatches */}
           <div className="bg-surface-dark border border-neutral-850 p-4 space-y-3">
@@ -293,7 +292,7 @@ export default function DesignGraphicShowcase() {
         </div>
 
         {/* Right Column: High-fidelity interactive layout simulator (8 Columns) */}
-        <div className="xl:col-span-8 bg-neutral-950 border border-neutral-850 relative overflow-hidden flex flex-col">
+        <div className="lg:col-span-8 bg-neutral-950 border border-neutral-850 relative overflow-hidden flex flex-col">
           {/* Simulated Browser Bar */}
           <div className="bg-neutral-900 px-4 py-2 border-b border-neutral-850 flex items-center justify-between">
             <div className="flex items-center gap-1.5">
@@ -511,7 +510,7 @@ export default function DesignGraphicShowcase() {
                 >
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-[8px] text-neutral-500">ACCESSIBILITY</span>
-                    <span className="font-bold text-[8px] text-purple-400">WCAG AAA</span>
+                    <span className="font-bold text-[8px] text-green-400">WCAG AAA</span>
                   </div>
                   <div className="font-display font-bold text-xs text-primaryText uppercase leading-none mt-1">
                     Color Spectrum
@@ -529,7 +528,6 @@ export default function DesignGraphicShowcase() {
             <div className="flex items-center gap-2">
             </div>
             <div>
-              <span>HEX: {activePalette.primary} &bull; COMPILER: TAILWIND_V4</span>
             </div>
           </div>
         </div>
@@ -541,9 +539,8 @@ export default function DesignGraphicShowcase() {
         <div className="flex items-center justify-between border-b border-neutral-900 pb-2">
           <div className="flex items-center gap-1.5 text-neutral-400">
             <Code className="w-3.5 h-3.5" />
-            <span>DESIGN_TOKENS.JSON</span>
+            <span className="text-[8px] text-neutral-600">COMPILED SUCCESSFULLY</span>
           </div>
-          <span className="text-[8px] text-neutral-600">COMPILED SUCCESSFULLY</span>
         </div>
         <pre className="text-mutedText overflow-x-auto leading-relaxed">
 {`{

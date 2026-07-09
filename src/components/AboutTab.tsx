@@ -77,10 +77,6 @@ export default function AboutTab({ setActiveTab }: AboutTabProps) {
 
               {/* Profile Image Header */}
               <div className="relative border border-neutral-900 overflow-hidden bg-neutral-950 aspect-square">
-                {/* Corner crosshairs or sci-fi accents */}
-                <div className="absolute top-2 left-2 font-mono text-[8px] text-primaryAccent/60 z-10 select-none">
-                  [SYS_IMG_01]
-                </div>
                 <img
                   src={ninoPortrait}
                   alt="Niño Verdejo Portrait"

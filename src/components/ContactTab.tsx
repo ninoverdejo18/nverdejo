@@ -135,10 +135,7 @@ export default function ContactTab() {
         <div className="lg:col-span-5 space-y-5 flex flex-col justify-between">
           
           <div className="space-y-5">
-            <div className="p-5 bg-surface-dark border border-neutral-800 rounded-none space-y-4 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-14 h-14 bg-neutral-900 border-b border-l border-neutral-800 flex items-center justify-center text-primaryAccent font-mono font-bold text-[10px]">
-                SLA: 2H
-              </div>
+            <div className="p-5 bg-surface-dark border-b border-neutral-800 rounded-none space-y-4 relative overflow-hidden">
               <div className="font-mono text-[9px] text-mutedText uppercase tracking-widest font-semibold">
                 DIRECT INBOX
               </div>
@@ -161,7 +158,7 @@ export default function ContactTab() {
             </div>
 
             {/* Social Channels panel */}
-            <div className="p-5 bg-neutral-900/40 border border-neutral-800/80 rounded-none space-y-3">
+            <div className="p-5 bg-neutral-900/40 border-b border-neutral-800/80 rounded-none space-y-3">
               <div className="font-mono text-[9px] text-neutral-500 uppercase tracking-widest font-bold">
                 EXTERNAL NETWORKS
               </div>
@@ -196,7 +193,7 @@ export default function ContactTab() {
           </div>
 
           {/* Core Response Timeline */}
-          <div className="p-4 bg-neutral-950 border border-neutral-900 rounded-none font-mono text-[11px] text-neutral-500 space-y-1.5">
+          <div className="p-4 bg-neutral-950 border-b border-neutral-900 rounded-none font-mono text-[11px] text-neutral-500 space-y-1.5">
             <div className="flex items-center gap-1.5 text-primaryText font-bold">
               <Clock className="w-3.5 h-3.5 text-green-400" />
               RESPONSE COMMITTED PROTOCOL
@@ -210,7 +207,7 @@ export default function ContactTab() {
 
         {/* RIGHT COLUMN: The EmailJS Form */}
         <div className="lg:col-span-7">
-          <div className="p-5 lg:p-6 bg-surface-dark border border-neutral-800 rounded-none space-y-5">
+          <div className="p-5 lg:p-6 bg-surface-dark border-b border-neutral-800 rounded-none space-y-5">
             
             <div className="border-b border-neutral-900 pb-3">
               <h3 className="font-display text-base font-black text-primaryText uppercase tracking-tight">

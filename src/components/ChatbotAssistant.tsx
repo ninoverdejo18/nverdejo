@@ -219,7 +219,7 @@ export default function ChatbotAssistant({ setActiveTab }: ChatbotAssistantProps
   };
 
   return (
-    <div id="chatbot-assistant-root" className="fixed bottom-6 right-6 z-50 font-sans">
+    <div id="chatbot-assistant-root" className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 font-sans max-w-[calc(100vw-2rem)]">
       
       {/* Floating Launcher Button */}
       <AnimatePresence>
@@ -230,7 +230,7 @@ export default function ChatbotAssistant({ setActiveTab }: ChatbotAssistantProps
             initial={{ scale: 0.85, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.85, opacity: 0 }}
-            className="flex items-center justify-center bg-primaryAccent hover:bg-primaryAccent/90 text-primaryText rounded-full shadow-[0_0_20px_rgba(139,92,246,0.4)] cursor-pointer border-2 border-primaryAccent active:scale-95 transition-all w-14 h-14"
+            className="flex items-center justify-center bg-primaryAccent hover:bg-primaryAccent/90 text-primaryText rounded-full shadow-[0_0_20px_rgba(139,92,246,0.4)] cursor-pointer border-2 border-primaryAccent active:scale-95 transition-all w-14 h-14 ml-auto"
             aria-label="Diagnostic Assistant"
           >
             <Bot className="w-6 h-6 text-primaryText animate-pulse" />
@@ -247,7 +247,7 @@ export default function ChatbotAssistant({ setActiveTab }: ChatbotAssistantProps
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 30, scale: 0.95 }}
             transition={{ type: 'spring', damping: 20 }}
-            className="w-[360px] sm:w-[400px] h-[500px] glass-panel-accent rounded-none shadow-2xl flex flex-col overflow-hidden border border-neutral-800"
+            className="w-[360px] sm:w-[400px] max-w-[calc(100vw-2rem)] h-[500px] max-h-[80vh] glass-panel-accent rounded-none shadow-2xl flex flex-col overflow-hidden border border-neutral-800"
           >
             
             {/* Chat Header */}

@@ -67,10 +67,6 @@ export default function ResultsTab({ setActiveTab }: ResultsTabProps) {
       
       {/* Title block */}
       <div className="space-y-3 max-w-3xl">
-        <div className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-primaryAccent/10 border border-primaryAccent/30 text-primaryAccent font-mono text-[10px] font-bold uppercase tracking-wider rounded-none">
-          <Workflow className="w-3 h-3" />
-          CASE TRANSFORMATIONS
-        </div>
         
         <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black tracking-tighter text-primaryText uppercase leading-none">
           MEASURABLE OPERATIONAL IMPACTS

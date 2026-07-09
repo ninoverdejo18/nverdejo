@@ -35,8 +35,71 @@ export default function App() {
   const [activeTab, setActiveTab] = useState<TabType>('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+  const [showNavbar, setShowNavbar] = useState(false);
+
+  // Delay navigation bar appearance by 10 seconds upon opening the page for the 1st time
+  useEffect(() => {
+    const hasVisited = localStorage.getItem('nv_has_visited');
+    if (hasVisited === 'true') {
+      setShowNavbar(true);
+    } else {
+      const timer = setTimeout(() => {
+        setShowNavbar(true);
+        localStorage.setItem('nv_has_visited', 'true');
+      }, 10000); // 10 seconds
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   const containerRef = useRef<HTMLDivElement>(null);
+
+  // Dynamic auto-scaling to fit the entire viewport & adapt beautifully in real time to any screen size and zoom level
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+
+      // Base width and height configurations
+      let scale = 1;
+
+      if (width < 640) {
+        // Mobile layout: Fit perfectly by scaling relative to 375px base width
+        scale = width / 375;
+        // Keep it highly usable (avoid excessively small or large results on mobile variants)
+        scale = Math.max(0.85, Math.min(scale, 1.15));
+      } else if (width < 1024) {
+        // Tablet/iPad layout: Fit beautifully based on 768px base width
+        scale = width / 768;
+        scale = Math.max(0.9, Math.min(scale, 1.25));
+      } else {
+        // Desktop / Laptops / Ultra-wide monitors
+        // Dynamically compute fit scaling factor relative to 1440x900 design baseline
+        const scaleW = width / 1440;
+        const scaleH = height / 900;
+        
+        // Use the smaller scale factor to guarantee the entire layout fits in BOTH dimensions
+        // (preventing page/canvas content overflow and keeping the layout perfectly proportioned).
+        scale = Math.min(scaleW, scaleH);
+        
+        // Set solid bounds (0.75x to 1.6x) to preserve aesthetics and legibility
+        scale = Math.max(0.75, Math.min(scale, 1.6));
+      }
+
+      // 16px base font multiplied by our real-time scale factor adapts all rem-based units dynamically
+      const computedFontSize = 16 * scale;
+      document.documentElement.style.fontSize = `${computedFontSize}px`;
+    };
+
+    // Calculate immediately and bind listeners
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('orientationchange', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('orientationchange', handleResize);
+    };
+  }, []);
 
   // Sync theme with document class on mount
   useEffect(() => {
@@ -144,7 +207,7 @@ export default function App() {
   return (
     <div 
       ref={containerRef}
-      className="min-h-screen bg-bg-dark text-primary-text relative overflow-x-visible selection:bg-primaryAccent selection:text-white"
+      className="min-h-screen bg-bg-dark text-primary-text relative overflow-x-hidden selection:bg-primaryAccent selection:text-white"
     >
       
       {/* Background radial mouse-follow lighting overlay */}
@@ -242,14 +305,18 @@ export default function App() {
 
       {/* 2. MAIN WEB APP CONTENT */}
       {!loading && (
-        <div id="main-application-stage" className={`relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col min-h-screen justify-between pointer-events-auto ${(activeTab === 'home' || activeTab === 'contact') ? 'pb-4 pt-0' : 'py-4'}`}>
+        <div id="main-application-stage" className="relative z-10 w-full max-w-none mx-auto px-3 sm:px-5 lg:px-6 xl:px-8 flex flex-col min-h-screen justify-between pointer-events-auto pb-4 pt-0">
           
           {/* TOP HEADER: BRAND LOGO & DESKTOP NAVIGATION */}
-          <header className={`py-5 flex items-center justify-between pointer-events-auto ${
-            (activeTab === 'home' || activeTab === 'contact') 
-              ? 'absolute top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto' 
-              : 'relative'
-          }`}>
+          <AnimatePresence>
+            {showNavbar && (
+              <motion.header
+                initial={{ opacity: 0, y: -25 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -25 }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                className="absolute top-0 left-0 right-0 z-50 px-3 sm:px-5 lg:px-6 xl:px-8 py-5 flex items-center justify-between pointer-events-auto w-full max-w-full mx-auto"
+              >
             
             {/* Branding Logo */}
             <div 
@@ -331,7 +398,7 @@ export default function App() {
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
-                  className="absolute top-full left-0 right-0 bg-surface-dark border-2 border-neutral-800 rounded-lg p-4 mt-2 z-40 space-y-2 font-display"
+                  className="absolute top-full left-4 right-4 bg-surface-dark border-2 border-neutral-800 rounded-lg p-4 mt-2 z-40 space-y-2 font-display"
                 >
                   {tabList.map((tab) => (
                     <button
@@ -375,10 +442,12 @@ export default function App() {
               )}
             </AnimatePresence>
 
-          </header>
+              </motion.header>
+            )}
+          </AnimatePresence>
 
           {/* ACTIVE CONTENT VIEW WINDOW */}
-          <main className={`flex-1 pointer-events-auto ${(activeTab === 'home' || activeTab === 'contact') ? '' : 'my-6 lg:my-8'}`}>
+          <main className={`flex-1 pointer-events-auto ${(activeTab === 'home' || activeTab === 'contact') ? '' : 'pt-24 pb-8 lg:pt-28 lg:pb-12'}`}>
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}

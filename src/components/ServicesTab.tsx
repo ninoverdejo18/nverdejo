@@ -258,11 +258,6 @@ export default function ServicesTab({ setActiveTab }: ServicesTabProps) {
       
       {/* Title block */}
       <div className="space-y-3 max-w-3xl">
-        <div className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-primaryAccent/10 border border-primaryAccent/30 text-primaryAccent font-mono text-[10px] font-bold uppercase tracking-wider rounded-none">
-          <Zap className="w-3 h-3 animate-pulse" />
-          SERVICE CAPABILITIES
-        </div>
-        
         <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black tracking-tighter text-primaryText uppercase leading-none">
           SYSTEMS ARCHITECTURE & AUTOMATION ENGINE
         </h2>
@@ -298,9 +293,6 @@ export default function ServicesTab({ setActiveTab }: ServicesTabProps) {
                     {getIcon(service.id)}
                   </div>
                   <div className="text-right">
-                    <span className={`font-mono text-[10px] font-bold block ${isWebDev ? 'text-primaryAccent' : 'text-green-400'}`}>
-                      ● {isWebDev ? 'PRIMARY SPECIALTY' : 'HIGH-IMPACT'}
-                    </span>
                   </div>
                 </div>
 
@@ -382,10 +374,6 @@ export default function ServicesTab({ setActiveTab }: ServicesTabProps) {
       {/* Detailed Technical Deep Dive: Web & App Development */}
       <div className="border-t border-neutral-900 pt-10 space-y-6">
         <div className="space-y-2">
-          <div className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-primaryAccent/10 border border-primaryAccent/30 text-primaryAccent font-mono text-[10px] font-bold uppercase tracking-wider rounded-none">
-            <Code className="w-3 h-3 animate-pulse" />
-            WEB & APP ARCHITECTURE SPECIFICATIONS
-          </div>
           <h2 className="font-display text-2xl sm:text-3xl font-black text-primaryText uppercase tracking-tight">
             HIGH-PERFORMANCE CLIENT-SERVER STACK
           </h2>
@@ -456,7 +444,6 @@ export default function ServicesTab({ setActiveTab }: ServicesTabProps) {
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <span className="font-mono text-[9px] text-primaryAccent font-bold uppercase tracking-widest">
-                  Pipeline Interactive Diagnosis
                 </span>
                 <span className="flex items-center gap-1">
                   <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-ping" />
