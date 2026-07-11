@@ -18,25 +18,25 @@ interface AboutTabProps {
 export default function AboutTab({ setActiveTab }: AboutTabProps) {
   const coreCompetencies = [
     {
-      title: 'Workflow Auditing',
-      description: 'Analyzing team activity to locate repetitive, manual friction points that sap hours weekly.'
+      title: 'Interactive Web Design',
+      description: 'Crafting unique, distinctive, and high-fidelity interfaces utilizing gorgeous typography pairings, rich spacing grids, and sleek color tokens.'
     },
     {
-      title: 'Pipeline Engineering',
-      description: 'Connecting database schemas, cloud functions, and webhooks into single, resilient loops.'
+      title: 'Fluid Motion & Animation',
+      description: 'Breathing life into applications with purposeful, staggered entrance animations, gesture-based triggers, and layout morphing vectors.'
     },
     {
-      title: 'Interface Architecture',
-      description: 'Building custom React control rooms and glassmorphic dashboards that summarize complex internal logic.'
+      title: 'Responsive Engineering',
+      description: 'Writing desktop-first precision and mobile-first code to guarantee your app adapts seamlessly to standard phones, tablets, and wide-screen monitors.'
     },
     {
-      title: 'Server Maintenance',
-      description: 'Optimizing indexes, establishing automatic data backups, and resolving server bottlenecks.'
+      title: 'Professional Architecture',
+      description: 'Organizing modular React components, clean state orchestration layers, and optimized Vite build paths for lightning-fast performance.'
     }
   ];
 
   return (
-    <div id="about-tab-container" className="py-2 lg:py-4 space-y-8 animate-fade-in">
+    <div id="about-tab-container" className="space-y-12 lg:space-y-16 pb-8 animate-fade-in">
       
       {/* Title block */}
       <div className="space-y-3 max-w-3xl">
@@ -99,11 +99,11 @@ export default function AboutTab({ setActiveTab }: AboutTabProps) {
                 </div>
 
                 <div className="border-b border-neutral-900/60 pb-1.5">
-                  <span className="text-primaryAccent font-semibold">AI Automation Expert</span>
+                  <span className="text-primaryText font-semibold">AI Automation Expert</span>
                 </div>
 
                 <div className="border-b border-neutral-900/60 pb-1.5">
-                  <span className="text-secondaryAccent font-semibold">Technical VA</span>
+                  <span className="text-primaryText font-semibold">Virtual Assistant</span>
                 </div>
 
                 <div className="border-b border-neutral-900/60 pb-1.5">
@@ -111,7 +111,7 @@ export default function AboutTab({ setActiveTab }: AboutTabProps) {
                 </div>
 
                 <div className="border-b border-neutral-900/60 pb-1.5">
-                  <span className="text-green-400 font-bold">Restoring 15h+ weekly</span>
+                  <span className="text-primaryText font-bold">Restoring 15h+ weekly</span>
                 </div>
 
               </div>
@@ -147,15 +147,23 @@ export default function AboutTab({ setActiveTab }: AboutTabProps) {
           
           <div className="space-y-4">
             <h3 className="font-display text-xl sm:text-2xl font-bold text-primaryText uppercase tracking-tight">
-              Founders lose momentum when operations become bottlenecks. I restore your execution speed.
+              Creating digital experiences that engage, convert, and perform. Visually stunning and rigorously engineered.
             </h3>
             
             <p className="text-mutedText/95 text-sm sm:text-base leading-relaxed font-sans">
-              Every hour your staff spends copying contact emails from forms, updating custom CRM records, or hunting down database latencies is an hour taken directly away from acquiring market share and iterating on your core product. 
+              A great user interface is more than just clean aesthetics—it is a functional system that translates brand identity into flawless user journeys. Every line of code, every transition curve, and every responsive breakpoint should work in complete harmony to provide a seamless, elite experience across all screen sizes.
             </p>
 
             <p className="text-mutedText/95 text-sm sm:text-base leading-relaxed font-sans">
-              I operate as your fractional technical architect. I don’t schedule verbose brainstorm calls or construct slide-decks filled with buzzwords. Instead, I inspect your actual codebases, audit your daily operations, and write production-grade automation scripts and high-speed user interfaces that run around the clock.
+              I specialize in bridging the gap between artistic visual design and bulletproof technical architecture. Leveraging modern front-end frameworks, high-performance animation engines, and meticulous responsive layouts, I build professional web applications that load instantly and respond dynamically to user touch or click gestures.
+            </p>
+
+            <p className="text-mutedText/95 text-sm sm:text-base leading-relaxed font-sans">
+              By combining custom typography hierarchies, elegant whitespace distribution, and custom glassmorphic panels, I design websites that look stunning on 4K retina displays down to the smallest mobile devices. Every transition, hover state, and interactive layout change is built with clean motion curves to maximize tactile satisfaction and user retention.
+            </p>
+
+            <p className="text-mutedText/95 text-sm sm:text-base leading-relaxed font-sans">
+              Behind the visual beauty lies standard-compliant semantic markup, robust TypeScript modularity, and optimized production bundlers. This professional approach guarantees high lighthouse scores, superb accessibility controls (WCAG/ARIA), and a future-proof development ecosystem that scales effortlessly as your project requirements grow.
             </p>
           </div>
 

@@ -254,7 +254,7 @@ export default function ServicesTab({ setActiveTab }: ServicesTabProps) {
   };
 
   return (
-    <div id="services-tab-container" className="py-2 lg:py-4 space-y-8">
+    <div id="services-tab-container" className="space-y-12 lg:space-y-16 pb-8">
       
       {/* Title block */}
       <div className="space-y-3 max-w-3xl">
@@ -270,16 +270,11 @@ export default function ServicesTab({ setActiveTab }: ServicesTabProps) {
       {/* Services Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {services.map((service) => {
-          const isWebDev = service.id === 'web-dev';
           return (
             <div 
               key={service.id}
               id={`service-${service.id}`}
-              className={`group relative flex flex-col justify-between bg-surface-dark rounded-none p-5 hover:border-primaryAccent transition-all duration-350 overflow-hidden ${
-                isWebDev 
-                  ? 'border-2 border-primaryAccent/80 shadow-[0_0_20px_rgba(139,92,246,0.15)] bg-gradient-to-b from-neutral-950 via-surface-dark to-surface-dark' 
-                  : 'border border-neutral-850'
-              }`}
+              className="group relative flex flex-col justify-between bg-surface-dark rounded-none p-5 border border-neutral-850 hover:border-primaryAccent transition-all duration-350 overflow-hidden"
             >
               {/* Top border glow effect */}
               <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-primaryAccent to-secondaryAccent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -372,7 +367,7 @@ export default function ServicesTab({ setActiveTab }: ServicesTabProps) {
       </div>
 
       {/* Detailed Technical Deep Dive: Web & App Development */}
-      <div className="border-t border-neutral-900 pt-10 space-y-6">
+      <div className="border-t border-neutral-900 pt-12 lg:pt-16 space-y-6 lg:space-y-8">
         <div className="space-y-2">
           <h2 className="font-display text-2xl sm:text-3xl font-black text-primaryText uppercase tracking-tight">
             HIGH-PERFORMANCE CLIENT-SERVER STACK
@@ -439,7 +434,6 @@ export default function ServicesTab({ setActiveTab }: ServicesTabProps) {
 
           {/* Interactive Compilation Sandbox (Right 7 Columns) */}
           <div className="lg:col-span-7 bg-surface-dark border border-neutral-850 p-5 lg:p-6 space-y-4 relative overflow-hidden flex flex-col justify-between">
-            <div className="absolute top-0 left-0 w-1.5 h-full bg-primaryAccent" />
             
             <div className="space-y-2">
               <div className="flex items-center justify-between">
@@ -520,7 +514,7 @@ export default function ServicesTab({ setActiveTab }: ServicesTabProps) {
                 >
                   <button
                     onClick={triggerCompilation}
-                    className="w-full bg-neutral-900 hover:bg-primaryAccent hover:text-white border border-neutral-850 hover:border-primaryAccent text-primaryText font-mono font-bold uppercase text-[10px] py-2 rounded-none cursor-pointer transition-all flex items-center justify-center gap-1.5 relative z-10"
+                    className="w-full bg-black hover:bg-primaryAccent hover:text-white border border-neutral-850 hover:border-primaryAccent text-primaryText font-mono font-bold uppercase text-[10px] py-2 rounded-none cursor-pointer transition-all flex items-center justify-center gap-1.5 relative z-10"
                   >
                     <RotateCw className="w-3.5 h-3.5" />
                     TRIGGER SIMULATION

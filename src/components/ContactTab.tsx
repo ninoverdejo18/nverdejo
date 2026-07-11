@@ -123,13 +123,13 @@ export default function ContactTab() {
   };
 
   return (
-    <div id="contact-tab-container" className="pb-2 lg:pb-4 space-y-8">
+    <div id="contact-tab-container" className="space-y-12 lg:space-y-16 pb-8">
       
       {/* Immersive Spline 3D Robot Hero */}
       <SplineSceneHero />
       
       {/* Split Contact Section */}
-      <div id="split-contact-grid" className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch scroll-mt-24">
+      <div id="split-contact-grid" className="border-t border-neutral-900 pt-12 lg:pt-16 grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch scroll-mt-24">
         
         {/* LEFT COLUMN: Contact Cards & Direct Access */}
         <div className="lg:col-span-5 space-y-5 flex flex-col justify-between">
@@ -142,7 +142,7 @@ export default function ContactTab() {
               <h3 className="font-display text-lg font-black text-primaryText uppercase">
                 Niño Verdejo
               </h3>
-              <p className="text-xs sm:text-sm text-mutedText/90 leading-relaxed">
+              <p className="text-xs sm:text-sm text-mutedText/90 leading-relaxed font-sans">
                 Connect directly for high-ticket contracts, retainer sprint inquiries, or urgent operational assistance.
               </p>
               
@@ -207,7 +207,7 @@ export default function ContactTab() {
 
         {/* RIGHT COLUMN: The EmailJS Form */}
         <div className="lg:col-span-7">
-          <div className="p-5 lg:p-6 bg-surface-dark border-b border-neutral-800 rounded-none space-y-5">
+          <div className="p-5 lg:p-6 bg-surface-dark border border-neutral-800 rounded-none space-y-5">
             
             <div className="border-b border-neutral-900 pb-3">
               <h3 className="font-display text-base font-black text-primaryText uppercase tracking-tight">
