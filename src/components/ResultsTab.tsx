@@ -29,10 +29,21 @@ interface ResultsTabProps {
 }
 
 export default function ResultsTab({ setActiveTab }: ResultsTabProps) {
-  const [activeCard, setActiveCard] = useState<string>('devgen');
+  const [activeCard, setActiveCard] = useState<string>('portfolio');
   const [devgenSubTab, setDevgenSubTab] = useState<'strategy' | 'design' | 'engineering' | 'outcomes'>('strategy');
 
   const resultCards: ResultCard[] = [
+    {
+      id: 'portfolio',
+      client: 'NVerdejo Personal Portfolio',
+      industry: 'Personal Brand & Showcase',
+      challenge: 'Over-reliance on generic developer templates, sluggish performance, jumpy unoptimized animations, and high-friction contact workflows.',
+      solution: 'Engineered a high-performance, immersive digital experience inspired by modern SaaS aesthetics utilizing precise typography, hardware-accelerated fluid motion design, and optimal asset bundling.',
+      impactMetric: 'Sub-1s',
+      impactLabel: 'First Contentful Paint (FCP) Performance',
+      beforeText: 'Generic layouts, unoptimized asset packages, slow loads, high bounce rate.',
+      afterText: 'Sub-second rendering, near-perfect Core Web Vitals, flawless 60fps animations, seamless communication pipeline.'
+    },
     {
       id: 'devgen',
       client: 'DevGen Website',
@@ -141,10 +152,377 @@ export default function ResultsTab({ setActiveTab }: ResultsTabProps) {
         </div>
 
         {/* Right Side: Active Case Study Deep Dive */}
-        <div className="lg:col-span-8">
+        <div className="lg:col-span-8 space-y-3">
+          <div className="font-mono text-[9px] text-neutral-500 uppercase tracking-widest font-bold mb-1">
+            CASE STUDY DETAILS
+          </div>
           {resultCards.map((card) => {
             if (card.id !== activeCard) return null;
             
+            if (card.id === 'portfolio') {
+              return (
+                <motion.div
+                  key={card.id}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.25 }}
+                  className="bg-surface-dark border border-neutral-800 rounded-none p-5 lg:p-6 space-y-6 relative overflow-hidden"
+                >
+                  {/* Case Header */}
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-neutral-900 pb-4">
+                    <div className="space-y-1">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="font-mono text-[9px] text-primaryAccent font-bold uppercase tracking-widest">
+                          CASE STUDY REPORT
+                        </span>
+                        <span className="text-neutral-700 font-mono text-[9px]">|</span>
+                        <a 
+                          href="https://nverdejo.vercel.app/" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="font-mono text-[9px] text-mutedText hover:text-primaryAccent flex items-center gap-1 transition-colors group/link"
+                        >
+                          <Globe className="w-2.5 h-2.5 text-primaryAccent group-hover/link:animate-pulse" />
+                          nverdejo.vercel.app
+                          <ExternalLink className="w-2.5 h-2.5 shrink-0" />
+                        </a>
+                      </div>
+                      <h3 className="font-display text-xl lg:text-2xl font-black text-primaryText uppercase">
+                        {card.client}
+                      </h3>
+                      <div className="font-mono text-[10px] text-mutedText flex flex-wrap gap-x-3 gap-y-1">
+                        <span>Industry: <span className="text-primaryText font-medium">{card.industry}</span></span>
+                        <span>•</span>
+                        <span>Role: <span className="text-primaryText font-medium">UI/UX Designer • Developer</span></span>
+                        <span>•</span>
+                        <span>Timeline: <span className="text-primaryText font-medium">2026</span></span>
+                      </div>
+                    </div>
+                    
+                    {/* Huge Impact Hero Stat */}
+                    <div className="bg-neutral-950 p-3 border border-neutral-900 rounded-none text-center sm:text-right shrink-0 min-w-[140px]">
+                      <div className="font-display text-2xl lg:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-primaryAccent tracking-tight">
+                        {card.impactMetric}
+                      </div>
+                      <div className="font-mono text-[9px] text-mutedText uppercase mt-0.5 tracking-wider leading-tight">
+                        {card.impactLabel}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Tech Stack Chips */}
+                  <div className="flex flex-wrap gap-1.5">
+                    {['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Framer Motion', 'Vercel'].map((tech) => (
+                      <span key={tech} className="font-mono text-[9px] bg-neutral-900 border border-neutral-850 px-2 py-0.5 text-mutedText uppercase font-semibold">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Sub-Tabs Selector */}
+                  <div className="border-b border-neutral-900 flex flex-wrap gap-1">
+                    {(['strategy', 'design', 'engineering', 'outcomes'] as const).map((tab) => {
+                      const labels = {
+                        strategy: { name: 'Overview & Strategy', icon: BookOpen },
+                        design: { name: 'Design & UX', icon: Palette },
+                        engineering: { name: 'Engineering & Tech', icon: Code },
+                        outcomes: { name: 'Challenges & Outcomes', icon: TrendingUp },
+                      };
+                      const TabIcon = labels[tab].icon;
+                      const isActive = devgenSubTab === tab;
+                      return (
+                        <button
+                          key={tab}
+                          onClick={() => setDevgenSubTab(tab)}
+                          className={`flex items-center gap-1.5 px-3 py-2 font-mono text-[10px] uppercase font-bold tracking-wider transition-all border-t border-x -mb-px cursor-pointer ${
+                            isActive 
+                              ? 'bg-neutral-950/40 text-primaryAccent border-neutral-850 border-b-neutral-950' 
+                              : 'bg-transparent text-neutral-500 border-transparent hover:text-mutedText'
+                          }`}
+                        >
+                          <TabIcon className="w-3.5 h-3.5 shrink-0" />
+                          {labels[tab].name}
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  {/* Sub-Tab Content */}
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={devgenSubTab}
+                      initial={{ opacity: 0, y: 5 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -5 }}
+                      transition={{ duration: 0.15 }}
+                      className="space-y-5"
+                    >
+                      {devgenSubTab === 'strategy' && (
+                        <div className="space-y-4">
+                          <div className="space-y-1.5">
+                            <h4 className="font-mono text-[10px] text-primaryAccent font-bold uppercase tracking-wider">
+                              PROJECT SUMMARY
+                            </h4>
+                            <p className="text-xs sm:text-sm text-primaryText/95 leading-relaxed font-sans">
+                              NVerdejo is a premium personal portfolio website designed to showcase professional front-end development expertise, highlight featured projects, and provide a seamless contact stream for potential clients and recruiters. The primary objective was to move away from generic developer templates and engineer a high-performance, immersive digital experience inspired by modern SaaS aesthetics—utilizing precise typography, fluid motion design, and a minimalist aesthetic.
+                            </p>
+                            <p className="text-xs sm:text-sm text-mutedText leading-relaxed font-sans">
+                              The website functions as both a functional resume and a living proof-of-concept of advanced UI/UX implementation, focusing on lightning-fast response times and smooth micro-interactions.
+                            </p>
+                          </div>
+
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
+                            <div className="space-y-1.5 p-3.5 bg-red-500/5 border border-red-500/10 rounded-none">
+                              <div className="font-mono text-[10px] text-red-400 font-bold uppercase tracking-wider flex items-center gap-1">
+                                <XCircle className="w-3.5 h-3.5 shrink-0" />
+                                PROBLEM IDENTIFIED
+                              </div>
+                              <ul className="list-none space-y-1 font-sans text-xs text-mutedText">
+                                {[
+                                  'Over-reliance on generic, recognizable template layouts',
+                                  'Cluttered or overly busy interfaces that distract from the work',
+                                  'Jumpy, unoptimized animations that degrade mobile frame rates',
+                                  'Sluggish performance caused by bloated asset packages',
+                                  'Weak or forgettable personal visual branding',
+                                  'Hidden or high-friction contact workflows'
+                                ].map((item) => (
+                                  <li key={item} className="flex items-start gap-1.5">
+                                    <span className="text-red-400/80 mt-0.5">•</span>
+                                    <span>{item}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+
+                            <div className="space-y-1.5 p-3.5 bg-green-500/5 border border-green-500/10 rounded-none">
+                              <div className="font-mono text-[10px] text-green-400 font-bold uppercase tracking-wider flex items-center gap-1">
+                                <CheckCircle className="w-3.5 h-3.5 shrink-0" />
+                                PORTFOLIO GOALS & RESEARCH
+                              </div>
+                              <div className="space-y-2 text-xs font-sans text-mutedText">
+                                <div>
+                                  <span className="font-bold text-primaryText">Primary Goals:</span> Establish a distinct premium personal brand identity, keep session drop-offs low with engaging fluid transitions, showcase production-ready engineering, lower friction for recruiter outreach, and present scannable cases.
+                                </div>
+                                <div className="border-t border-neutral-900/50 pt-1.5">
+                                  <span className="font-bold text-primaryText">Research Takeaways:</span> Heavily influenced by top-tier modern software design ecosystems (such as Linear, Vercel, and Stripe) prioritizing strategic whitespace, crisp high-contrast typography, and purposeful micro-interactions.
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {devgenSubTab === 'design' && (
+                        <div className="space-y-4">
+                          <div className="space-y-1.5">
+                            <h4 className="font-mono text-[10px] text-primaryAccent font-bold uppercase tracking-wider">
+                              THE DESIGN PROCESS & BRANDING
+                            </h4>
+                            <p className="text-xs sm:text-sm text-mutedText leading-relaxed font-sans">
+                              Built from the ground up to tell a progressive story about capabilities while reinforcing professional trust through polished micro-interactions and zero layout shifts.
+                            </p>
+                          </div>
+
+                          <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5">
+                            <div className="p-3 bg-neutral-900/40 border border-neutral-850 rounded-none space-y-1">
+                              <div className="font-mono text-[9px] text-primaryText uppercase font-bold tracking-wider">
+                                1. INFORMATION ARCHITECTURE
+                              </div>
+                              <p className="text-[11px] text-mutedText font-sans leading-relaxed">
+                                Singular, highly cohesive flow: Hero (value prop), About (technical philosophy), Featured Work, Skills Matrix, and low-friction Contact endpoints.
+                              </p>
+                            </div>
+
+                            <div className="p-3 bg-neutral-900/40 border border-neutral-850 rounded-none space-y-1">
+                              <div className="font-mono text-[9px] text-primaryText uppercase font-bold tracking-wider">
+                                2. VISUAL IDENTITY
+                              </div>
+                              <p className="text-[11px] text-mutedText font-sans leading-relaxed">
+                                Dark-mode-first ambient background colors paired with vibrant green/accent tones and strict geometric typography hierarchies readable at all scales.
+                              </p>
+                            </div>
+
+                            <div className="p-3 bg-neutral-900/40 border border-neutral-850 rounded-none space-y-1">
+                              <div className="font-mono text-[9px] text-primaryText uppercase font-bold tracking-wider">
+                                3. RESPONSIVE DESIGN
+                              </div>
+                              <p className="text-[11px] text-mutedText font-sans leading-relaxed">
+                                Fluid grid system scaling perfectly from mobile tap targets up to large monitors and ultrawides utilizing strict structural max-widths.
+                              </p>
+                            </div>
+                          </div>
+
+                          <div className="p-3.5 bg-neutral-950 border border-neutral-900 rounded-none space-y-1">
+                            <div className="font-mono text-[10px] text-primaryAccent font-bold uppercase tracking-wider">
+                              CORE USER EXPERIENCE FEATURES
+                            </div>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-1 text-xs font-sans text-mutedText">
+                              <div>
+                                <span className="font-bold text-primaryText uppercase block text-[10px] mb-0.5">Absolute Clarity</span>
+                                Visitors grasp the full stack, specialties, and active roles within 3 seconds of landing.
+                              </div>
+                              <div>
+                                <span className="font-bold text-primaryText uppercase block text-[10px] mb-0.5">Responsive Grids</span>
+                                Hardware-accelerated layouts and custom-curated interactive portfolio filters.
+                              </div>
+                              <div>
+                                <span className="font-bold text-primaryText uppercase block text-[10px] mb-0.5">Professional Trust</span>
+                                Polished micro-interactions, complete lack of CLS (layout shifts), and flawless responsiveness.
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {devgenSubTab === 'engineering' && (
+                        <div className="space-y-4">
+                          <div className="space-y-1.5">
+                            <h4 className="font-mono text-[10px] text-primaryAccent font-bold uppercase tracking-wider">
+                              DEVELOPMENT, PERFORMANCE & ACCESSIBILITY
+                            </h4>
+                            <p className="text-xs sm:text-sm text-primaryText/95 leading-relaxed font-sans">
+                              Replacing heavy templates with optimal, highly responsive engineering architectures utilizing modern tools and strict performance criteria.
+                            </p>
+                          </div>
+
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="p-3.5 bg-neutral-950 border border-neutral-900 rounded-none space-y-2">
+                              <div className="font-mono text-[10px] text-green-400 font-bold uppercase tracking-wider">
+                                TECHNICAL IMPLEMENTATIONS
+                              </div>
+                              <ul className="list-none space-y-1 font-mono text-[11px] text-mutedText">
+                                {[
+                                  'Vite execution replacing slow, bloated bundlers',
+                                  'Strict TypeScript compiling for robust type safety',
+                                  'Tailwind CSS utilities preventing style bloat',
+                                  'Framer Motion spring curves optimized for mobile 60fps+',
+                                  'Asynchronous code splitting & lazy-loaded sections',
+                                  'Self-hosted local WOFF2 web fonts to bypass external rendering block'
+                                ].map((item) => (
+                                  <li key={item} className="flex items-start gap-1.5">
+                                    <span className="text-green-400 mt-0.5">✓</span>
+                                    <span>{item}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+
+                            <div className="p-3.5 bg-neutral-950 border border-neutral-900 rounded-none space-y-2">
+                              <div className="font-mono text-[10px] text-primaryAccent font-bold uppercase tracking-wider">
+                                ACCESSIBILITY & SEO CRITERIA
+                              </div>
+                              <div className="space-y-2 text-xs font-sans text-mutedText">
+                                <div>
+                                  <span className="font-bold text-primaryText block mb-0.5">Accessibility ($A11y$):</span>
+                                  Enforced semantic layout structures (<code className="text-primaryAccent font-mono">&lt;main&gt;</code>, <code className="text-primaryAccent font-mono">&lt;section&gt;</code>, etc.), focus state indicators for keyboard-only navigation, WCAG AA contrast compliance, and explicit aria-labels on icons.
+                                </div>
+                                <div className="border-t border-neutral-900/50 pt-1.5">
+                                  <span className="font-bold text-primaryText block mb-0.5">SEO Optimization:</span>
+                                  Structured heading cascade (H1 → H2 → H3), Open Graph (OG) sharing previews, and extremely rapid first contentful paint (FCP) scores.
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {devgenSubTab === 'outcomes' && (
+                        <div className="space-y-4">
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="p-3.5 bg-neutral-900/40 border border-neutral-850 rounded-none space-y-2">
+                              <div className="font-mono text-[10px] text-red-400 font-bold uppercase tracking-wider">
+                                KEY CHALLENGES RESOLVED
+                              </div>
+                              <div className="space-y-2 text-xs font-sans text-mutedText">
+                                <div>
+                                  <span className="font-bold text-primaryText block">The Micro-Interaction Balance:</span>
+                                  Meticulous fine-tuning of cubic-bezier spring curves to make animations feel snappy and functional rather than slow and theatrical.
+                                </div>
+                                <div className="border-t border-neutral-900/50 pt-1.5">
+                                  <span className="font-bold text-primaryText block">Asset Loading Overhead:</span>
+                                  Implementing modern optimized image encoding alongside strict wrapper aspect-ratios to eliminate layout shifts completely.
+                                </div>
+                              </div>
+                            </div>
+
+                            <div className="p-3.5 bg-neutral-900/40 border border-neutral-850 rounded-none space-y-2">
+                              <div className="font-mono text-[10px] text-green-400 font-bold uppercase tracking-wider">
+                                RESULTS & KEY TAKEAWAYS
+                              </div>
+                              <ul className="list-none space-y-1 font-sans text-xs text-mutedText">
+                                {[
+                                  'Premium, unified personal brand presence',
+                                  'Sub-second initial contentful paint (FCP) performance',
+                                  'Highly maintainable component architecture',
+                                  'Flawless mobile/responsive viewport performance',
+                                  'Lessons Learned: Performance is UX'
+                                ].map((item) => (
+                                  <li key={item} className="flex items-start gap-1.5">
+                                    <span className="text-green-400 mt-0.5">•</span>
+                                    <span>{item}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
+
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
+                            <div className="p-3.5 bg-neutral-950 border border-neutral-900 rounded-none space-y-1">
+                              <div className="font-mono text-[10px] text-primaryAccent font-bold uppercase tracking-wider">
+                                DESIGN DISCIPLINE
+                              </div>
+                              <p className="text-[11px] text-mutedText font-mono leading-relaxed">
+                                Component Discipline: Investing time early into building rock-solid, reusable layout primitives dramatically accelerates building later pages and ensures visual consistency.
+                              </p>
+                            </div>
+
+                            <div className="p-3.5 bg-neutral-950 border border-neutral-900 rounded-none space-y-1">
+                              <div className="font-mono text-[10px] text-primaryAccent font-bold uppercase tracking-wider">
+                                FUTURE IMPROVEMENTS
+                              </div>
+                              <p className="text-[11px] text-mutedText font-mono leading-relaxed">
+                                MDX-Driven Blog Engine for technical breakdowns, dynamic Light/Dark contrast toggling, multi-language translation files, and custom scrolling/engagement telemetry.
+                              </p>
+                            </div>
+                          </div>
+
+                          <div className="p-3.5 bg-neutral-950 border border-neutral-900 rounded-none space-y-1.5">
+                            <div className="font-mono text-[10px] text-green-400 font-bold uppercase tracking-wider">
+                              CONCLUSION
+                            </div>
+                            <p className="text-xs sm:text-sm text-primaryText/90 leading-relaxed font-sans">
+                              The NVerdejo portfolio project highlights how combining clean minimalist design with strict modern front-end execution yields a compelling digital signature. By stripping away standard template bloat and engineering a tailored, high-performance user journey, the platform functions effectively as a visual and functional showcase of what modern front-end development can achieve.
+                            </p>
+                          </div>
+                        </div>
+                      )}
+                    </motion.div>
+                  </AnimatePresence>
+
+                  {/* Call to action */}
+                  <div className="flex justify-between items-center pt-3 border-t border-neutral-900 gap-4 flex-wrap">
+                    <a 
+                      href="https://nverdejo.vercel.app/" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="font-mono text-[10px] text-primaryAccent hover:text-secondaryAccent font-bold uppercase flex items-center gap-1 transition-colors"
+                    >
+                      VISIT PORTFOLIO WEBSITE
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </a>
+                    <button
+                      onClick={() => setActiveTab('contact')}
+                      className="flex items-center gap-1.5 bg-primaryAccent hover:bg-primaryAccent/90 text-white font-mono font-bold uppercase tracking-wider text-[10px] py-3 px-5 rounded-none cursor-pointer transition-colors"
+                    >
+                      GET STARTED TODAY
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+
+                </motion.div>
+              );
+            }
+
             if (card.id === 'devgen') {
               return (
                 <motion.div

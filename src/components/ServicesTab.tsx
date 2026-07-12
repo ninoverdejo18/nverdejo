@@ -204,20 +204,20 @@ export default function ServicesTab({ setActiveTab }: ServicesTabProps) {
     },
     {
       id: 'ai-automation',
-      title: 'AI Automations',
-      tagline: 'Replace multi-step manual processes with automated routines.',
-      description: 'Founders and teams routinely waste hours sync-copying data between CRMs, spreadsheets, and emails. I architect custom webhook pipelines and smart LLM categorization interfaces that execute multi-system synchronization tasks.',
-      roi: 'Eliminates human entry errors and frees up 12–20 valuable working hours weekly per team member.',
+      title: 'AI & Automations',
+      tagline: 'Connect apps and automate repetitive manual processes.',
+      description: 'Founders and teams often spend hours copying data between spreadsheets, forms, and emails. I build simple webhook integrations and set up basic Gemini API prompts to help sync platforms and automate everyday tasks.',
+      roi: 'Saves time, reduces manual entry errors, and helps keep your systems synchronized automatically.',
       features: [
-        'API & webhook network syncing',
-        'Smart data synthesis via Gemini API',
-        'Continuous CRM automation triggers',
-        'Secure token handling & error catchers'
+        'Simple API & webhook integrations',
+        'Basic text categorization via Gemini API',
+        'Google Sheets & form automation setup',
+        'Clean data transfers & error alerts'
       ],
       metrics: [
-        '15+ weekly hours restored instantly',
-        '99.8% acceleration on lead processing',
-        'Zero human ingestion mistakes'
+        '5+ hours saved weekly on average',
+        'Automated document & data updates',
+        'Consistent and reliable notifications'
       ]
     },
     {
@@ -259,11 +259,11 @@ export default function ServicesTab({ setActiveTab }: ServicesTabProps) {
       {/* Title block */}
       <div className="space-y-3 max-w-3xl">
         <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black tracking-tighter text-primaryText uppercase leading-none">
-          SYSTEMS ARCHITECTURE & AUTOMATION ENGINE
+          DEVELOPMENT & AUTOMATION SERVICES
         </h2>
         
         <p className="text-mutedText/90 text-sm sm:text-base leading-relaxed">
-          I replace fragmented tools with cohesive systems. Every integration is configured for speed, high availability, and measurable ROI.
+          I build clean, modern interfaces and configure custom automation workflows to help you operate more efficiently and save time.
         </p>
       </div>
 
@@ -282,14 +282,6 @@ export default function ServicesTab({ setActiveTab }: ServicesTabProps) {
               {/* Inner Content */}
               <div className="space-y-5">
                 
-                {/* Card Header */}
-                <div className="flex items-center justify-between border-b border-neutral-900 pb-3">
-                  <div className="p-2.5 bg-neutral-900 border border-neutral-850 rounded-none">
-                    {getIcon(service.id)}
-                  </div>
-                  <div className="text-right">
-                  </div>
-                </div>
 
               {/* Title & Tagline */}
               <div className="space-y-1">
@@ -439,10 +431,6 @@ export default function ServicesTab({ setActiveTab }: ServicesTabProps) {
               <div className="flex items-center justify-between">
                 <span className="font-mono text-[9px] text-primaryAccent font-bold uppercase tracking-widest">
                 </span>
-                <span className="flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-ping" />
-                  <span className="text-[9px] text-green-400 font-mono">ACTIVE_MONITOR</span>
-                </span>
               </div>
               <h3 className="font-display text-lg font-black text-primaryText uppercase">
                 WEB DEVELOPMENT COMPILATION SIMULATOR
@@ -514,7 +502,7 @@ export default function ServicesTab({ setActiveTab }: ServicesTabProps) {
                 >
                   <button
                     onClick={triggerCompilation}
-                    className="w-full bg-black hover:bg-primaryAccent hover:text-white border border-neutral-850 hover:border-primaryAccent text-primaryText font-mono font-bold uppercase text-[10px] py-2 rounded-none cursor-pointer transition-all flex items-center justify-center gap-1.5 relative z-10"
+                    className="w-full bg-black hover:bg-neutral-900 border border-neutral-850 hover:border-neutral-700 text-primaryText hover:text-white font-mono font-bold uppercase text-[10px] py-2 rounded-none cursor-pointer transition-all flex items-center justify-center gap-1.5 relative z-10"
                   >
                     <RotateCw className="w-3.5 h-3.5" />
                     TRIGGER SIMULATION

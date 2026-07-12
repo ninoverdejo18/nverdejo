@@ -16,7 +16,8 @@ import {
   Cpu, 
   Clock,
   Minimize2,
-  Maximize2
+  Maximize2,
+  ChevronDown
 } from 'lucide-react';
 import { TabType } from './types';
 import HomeTab from './components/HomeTab';
@@ -26,13 +27,68 @@ import AboutTab from './components/AboutTab';
 import ContactTab from './components/ContactTab';
 import ChatbotAssistant from './components/ChatbotAssistant';
 import SplashCursor from './components/SplashCursor';
+import { SpecialText } from './components/ui/special-text';
+import Lenis from 'lenis';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<TabType>('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const theme = 'dark';
   const [showNavbar, setShowNavbar] = useState(false);
-  const [navMinimized, setNavMinimized] = useState(true);
+  const [menuDropdownOpen, setMenuDropdownOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Initialize Lenis Smooth Scroll
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.5,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // fluid deceleration curve
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1.0,
+      touchMultiplier: 1.2,
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    (window as any).lenis = lenis;
+
+    // Direct synchronization with Lenis scroll animation frame updates
+    lenis.on('scroll', (e: any) => {
+      if (e.scroll > 20) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    });
+
+    // Run initial scroll check
+    if (lenis.scroll > 20) {
+      setIsScrolled(true);
+    }
+
+    return () => {
+      lenis.destroy();
+      delete (window as any).lenis;
+    };
+  }, []);
+
+  // Scroll to top on active tab change
+  useEffect(() => {
+    const lenisInstance = (window as any).lenis;
+    if (lenisInstance) {
+      lenisInstance.scrollTo(0, { immediate: true });
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [activeTab]);
 
   // Delay navigation bar appearance by 10 seconds upon opening the page for the 1st time
   useEffect(() => {
@@ -48,29 +104,16 @@ export default function App() {
     }
   }, []);
 
-  // Automatically minimize navigation when scrolling or wheeling the mouse
+  // Dropdown click outside listener to handle auto-closing when clicking away
   useEffect(() => {
-    const minimize = () => {
-      setNavMinimized(true);
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setMenuDropdownOpen(false);
+      }
     };
-
-    // Use event capture phase to ensure detection even if sub-elements intercept or stop propagation of events
-    window.addEventListener('scroll', minimize, { capture: true, passive: true });
-    window.addEventListener('wheel', minimize, { capture: true, passive: true });
-    window.addEventListener('touchmove', minimize, { capture: true, passive: true });
-    
-    document.addEventListener('scroll', minimize, { capture: true, passive: true });
-    document.addEventListener('wheel', minimize, { capture: true, passive: true });
-    document.addEventListener('touchmove', minimize, { capture: true, passive: true });
-
+    document.addEventListener('mousedown', handleClickOutside);
     return () => {
-      window.removeEventListener('scroll', minimize, { capture: true });
-      window.removeEventListener('wheel', minimize, { capture: true });
-      window.removeEventListener('touchmove', minimize, { capture: true });
-      
-      document.removeEventListener('scroll', minimize, { capture: true });
-      document.removeEventListener('wheel', minimize, { capture: true });
-      document.removeEventListener('touchmove', minimize, { capture: true });
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
 
@@ -213,75 +256,67 @@ export default function App() {
                 <img 
                   src="/nv-logo1.svg" 
                   alt="NV Logo" 
-                  className="w-full h-full object-cover"
+                  className={`w-full h-full object-cover transition-opacity duration-300 ${isScrolled ? 'opacity-40' : 'opacity-100'}`}
                 />
               </div>
-              <div className="hidden sm:block">
-                <div className="font-display text-sm font-bold text-primary-text uppercase tracking-tight">
+              <div className={`transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] origin-left flex flex-col justify-center ${isScrolled ? 'opacity-0 -translate-x-3 pointer-events-none' : 'opacity-100 translate-x-0'}`}>
+                <SpecialText 
+                  key={`${activeTab}-brand-title`}
+                  speed={15} 
+                  delay={0.1}
+                  className="text-[8.5px] font-normal uppercase tracking-[0.15em] text-white whitespace-nowrap leading-[8.5px]"
+                >
                   Niño Verdejo
-                </div>
-                <div className="font-mono text-[9px] text-primaryAccent uppercase tracking-widest font-bold">
-                  WEB DESIGN & DEVELOPMENT EXPERT
-                </div>
+                </SpecialText>
+                <SpecialText 
+                  key={`${activeTab}-brand-subtitle`}
+                  speed={12} 
+                  delay={0.3}
+                  className="text-[7px] font-normal uppercase tracking-[0.25em] text-neutral-400 whitespace-nowrap leading-[7.5px] mt-1"
+                >
+                  WEB DESIGN & CUSTOM DEVELOPMENT
+                </SpecialText>
               </div>
             </div>
 
-            {/* Desktop Navigation Interface with Minimize/Maximize option */}
-            <div className="hidden md:flex items-center gap-2">
-              <AnimatePresence mode="wait">
-                {navMinimized ? (
-                  <motion.button
-                    key="minimized-nav"
-                    initial={{ opacity: 0, scale: 0.9, x: 10 }}
-                    animate={{ opacity: 1, scale: 1, x: 0 }}
-                    exit={{ opacity: 0, scale: 0.9, x: 10 }}
-                    transition={{ duration: 0.2 }}
-                    onClick={() => setNavMinimized(false)}
-                    className="flex items-center gap-2 bg-transparent hover:bg-neutral-900/30 px-4 py-2.5 rounded-lg text-xs font-mono font-bold tracking-wider text-primaryAccent hover:text-primary-text transition-all cursor-pointer shadow-none border-none group"
-                    title="Maximize Menu"
-                  >
-                    <Maximize2 className="w-3.5 h-3.5 transition-transform group-hover:scale-110" />
-                    <span>MENU</span>
-                  </motion.button>
-                ) : (
-                  <motion.nav
-                    key="maximized-nav"
-                    initial={{ opacity: 0, scale: 0.95, x: -10 }}
-                    animate={{ opacity: 1, scale: 1, x: 0 }}
-                    exit={{ opacity: 0, scale: 0.95, x: -10 }}
-                    transition={{ duration: 0.25 }}
-                    className="flex items-center bg-transparent p-0 rounded-lg shadow-none border-none"
+            {/* Desktop Navigation Interface: Minimize Only with Dropdown List */}
+            <div ref={dropdownRef} className="hidden md:flex relative items-center gap-2">
+              <button
+                onClick={() => setMenuDropdownOpen(!menuDropdownOpen)}
+                className={`flex items-center gap-2 bg-transparent hover:bg-neutral-900/30 px-4 py-2.5 rounded-lg text-xs font-mono font-bold tracking-wider text-primaryAccent hover:text-primary-text transition-all duration-300 cursor-pointer shadow-none border-none group ${isScrolled ? 'opacity-40' : 'opacity-100'}`}
+                title="Toggle Menu"
+              >
+                <span className="text-white">MENU</span>
+                <ChevronDown className={`w-3.5 h-3.5 text-white transition-transform duration-200 ${menuDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              <AnimatePresence>
+                {menuDropdownOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                    transition={{ duration: 0.15, ease: 'easeOut' }}
+                    className="absolute left-0 right-0 top-full mt-1.5 bg-neutral-950/95 backdrop-blur-md rounded-lg shadow-xl z-50 overflow-hidden"
                   >
                     {tabList.map((tab) => {
                       const isActive = activeTab === tab.id;
                       return (
                         <button
                           key={tab.id}
-                          onClick={() => setActiveTab(tab.id)}
-                          className={`relative px-5 py-2.5 font-display text-xs font-semibold uppercase tracking-wider rounded transition-colors cursor-pointer ${
-                            isActive ? 'text-primary-text' : 'text-muted-text hover:text-primary-text'
+                          onClick={() => {
+                            setActiveTab(tab.id);
+                            setMenuDropdownOpen(false);
+                          }}
+                          className={`w-full text-center px-2 py-2.5 font-display text-[10px] font-semibold uppercase tracking-wider transition-colors cursor-pointer block hover:bg-neutral-900 ${
+                            isActive ? 'text-primaryAccent bg-neutral-900/40 font-bold' : 'text-muted-text hover:text-primary-text'
                           }`}
                         >
-                          {isActive && (
-                            <motion.div
-                              layoutId="active-nav-underline"
-                              className="absolute inset-0 bg-neutral-900 rounded"
-                              transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                            />
-                          )}
-                          <span className="relative z-10">{tab.label}</span>
+                          {tab.label}
                         </button>
                       );
                     })}
-                    <div className="h-4 w-px bg-neutral-850 mx-1.5" />
-                    <button
-                      onClick={() => setNavMinimized(true)}
-                      className="p-2 text-muted-text hover:text-primaryAccent transition-colors rounded hover:bg-neutral-900 cursor-pointer"
-                      title="Minimize Menu"
-                    >
-                      <Minimize2 className="w-3.5 h-3.5" />
-                    </button>
-                  </motion.nav>
+                  </motion.div>
                 )}
               </AnimatePresence>
             </div>
@@ -365,15 +400,37 @@ export default function App() {
           <footer className="border-t border-neutral-900 py-6 flex flex-col md:flex-row items-center justify-between gap-4 font-mono text-[10px] text-neutral-500 pointer-events-auto">
             <div className="text-center md:text-left space-y-1">
               <div>© {new Date().getFullYear()} NIÑO VERDEJO. ALL RIGHTS RESERVED.</div>
-              <div>PREMIUM WEB DESIGN & CUSTOM DEVELOPMENT</div>
             </div>
             
-            {/* Live Infrastructure Ping Simulation */}
-            <div className="flex items-center gap-2 bg-neutral-900/50 border border-neutral-800/80 px-3 py-1 rounded">
-              <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
-              <span>NODES: SECURE</span>
-              <span className="text-neutral-700">|</span>
-              <span>VERCEL TARGET STATUS: DEPLOYABLE</span>
+            {/* Navigation links of Services, Results, About, Contact */}
+            <div className="flex items-center gap-3 mr-16 sm:mr-24">
+              <button 
+                onClick={() => setActiveTab('services')} 
+                className={`transition-colors uppercase cursor-pointer hover:text-primaryAccent ${activeTab === 'services' ? 'text-primaryAccent font-bold' : ''}`}
+              >
+                Services
+              </button>
+              <span className="text-neutral-800">|</span>
+              <button 
+                onClick={() => setActiveTab('results')} 
+                className={`transition-colors uppercase cursor-pointer hover:text-primaryAccent ${activeTab === 'results' ? 'text-primaryAccent font-bold' : ''}`}
+              >
+                Results
+              </button>
+              <span className="text-neutral-800">|</span>
+              <button 
+                onClick={() => setActiveTab('about')} 
+                className={`transition-colors uppercase cursor-pointer hover:text-primaryAccent ${activeTab === 'about' ? 'text-primaryAccent font-bold' : ''}`}
+              >
+                About
+              </button>
+              <span className="text-neutral-800">|</span>
+              <button 
+                onClick={() => setActiveTab('contact')} 
+                className={`transition-colors uppercase cursor-pointer hover:text-primaryAccent ${activeTab === 'contact' ? 'text-primaryAccent font-bold' : ''}`}
+              >
+                Contact
+              </button>
             </div>
           </footer>
 

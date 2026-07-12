@@ -54,13 +54,13 @@ export const SKILLS_LIST = [
     highlights: ['SEO Validation', 'Accessible markup (ARIA)', 'Media & Form APIs']
   },
   {
-    name: 'SQL & NoSQL Queries',
+    name: 'Supabase',
     category: 'languages',
-    level: 88,
+    level: 92,
     icon: 'Database',
-    tag: 'Database Queries',
-    description: 'Structured query language and document-store structures for querying, filtering, and indexing data efficiently.',
-    highlights: ['Relational Schema Design', 'Query Optimization', 'JSON Document Parsing']
+    tag: 'Backend-as-a-Service',
+    description: 'Real-time database subscriptions, relational PostgreSQL architecture, user authentication, edge functions, and secure storage buckets.',
+    highlights: ['Postgres Schema Design', 'Row Level Security (RLS)', 'Real-time Subscriptions']
   },
   {
     name: 'CSS3 / Tailwind CSS',

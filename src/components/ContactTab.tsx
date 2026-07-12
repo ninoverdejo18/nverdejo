@@ -193,9 +193,9 @@ export default function ContactTab() {
           </div>
 
           {/* Core Response Timeline */}
-          <div className="p-4 bg-neutral-950 border-b border-neutral-900 rounded-none font-mono text-[11px] text-neutral-500 space-y-1.5">
+          <div className="bg-transparent rounded-none font-mono text-[11px] text-neutral-500 space-y-1.5">
             <div className="flex items-center gap-1.5 text-primaryText font-bold">
-              <Clock className="w-3.5 h-3.5 text-green-400" />
+              <Clock className="w-3.5 h-3.5" />
               RESPONSE COMMITTED PROTOCOL
             </div>
             <p className="leading-normal">

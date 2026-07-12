@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, useScroll, useTransform, useSpring } from 'motion/react';
+import React, { useState, useEffect } from 'react';
+import { motion } from 'motion/react';
 import { 
   Cpu, 
   Clock, 
@@ -56,14 +56,14 @@ interface HomeTabProps {
 const FLOW_SCENARIOS = [
   {
     id: 'lead-ingest',
-    title: 'Lead Ingest & AI Qualification',
-    description: 'Automates customer acquisition pipelines, qualifying prospects instantly without manual review.',
+    title: 'Lead Ingest & Custom Routing',
+    description: 'Automates customer ingestion pipelines, categorizing inquiries smoothly as they come in.',
     steps: [
       { label: 'Customer Form', icon: 'Globe', desc: 'Visitor submits contact or quote request' },
       { label: 'Validator', icon: 'Shield', desc: 'Validates email format & filters spam' },
-      { label: 'Gemini Agent', icon: 'Cpu', desc: 'Summarizes bottleneck and qualifies tier level' },
-      { label: 'CRM Injection', icon: 'Database', desc: 'Creates lead record with categorized attributes' },
-      { label: 'Notification', icon: 'MessageSquare', desc: 'Dispatches high-priority Slack alerts' }
+      { label: 'Gemini Prompt', icon: 'Cpu', desc: 'Summarizes bottleneck and flags key categories' },
+      { label: 'CRM Injection', icon: 'Database', desc: 'Creates lead record with mapped attributes' },
+      { label: 'Notification', icon: 'MessageSquare', desc: 'Dispatches standard email or Slack notifications' }
     ]
   },
   {
@@ -153,16 +153,7 @@ const VA_TASKS = [
     impact: 'Stress-free journeys with custom travel preferences pre-loaded',
     icon: 'Plane'
   },
-  {
-    id: 'event-planning',
-    category: 'travel-events',
-    title: 'Virtual & On-Site Event Logistics',
-    description: 'Coordinate catering options, book venues, distribute invites, manage RSVPs, and coordinate vendor setup timelines.',
-    freq: 'Ad-hoc',
-    sla: 'Milestone-based',
-    impact: 'Seamless event execution that leaves a stellar brand impression',
-    icon: 'Layers'
-  },
+
   {
     id: 'market-research',
     category: 'data-research',
@@ -233,59 +224,23 @@ const ENGINE_MODES = [
 ] as const;
 
 function ScrollRevealSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"]
-  });
-
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 80,
-    damping: 24,
-    restDelta: 0.001
-  });
-
-  const y = useTransform(smoothProgress, [0, 0.25, 0.75, 1], [50, 0, 0, -50]);
-  const opacity = useTransform(smoothProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-  const scale = useTransform(smoothProgress, [0, 0.2, 0.8, 1], [0.97, 1, 1, 0.97]);
-
   return (
-    <motion.div
-      ref={ref}
-      style={{ y, opacity, scale }}
-      className={className}
-    >
+    <div className={className}>
       {children}
-    </motion.div>
+    </div>
   );
 }
 
 export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) {
   const [presetKey, setPresetKey] = useState<keyof typeof hyperspeedPresets>('four');
   
-  const { scrollY } = useScroll();
-
-  // Create a spring-damped version of scrollY for smooth inertia and lag-free transitions
-  const smoothScrollY = useSpring(scrollY, {
-    stiffness: 60,
-    damping: 20,
-    mass: 0.8,
-    restDelta: 0.001
-  });
-
-  // Smooth scroll animations mapping.
-  // When user scrolls from 0px (top of page) to 800px (approx height of the hero),
-  // we smoothly translate elements upwards (parallax), fade them out, and scale down slightly.
-  const textY = useTransform(smoothScrollY, [0, 800], [0, 160]);
-  const textOpacity = useTransform(smoothScrollY, [0, 500], [1, 0]);
-  const textScale = useTransform(smoothScrollY, [0, 800], [1, 0.94]);
-
-  // Background smooth opacity fade (avoid layout translation & scaling on WebGL canvas to eliminate rendering lag)
-  const bgOpacity = useTransform(smoothScrollY, [0, 800], [0.55, 0.1]);
-
-  // Bottom HUD parallax & fade
-  const hudY = useTransform(smoothScrollY, [0, 800], [0, 60]);
-  const hudOpacity = useTransform(smoothScrollY, [0, 500], [1, 0]);
+  // Static properties to prevent smooth transitions or scroll changes on the home page
+  const textY = 0;
+  const textOpacity = 1;
+  const textScale = 1;
+  const bgOpacity = 0.55;
+  const hudY = 0;
+  const hudOpacity = 1;
 
   const [isHyperBoost, setIsHyperBoost] = useState(false);
   const [boostPercentage, setBoostPercentage] = useState(0);
@@ -322,7 +277,7 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
   // Simulated active tasks running in dashboard
   const [activeJobs, setActiveJobs] = useState([
     { id: 1, name: 'Lead Ingestion', duration: '0.4s', status: 'COMPLETED', progress: 100 },
-    { id: 2, name: 'AI Summarization', duration: '1.2s', status: 'RUNNING', progress: 45 },
+    { id: 2, name: 'Inquiry Sorting', duration: '1.2s', status: 'RUNNING', progress: 45 },
     { id: 3, name: 'Invoice Automation', duration: '0.8s', status: 'QUEUED', progress: 0 }
   ]);
 
@@ -619,7 +574,7 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
       </div>
 
       {/* Interactive Web Design Graphic Sample & Specimen */}
-      <div className="w-full border-t border-neutral-900 pt-12 lg:pt-16">
+      <div className="w-full pt-12 lg:pt-16">
         <DesignGraphicShowcase />
       </div>
 
@@ -630,9 +585,6 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
           {/* LEFT COLUMN: Modern Front-End Engineering Overview */}
           <div id="home-copy-section" className="lg:col-span-6 space-y-6 flex flex-col justify-center">
             <div className="space-y-4">
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-primaryAccent/10 border border-primaryAccent/30 text-primaryAccent font-mono text-[9px] font-bold uppercase tracking-wider">
-                Tech Ecosystem
-              </div>
               <h2 className="font-display text-2xl sm:text-3xl font-black text-primaryText uppercase tracking-tight">
                 Modern Front-End Engineering
               </h2>
@@ -646,7 +598,7 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
               <div className="p-3.5 bg-surface-dark border border-neutral-850 rounded-none relative">
                 <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-neutral-700" />
                 <div className="font-mono text-[9px] text-mutedText uppercase tracking-wider">01. ARCHITECTURE</div>
-                <div className="font-display text-lg font-bold text-primaryText mt-1">Component-Driven</div>
+                <div className="font-display text-lg font-bold text-primaryAccent mt-1">Component-Driven</div>
                 <div className="text-[10px] text-neutral-500 font-mono mt-0.5">Highly reusable, DRY codebases</div>
               </div>
               
@@ -660,14 +612,14 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
               <div className="p-3.5 bg-surface-dark border border-neutral-850 rounded-none relative">
                 <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-neutral-700" />
                 <div className="font-mono text-[9px] text-mutedText uppercase tracking-wider">03. TYPE SAFETY</div>
-                <div className="font-display text-lg font-bold text-secondaryAccent mt-1">TypeScript Native</div>
+                <div className="font-display text-lg font-bold text-primaryAccent mt-1">TypeScript Native</div>
                 <div className="text-[10px] text-neutral-500 font-mono mt-0.5">Bulletproof compile-time checking</div>
               </div>
 
               <div className="p-3.5 bg-surface-dark border border-neutral-850 rounded-none relative">
                 <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-neutral-700" />
                 <div className="font-mono text-[9px] text-mutedText uppercase tracking-wider">04. RESPONSIVE</div>
-                <div className="font-display text-lg font-bold text-green-400 mt-1">Universal Fluidity</div>
+                <div className="font-display text-lg font-bold text-primaryAccent mt-1">Universal Fluidity</div>
                 <div className="text-[10px] text-neutral-500 font-mono mt-0.5">Seamless across all breakpoints</div>
               </div>
             </div>
@@ -799,7 +751,7 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
       <div className="border-t border-neutral-900 pt-12 lg:pt-16 space-y-6 lg:space-y-8">
       <div className="space-y-2">
         <h2 className="font-display text-2xl sm:text-3xl font-black text-primaryText uppercase tracking-tight">
-          ENGINEERED AUTOMATION DIAGRAMS
+          AUTOMATION DIAGRAMS
         </h2>
         <p className="text-mutedText/90 text-xs sm:text-sm max-w-3xl leading-relaxed font-sans">
           I don't just write scripts; I build highly visual, fault-tolerant logic maps. Select an operational scenario below and trigger the high-speed simulation to observe exactly how data flows, validates, and synchronizes across systems in real-time.
@@ -1028,16 +980,7 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
             </div>
           </div>
 
-          {/* Quick SLA Counter badge */}
-          <div className="bg-neutral-950 p-4 border border-neutral-900 rounded-none font-mono text-[10px] text-neutral-500 flex justify-between items-center">
-            <div>
-              <span className="text-secondaryAccent font-bold">MONITORED SUPPORT STATUS</span>
-              <span className="block mt-0.5">Inbox triaging and calendar sync is fully active</span>
-            </div>
-            <div className="text-right text-green-400 font-bold">
-              100% ACTIVE
-            </div>
-          </div>
+
 
         </div>
 
@@ -1045,11 +988,7 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
         <div className="xl:col-span-8 bg-surface-dark border border-neutral-850 p-5 lg:p-6 space-y-4 relative overflow-hidden flex flex-col justify-between">
           
           <div className="space-y-2">
-            <div className="flex items-center justify-between border-b border-neutral-900 pb-2">
-              <span className="font-mono text-[9px] text-primaryAccent font-bold uppercase tracking-widest">
-                Active Assistant Ledger
-              </span>
-            </div>
+
             
             <h3 className="font-display text-lg font-black text-primaryText uppercase">
               Assistant Service Registries

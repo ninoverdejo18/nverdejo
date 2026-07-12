@@ -29,12 +29,12 @@ const PALETTES: Palette[] = [
     bgGrad: 'from-emerald-500/10 to-teal-500/5',
     glow: 'rgba(16, 185, 129, 0.15)'
   },
-    {
-    name: 'NeoSlate',
-    primary: '#50C878',
-    secondary: '#82E0A2',
-    bgGrad: 'from-emerald-500/10 to-green-500/5',
-    glow: 'rgba(80, 200, 120, 0.15)'
+  {
+    name: 'Neo Slate Purple',
+    primary: '#A855F7',
+    secondary: '#D8B4FE',
+    bgGrad: 'from-purple-500/10 to-violet-500/5',
+    glow: 'rgba(168, 85, 247, 0.15)'
   },
   {
     name: 'Solar Flare',
@@ -82,9 +82,7 @@ export default function DesignGraphicShowcase() {
       {/* Header section detailing Design System Controls */}
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-neutral-900 pb-5 relative z-10">
         <div>
-          <div className="font-mono text-[9px] text-primary-accent uppercase font-bold tracking-widest flex items-center gap-1">
-            <Sparkles className="w-3.5 h-3.5" style={{ color: activePalette.primary }} />
-          </div>
+
           <h3 className="font-display text-lg font-black text-primaryText uppercase tracking-tight">
             POLISHED WEB LAYOUT & STYLE SPECIMEN
           </h3>
@@ -402,7 +400,7 @@ export default function DesignGraphicShowcase() {
                           FONT-SIZE: 8PX | SEMIBOLD
                         </span>
                       )}
-                      SYSTEMS AUTOMATION INTEGRATION
+                      DIGITAL PRODUCTS & EXPERIENCES
                     </span>
                   </div>
 

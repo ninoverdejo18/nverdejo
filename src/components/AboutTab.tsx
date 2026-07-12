@@ -99,7 +99,7 @@ export default function AboutTab({ setActiveTab }: AboutTabProps) {
                 </div>
 
                 <div className="border-b border-neutral-900/60 pb-1.5">
-                  <span className="text-primaryText font-semibold">AI Automation Expert</span>
+                  <span className="text-primaryText font-semibold">AI Automation Developer</span>
                 </div>
 
                 <div className="border-b border-neutral-900/60 pb-1.5">
