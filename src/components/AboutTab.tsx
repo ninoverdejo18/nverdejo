@@ -62,8 +62,7 @@ export default function AboutTab({ setActiveTab }: AboutTabProps) {
             <BlackHoleEffect />
             
             {/* Corner bracket decorators */}
-            <div className="absolute top-0 right-0 w-6 h-6 border-t border-r border-neutral-700 pointer-events-none z-20" />
-            <div className="absolute bottom-0 left-0 w-6 h-6 border-b border-l border-neutral-700 pointer-events-none z-20" />
+            <div className="absolute -top-[1px] -right-[1px] w-6 h-6 border-t border-r border-neutral-700 pointer-events-none z-20" />
             
             <div className="space-y-5 relative z-10">
               {/* Header Spec */}
@@ -96,26 +95,26 @@ export default function AboutTab({ setActiveTab }: AboutTabProps) {
               {/* Niño specification sheets */}
               <div className="space-y-3 font-mono text-[11px]">
                 
-                <div className="border-b border-neutral-900/60 pb-1.5 items-center">
+                <div className="pb-1.5 items-center">
                   <div className="flex items-center gap-2 flex-wrap">
                     <SpecialText className="text-primaryText font-semibold">Web Design & App Development</SpecialText>
                     <span className="px-1.5 py-0.5 bg-primaryAccent/20 text-primaryAccent font-mono text-[8px] font-bold uppercase tracking-wider rounded border border-primaryAccent/30">Primary</span>
                   </div>
                 </div>
 
-                <div className="border-b border-neutral-900/60 pb-1.5">
+                <div className="pb-1.5">
                   <SpecialText className="text-primaryText font-semibold">AI Automation Developer</SpecialText>
                 </div>
 
-                <div className="border-b border-neutral-900/60 pb-1.5">
+                <div className="pb-1.5">
                   <SpecialText className="text-primaryText font-semibold">UI/UX Engineer</SpecialText>
                 </div>
 
-                <div className="border-b border-neutral-900/60 pb-1.5">
+                <div className="pb-1.5">
                   <SpecialText className="text-primaryText font-semibold">Global (Remote)</SpecialText>
                 </div>
 
-                <div className="border-b border-neutral-900/60 pb-1.5">
+                <div className="pb-1.5">
                   <SpecialText className="text-primaryText font-bold">Pristine layout fidelity</SpecialText>
                 </div>
 
