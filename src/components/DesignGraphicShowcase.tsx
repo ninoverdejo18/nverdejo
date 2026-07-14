@@ -144,7 +144,7 @@ export default function DesignGraphicShowcase() {
       </div>
 
       {/* Main Studio Grid split into Control Studio Panel & Graphic Specimen Screen */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 relative z-10 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 relative z-10 items-stretch">
         
         {/* Left Column: Interactive Settings Controller (4 Columns) */}
         <div className="lg:col-span-4 space-y-4">
@@ -310,7 +310,7 @@ export default function DesignGraphicShowcase() {
           </div>
 
           {/* Mockup Canvas */}
-          <div className="p-6 relative bg-[#090909] min-h-[400px] flex flex-col justify-between overflow-hidden">
+          <div className="p-6 relative bg-[#090909] min-h-[400px] flex-1 flex flex-col justify-between overflow-hidden">
             
             {/* GRID OVERLAY LAYER (Only when 'grid' active) */}
             {activeMode === 'grid' && (
@@ -385,24 +385,7 @@ export default function DesignGraphicShowcase() {
               {/* Main Landing Area */}
               <div className="py-6 space-y-6 flex-1 flex flex-col justify-center">
                 <div className="space-y-3 text-center max-w-xl mx-auto">
-                  {/* Visual Category Label */}
-                  <div className="flex items-center justify-center">
-                    <span 
-                      className="px-2 py-0.5 border font-mono text-[8px] font-bold tracking-widest uppercase transition-all duration-500 relative"
-                      style={{ 
-                        borderColor: `${activePalette.primary}50`, 
-                        color: activePalette.primary,
-                        backgroundColor: `${activePalette.primary}10`
-                      }}
-                    >
-                      {activeMode === 'typography' && (
-                        <span className="absolute -top-4 left-1/2 -translate-x-1/2 font-mono text-[6px] text-yellow-500 bg-neutral-900 px-1 border border-yellow-500/40 whitespace-nowrap">
-                          FONT-SIZE: 8PX | SEMIBOLD
-                        </span>
-                      )}
-                      DIGITAL PRODUCTS & EXPERIENCES
-                    </span>
-                  </div>
+
 
                   {/* High fidelity animated headline heading */}
                   <div className="relative">
@@ -524,8 +507,16 @@ export default function DesignGraphicShowcase() {
           {/* Subspec label describing active properties */}
           <div className="bg-neutral-900 border-t border-neutral-850 px-4 py-2 flex justify-between items-center font-mono text-[8px] text-neutral-500">
             <div className="flex items-center gap-2">
+              <span className="text-primaryAccent font-bold">SYSTEM: ACTIVE</span>
+              <span className="text-neutral-800 font-normal">|</span>
+              <span>PALETTE: {activePalette.name.toUpperCase()}</span>
+              <span className="text-neutral-800 font-normal">|</span>
+              <span>MODE: {activeMode.toUpperCase()}</span>
             </div>
-            <div>
+            <div className="flex items-center gap-2">
+              <span>CONTRAST: AAA PASS</span>
+              <span className="text-neutral-800 font-normal">|</span>
+              <span>SCALE: 1.618 (GOLDEN)</span>
             </div>
           </div>
         </div>

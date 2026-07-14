@@ -129,7 +129,7 @@ export default function ContactTab() {
       <SplineSceneHero />
       
       {/* Split Contact Section */}
-      <div id="split-contact-grid" className="border-t border-neutral-900 pt-12 lg:pt-16 grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch scroll-mt-24">
+      <div id="split-contact-grid" className="pt-12 lg:pt-16 grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch scroll-mt-24">
         
         {/* LEFT COLUMN: Contact Cards & Direct Access */}
         <div className="lg:col-span-5 space-y-5 flex flex-col justify-between">
@@ -209,7 +209,7 @@ export default function ContactTab() {
         <div className="lg:col-span-7">
           <div className="p-5 lg:p-6 bg-surface-dark border border-neutral-800 rounded-none space-y-5">
             
-            <div className="border-b border-neutral-900 pb-3">
+            <div className="pb-3">
               <h3 className="font-display text-base font-black text-primaryText uppercase tracking-tight">
                 TRANSMISSION FORM
               </h3>

@@ -14,6 +14,37 @@ import {
 import emailjs from '@emailjs/browser';
 import { ChatMessage, TabType } from '../types';
 
+const GirlRobotIcon = ({ className }: { className?: string }) => (
+  <svg 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round" 
+    className={className}
+  >
+    {/* Side hair locks representing a futuristic sleek bob haircut */}
+    <path d="M4 11c-.5-1.5-.5-3.5 0-5a6 6 0 0 1 11.5-2 6 6 0 0 1 4.5 7" className="text-primaryAccent" strokeWidth="1.5" />
+    {/* Cute center antenna */}
+    <path d="M12 2v2.5" />
+    <circle cx="12" cy="1.5" r="1" fill="currentColor" className="text-primaryAccent animate-pulse" />
+    {/* Sleek metallic face structure */}
+    <rect x="7" y="6" width="10" height="9" rx="3" />
+    {/* Feminine robot glowing digital visor */}
+    <path d="M9 9.5h6a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1z" fill="currentColor" fillOpacity="0.25" className="text-primaryAccent" />
+    <circle cx="10.5" cy="11" r="0.75" fill="currentColor" className="text-primaryAccent" />
+    <circle cx="13.5" cy="11" r="0.75" fill="currentColor" className="text-primaryAccent" />
+    {/* Subtle blushing lights on cheeks */}
+    <line x1="8" y1="13" x2="9" y2="13" className="text-pink-400" strokeWidth="1.5" />
+    <line x1="15" y1="13" x2="16" y2="13" className="text-pink-400" strokeWidth="1.5" />
+    {/* Cute smile */}
+    <path d="M11 13.5q1 1 2 0" strokeWidth="1.2" />
+    {/* Cute base collar/neck */}
+    <path d="M10 15v2h4v-2" strokeWidth="1.5" />
+  </svg>
+);
+
 interface ExtendedChatMessage extends ChatMessage {
   sources?: { title: string; url: string }[];
 }
@@ -319,7 +350,7 @@ export default function ChatbotAssistant({ setActiveTab }: ChatbotAssistantProps
             className="flex items-center justify-center bg-primaryAccent hover:bg-primaryAccent/90 text-primaryText rounded-full shadow-[0_0_20px_rgba(139,92,246,0.4)] cursor-pointer border-2 border-primaryAccent active:scale-95 transition-all w-14 h-14 ml-auto"
             aria-label="Diagnostic Assistant"
           >
-            <Bot className="w-6 h-6 text-primaryText" />
+            <GirlRobotIcon className="w-8 h-8 text-primaryText" />
           </motion.button>
         )}
       </AnimatePresence>
@@ -339,8 +370,8 @@ export default function ChatbotAssistant({ setActiveTab }: ChatbotAssistantProps
             {/* Chat Header */}
             <div className="p-4 bg-neutral-950 border-b border-neutral-900 flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <div className="p-1.5 bg-primaryAccent/10 border border-primaryAccent/30 rounded-none">
-                  <Bot className="w-3.5 h-3.5 text-primaryAccent" />
+                <div className="p-1.5 bg-primaryAccent/10 border border-primaryAccent/30 rounded-none flex items-center justify-center">
+                  <GirlRobotIcon className="w-5 h-5" />
                 </div>
                 <div>
                   <div className="text-[10px] font-mono font-bold text-primaryText uppercase tracking-wider">

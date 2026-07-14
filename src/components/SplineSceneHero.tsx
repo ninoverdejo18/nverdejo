@@ -36,7 +36,7 @@ function Typewriter({ text, delay = 45, startDelay = 2000 }: { text: string; del
 
 export function SplineSceneHero() {
   return (
-    <div className="relative w-screen left-1/2 -translate-x-1/2 bg-black overflow-hidden border-b border-neutral-900 rounded-none mb-8 flex items-center h-screen pt-16 pb-0 lg:pt-20 lg:pb-0">
+    <div className="relative w-screen left-1/2 -translate-x-1/2 bg-black overflow-hidden border-b border-neutral-900 rounded-none mb-8 flex items-center min-h-[650px] sm:h-screen pt-16 pb-0 lg:pt-20 lg:pb-0">
       {/* Neutral Spotlight glow */}
       <Spotlight
         className="-top-40 left-0 md:left-60 md:-top-20"
@@ -45,29 +45,29 @@ export function SplineSceneHero() {
       
       <div className="w-full max-w-[1440px] mx-auto h-full px-6 sm:px-8 lg:px-12 pt-6 pb-0 flex flex-col lg:flex-row items-center justify-between gap-8 relative z-10">
         {/* Left content: Information */}
-        <div className="flex-1 text-center lg:text-left flex flex-col justify-center space-y-6 max-w-xl pb-6 lg:pb-8">
-          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase text-primaryText tracking-tighter leading-none">
+        <div className="flex-0 sm:flex-1 text-center lg:text-left flex flex-col justify-center space-y-4 sm:space-y-6 max-w-xl pb-2 sm:pb-6 lg:pb-8">
+          <h1 className="font-display text-2xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase text-primaryText tracking-tighter leading-none">
             ENGAGE THE <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primaryAccent via-green-400 to-secondaryAccent">3D AGENT ROLE</span>
           </h1>
         </div>
 
         {/* Right content - Spline Scene */}
-        <div className="flex-1 w-full h-[55vh] lg:h-[75vh] xl:h-[80vh] relative flex items-end justify-center">
+        <div className="flex-1 w-full h-[45vh] sm:h-[55vh] lg:h-[75vh] xl:h-[80vh] relative flex items-end justify-center">
           {/* Connected Robot Speech Caption - Positioned exactly in the highlighted area */}
-          <div className="absolute top-[22%] left-4 sm:left-10 lg:left-4 xl:left-8 z-20 w-[85%] sm:w-[75%] max-w-xs p-3.5 bg-neutral-950/95 border border-neutral-900 rounded-xl backdrop-blur-md shadow-2xl flex gap-3 items-start text-left pointer-events-auto transition-all hover:border-primaryAccent/50">
-            <span className="flex h-2 w-2 mt-1.5 shrink-0 rounded-full bg-green-400 animate-pulse" />
+          <div className="absolute top-[2%] sm:top-[22%] left-1/2 -translate-x-1/2 sm:translate-x-0 sm:left-10 lg:left-4 xl:left-8 z-20 w-[90%] sm:w-[75%] max-w-xs p-2 sm:p-3.5 bg-neutral-950/95 border border-neutral-900 rounded-xl backdrop-blur-md shadow-2xl flex gap-1.5 sm:gap-3 items-start text-left pointer-events-auto transition-all hover:border-primaryAccent/50">
+            <span className="flex h-1.5 w-1.5 mt-1.5 shrink-0 rounded-full bg-green-400 animate-pulse" />
             <div className="space-y-1">
-              <p className="text-xs text-primaryText font-sans font-medium leading-relaxed">
+              <p className="text-[9px] sm:text-xs text-primaryText font-sans font-medium leading-relaxed">
                 "Hi, I'm <span className="text-primaryAccent font-bold">NinoRobot</span>! <Typewriter text="Need help? Fill out the transmission form below to deploy my systems, or click the active workspace modules." delay={45} />"
               </p>
             </div>
           </div>
 
-          <div className="w-full h-full relative translate-y-4 sm:translate-y-6 lg:translate-y-8 flex justify-center items-end">
+          <div className="w-full h-full relative translate-y-6 sm:translate-y-6 lg:translate-y-8 flex justify-center items-end">
             <SplineScene 
                scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-              className="w-full h-full scale-100 sm:scale-105 lg:scale-110 pointer-events-auto"
+              className="w-full h-full scale-[0.85] sm:scale-105 lg:scale-110 pointer-events-auto"
             />
           </div>
         </div>

@@ -224,11 +224,11 @@ export default function ServicesTab({ setActiveTab }: ServicesTabProps) {
       id: 'personal-va',
       title: 'Personal & Virtual Assistance',
       tagline: 'Continuous calendar, inbox, and administrative synchronization.',
-      description: 'Daily administrative and coordination loops consume executive bandwidth. I act as an elite assistant multi-tool, managing your meetings, triaging incoming communication streams, organizing files, and executing research so you stay focused.',
+      description: 'Daily administrative and coordination loops consume valuable time and energy. I act as an elite assistant multi-tool, managing your meetings, triaging incoming communication streams, organizing files, and executing research so you stay focused.',
       roi: 'Restores focus hours, protects daily calendars, and eliminates administrative overhead with continuous reliable support.',
       features: [
         'Inbox triage & detailed response drafts',
-        'Executive calendar alignment & scheduling',
+        'Personal & Virtual calendar alignment & scheduling',
         'Comprehensive travel planning & itineraries',
         'Market research & digital record management'
       ],
@@ -245,7 +245,7 @@ export default function ServicesTab({ setActiveTab }: ServicesTabProps) {
       case 'web-dev':
         return <Code className="w-6 h-6 text-primaryAccent" />;
       case 'ai-automation':
-        return <Cpu className="w-6 h-6 text-secondaryAccent" />;
+        return <Cpu className="w-6 h-6 text-primaryAccent" />;
       case 'personal-va':
         return <User className="w-6 h-6 text-primaryAccent" />;
       default:
@@ -259,11 +259,11 @@ export default function ServicesTab({ setActiveTab }: ServicesTabProps) {
       {/* Title block */}
       <div className="space-y-3 max-w-3xl">
         <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black tracking-tighter text-primaryText uppercase leading-none">
-          DEVELOPMENT & AUTOMATION SERVICES
+          WEB, APP & AUTOMATION SERVICES
         </h2>
         
         <p className="text-mutedText/90 text-sm sm:text-base leading-relaxed">
-          I build clean, modern interfaces and configure custom automation workflows to help you operate more efficiently and save time.
+          I build high-performance web and app solutions, integrate intelligent AI automations, and step into dedicated personal and virtual assistant roles to streamline your operational workflows and optimize daily tasks.
         </p>
       </div>
 
@@ -288,7 +288,7 @@ export default function ServicesTab({ setActiveTab }: ServicesTabProps) {
                 <h3 className="font-display text-lg sm:text-xl font-black text-primaryText uppercase tracking-tight">
                   {service.title}
                 </h3>
-                <p className="font-mono text-[11px] text-secondaryAccent font-semibold leading-relaxed">
+                <p className="font-mono text-[11px] text-primaryAccent font-semibold leading-relaxed">
                   {service.tagline}
                 </p>
               </div>
@@ -301,7 +301,7 @@ export default function ServicesTab({ setActiveTab }: ServicesTabProps) {
               {/* Business ROI block (Conversion copy focus) */}
               <div className="p-3 bg-neutral-950/80 border border-neutral-900 rounded-none font-mono text-[11px]">
                 <div className="font-bold text-primaryText flex items-center gap-1 uppercase mb-0.5">
-                  <TrendingUp className="w-3 h-3 text-green-400" />
+                  <TrendingUp className="w-3 h-3 text-primaryAccent" />
                   BUSINESS RETURN
                 </div>
                 <div className="text-mutedText/90 leading-relaxed">
@@ -335,7 +335,7 @@ export default function ServicesTab({ setActiveTab }: ServicesTabProps) {
                   VERIFIED TARGET METRICS
                 </div>
                 {service.metrics.map((metric, index) => (
-                  <div key={index} className="flex items-center gap-1.5 text-green-400 font-semibold">
+                  <div key={index} className="flex items-center gap-1.5 text-primaryAccent font-semibold">
                     <span className="text-primaryAccent font-bold">»</span>
                     <span>{metric}</span>
                   </div>
@@ -391,7 +391,7 @@ export default function ServicesTab({ setActiveTab }: ServicesTabProps) {
                 </div>
 
                 <div className="space-y-1">
-                  <div className="flex items-center gap-2 text-xs font-mono font-bold text-secondaryAccent uppercase">
+                  <div className="flex items-center gap-2 text-xs font-mono font-bold text-primaryAccent uppercase">
                     <Database className="w-3.5 h-3.5" />
                     2. SECURE STATE & PERSISTENCE
                   </div>
@@ -401,7 +401,7 @@ export default function ServicesTab({ setActiveTab }: ServicesTabProps) {
                 </div>
 
                 <div className="space-y-1">
-                  <div className="flex items-center gap-2 text-xs font-mono font-bold text-green-400 uppercase">
+                  <div className="flex items-center gap-2 text-xs font-mono font-bold text-primaryAccent uppercase">
                     <Shield className="w-3.5 h-3.5" />
                     3. API & MIDDLEWARE SECURITY
                   </div>
@@ -418,7 +418,7 @@ export default function ServicesTab({ setActiveTab }: ServicesTabProps) {
                 <span className="text-primaryAccent font-bold">CORE PERFORMANCE ENGINE</span>
                 <span className="block mt-0.5">TLS 1.3 Encryption, SSL, Gzip/Brotli active</span>
               </div>
-              <div className="text-right text-green-400 font-bold font-mono">
+              <div className="text-right text-primaryAccent font-bold font-mono">
                 99.9% SLAS
               </div>
             </div>
@@ -474,41 +474,39 @@ export default function ServicesTab({ setActiveTab }: ServicesTabProps) {
                 {simLogs.map((log, index) => (
                   <div key={index} className="flex items-start gap-1 leading-normal">
                     <span className="text-neutral-600 font-bold shrink-0">»</span>
-                    <span className={log.startsWith('SUCCESS') || log.startsWith('COMPLETED') ? 'text-green-400 font-semibold' : log.startsWith('ERROR') ? 'text-red-400' : 'text-neutral-300'}>
+                    <span className={log.startsWith('SUCCESS') || log.startsWith('COMPLETED') ? 'text-primaryAccent font-semibold' : log.startsWith('ERROR') ? 'text-red-400' : 'text-neutral-300'}>
                       {log}
                     </span>
                   </div>
                 ))}
               </div>
 
-              {/* Loader indicator bar */}
-              {isCompiling ? (
-                <div className="space-y-1 pt-2 border-t border-neutral-900">
-                  <div className="flex items-center justify-between text-[9px] font-bold text-primaryAccent">
-                    <span>COMPILATION IN PROGRESS...</span>
-                    <span>{progress}%</span>
-                  </div>
-                  <div className="w-full bg-neutral-900 h-1 rounded-none overflow-hidden">
-                    <div className="bg-primaryAccent h-full transition-all duration-100" style={{ width: `${progress}%` }} />
-                  </div>
-                </div>
-              ) : (
-                <ElectricBorder
-                  color="#ff0000"
-                  borderRadius={0}
-                  speed={0.8}
-                  chaos={0.08}
-                  className="w-full"
+              {/* Loader and Simulation Trigger Button wrapped in ElectricBorder effect */}
+              <ElectricBorder
+                color="#50C878"
+                borderRadius={0}
+                speed={isCompiling ? 2.5 : 0.8}
+                chaos={isCompiling ? 0.25 : 0.08}
+                className="w-full mt-2"
+              >
+                <button
+                  onClick={triggerCompilation}
+                  disabled={isCompiling}
+                  className="w-full bg-black hover:bg-neutral-900 disabled:bg-neutral-950 border border-neutral-850 text-primaryText hover:text-white disabled:text-primaryAccent font-mono font-bold uppercase text-[10px] py-2.5 rounded-none cursor-pointer disabled:cursor-not-allowed transition-all flex items-center justify-center gap-1.5 relative z-10"
                 >
-                  <button
-                    onClick={triggerCompilation}
-                    className="w-full bg-black hover:bg-neutral-900 border border-neutral-850 hover:border-neutral-700 text-primaryText hover:text-white font-mono font-bold uppercase text-[10px] py-2 rounded-none cursor-pointer transition-all flex items-center justify-center gap-1.5 relative z-10"
-                  >
-                    <RotateCw className="w-3.5 h-3.5" />
-                    TRIGGER SIMULATION
-                  </button>
-                </ElectricBorder>
-              )}
+                  {isCompiling ? (
+                    <>
+                      <Zap className="w-3.5 h-3.5 animate-bounce text-primaryAccent" />
+                      <span>COMPILATION IN PROGRESS... ({progress}%)</span>
+                    </>
+                  ) : (
+                    <>
+                      <RotateCw className="w-3.5 h-3.5" />
+                      <span>TRIGGER SIMULATION</span>
+                    </>
+                  )}
+                </button>
+              </ElectricBorder>
             </div>
 
           </div>

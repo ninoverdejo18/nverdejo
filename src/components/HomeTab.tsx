@@ -126,7 +126,7 @@ const VA_TASKS = [
   {
     id: 'calendar-coordination',
     category: 'calendar-sched',
-    title: 'Executive Calendar Management',
+    title: 'Personal & Virtual Calendar Management',
     description: 'Cross-coordinate multi-party schedules, block deep work time, buffer appointments, and resolve meeting conflicts seamlessly.',
     freq: 'Continuous',
     sla: '< 1 hour',
@@ -527,15 +527,6 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
             className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full sm:w-auto pt-2"
           >
             <button
-              id="hero-cta-btn"
-              onClick={() => setActiveTab('contact')}
-              className="group relative flex items-center justify-center gap-3 bg-primaryAccent hover:bg-primaryAccent/90 text-white font-mono font-bold uppercase tracking-wider text-xs py-3.5 px-8 border-none active:translate-y-0.5 transition-all cursor-pointer shadow-[0_0_20px_rgba(80,200,120,0.35)] rounded-none"
-            >
-              START A PROJECT
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </button>
-            
-            <button
               id="hero-secondary-cta-btn"
               onClick={() => setActiveTab('services')}
               className="flex items-center justify-center gap-2 bg-zinc-900/95 dark:bg-neutral-900/90 hover:bg-zinc-800 dark:hover:bg-white/10 text-white border border-zinc-700 dark:border-neutral-700 font-mono font-bold uppercase tracking-wider text-xs py-3.5 px-8 transition-colors cursor-pointer rounded-none"
@@ -574,17 +565,17 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
       </div>
 
       {/* Interactive Web Design Graphic Sample & Specimen */}
-      <div className="w-full pt-12 lg:pt-16">
+      <div className="w-full pt-6 lg:pt-8 -mt-6 lg:-mt-10">
         <DesignGraphicShowcase />
       </div>
 
       {/* Grid containing modern Web Design & Development Tech Stack */}
       <ScrollRevealSection>
-        <div id="home-tab-container" className="border-t border-neutral-900 pt-12 lg:pt-16 grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-        
-          {/* LEFT COLUMN: Modern Front-End Engineering Overview */}
-          <div id="home-copy-section" className="lg:col-span-6 space-y-6 flex flex-col justify-center">
-            <div className="space-y-4">
+        <div id="home-tab-container" className="border-t border-neutral-900 pt-12 lg:pt-16 space-y-8">
+          
+          {/* Header Row: Title & Paragraph positioned cleanly */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <div id="home-copy-section" className="lg:col-span-6 space-y-4">
               <h2 className="font-display text-2xl sm:text-3xl font-black text-primaryText uppercase tracking-tight">
                 Modern Front-End Engineering
               </h2>
@@ -592,43 +583,71 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
                 I specialize in crafting pixel-perfect, lightning-fast web applications with modular architecture, strict type-safety, and interactive user interfaces. By blending cutting-edge frontend tooling with rich design-system methodologies, I build products that are beautiful, accessible, and performant.
               </p>
             </div>
-
-            {/* Core Competencies Quick Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 border-t border-neutral-900 pt-6 mt-2">
-              <div className="p-3.5 bg-surface-dark border border-neutral-850 rounded-none relative">
-                <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-neutral-700" />
-                <div className="font-mono text-[9px] text-mutedText uppercase tracking-wider">01. ARCHITECTURE</div>
-                <div className="font-display text-lg font-bold text-primaryAccent mt-1">Component-Driven</div>
-                <div className="text-[10px] text-neutral-500 font-mono mt-0.5">Highly reusable, DRY codebases</div>
-              </div>
-              
-              <div className="p-3.5 bg-surface-dark border border-neutral-850 rounded-none relative">
-                <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-neutral-700" />
-                <div className="font-mono text-[9px] text-mutedText uppercase tracking-wider">02. PERFORMANCE</div>
-                <div className="font-display text-lg font-bold text-primaryAccent mt-1">100% Core Web Vitals</div>
-                <div className="text-[10px] text-neutral-500 font-mono mt-0.5">Optimized payloads & fast loads</div>
-              </div>
-
-              <div className="p-3.5 bg-surface-dark border border-neutral-850 rounded-none relative">
-                <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-neutral-700" />
-                <div className="font-mono text-[9px] text-mutedText uppercase tracking-wider">03. TYPE SAFETY</div>
-                <div className="font-display text-lg font-bold text-primaryAccent mt-1">TypeScript Native</div>
-                <div className="text-[10px] text-neutral-500 font-mono mt-0.5">Bulletproof compile-time checking</div>
-              </div>
-
-              <div className="p-3.5 bg-surface-dark border border-neutral-850 rounded-none relative">
-                <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-neutral-700" />
-                <div className="font-mono text-[9px] text-mutedText uppercase tracking-wider">04. RESPONSIVE</div>
-                <div className="font-display text-lg font-bold text-primaryAccent mt-1">Universal Fluidity</div>
-                <div className="text-[10px] text-neutral-500 font-mono mt-0.5">Seamless across all breakpoints</div>
-              </div>
-            </div>
           </div>
 
-          {/* RIGHT COLUMN: Interactive Skills & Tech Matrix */}
-          <div id="home-dashboard-section" className="lg:col-span-6 space-y-4 relative">
-            <div className="absolute -inset-2 bg-gradient-to-tr from-primaryAccent/5 to-secondaryAccent/5 blur-2xl opacity-40 pointer-events-none" />
-            <SkillsShowcase />
+          {/* Cards & Skills Showcase perfectly aligned */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            {/* Left Column: Core Competencies Quick Cards */}
+            <div className="lg:col-span-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="p-3.5 bg-surface-dark border border-neutral-850 rounded-none relative">
+                  <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-neutral-700" />
+                  <div className="font-mono text-[9px] text-mutedText uppercase tracking-wider">01. ARCHITECTURE</div>
+                  <div className="font-display text-lg font-bold text-primaryAccent mt-1">Component-Driven</div>
+                  <div className="text-[10px] text-neutral-500 font-mono mt-0.5">Highly reusable, DRY codebases</div>
+                </div>
+                
+                <div className="p-3.5 bg-surface-dark border border-neutral-850 rounded-none relative">
+                  <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-neutral-700" />
+                  <div className="font-mono text-[9px] text-mutedText uppercase tracking-wider">02. PERFORMANCE</div>
+                  <div className="font-display text-lg font-bold text-primaryAccent mt-1">100% Core Web Vitals</div>
+                  <div className="text-[10px] text-neutral-500 font-mono mt-0.5">Optimized payloads & fast loads</div>
+                </div>
+
+                <div className="p-3.5 bg-surface-dark border border-neutral-850 rounded-none relative">
+                  <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-neutral-700" />
+                  <div className="font-mono text-[9px] text-mutedText uppercase tracking-wider">03. TYPE SAFETY</div>
+                  <div className="font-display text-lg font-bold text-primaryAccent mt-1">TypeScript Native</div>
+                  <div className="text-[10px] text-neutral-500 font-mono mt-0.5">Bulletproof compile-time checking</div>
+                </div>
+
+                <div className="p-3.5 bg-surface-dark border border-neutral-850 rounded-none relative">
+                  <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-neutral-700" />
+                  <div className="font-mono text-[9px] text-mutedText uppercase tracking-wider">04. RESPONSIVE</div>
+                  <div className="font-display text-lg font-bold text-primaryAccent mt-1">Universal Fluidity</div>
+                  <div className="text-[10px] text-neutral-500 font-mono mt-0.5">Seamless across all breakpoints</div>
+                </div>
+
+                <div className="p-3.5 bg-surface-dark border border-neutral-850 rounded-none relative">
+                  <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-neutral-700" />
+                  <div className="font-mono text-[9px] text-mutedText uppercase tracking-wider">05. STATE MANAGEMENT</div>
+                  <div className="font-display text-lg font-bold text-primaryAccent mt-1">Predictable Flow</div>
+                  <div className="text-[10px] text-neutral-500 font-mono mt-0.5">Clean custom hooks & atomic state</div>
+                </div>
+
+                <div className="p-3.5 bg-surface-dark border border-neutral-850 rounded-none relative">
+                  <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-neutral-700" />
+                  <div className="font-mono text-[9px] text-mutedText uppercase tracking-wider">06. MOTION & UX</div>
+                  <div className="font-display text-lg font-bold text-primaryAccent mt-1">Interactive Gestures</div>
+                  <div className="text-[10px] text-neutral-500 font-mono mt-0.5">Staggered entry flows & layout morphing</div>
+                </div>
+
+                <div className="p-3.5 bg-surface-dark border border-neutral-850 rounded-none relative">
+                  <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-neutral-700" />
+                  <div className="font-mono text-[9px] text-mutedText uppercase tracking-wider">07. MODERN TOOLING</div>
+                  <div className="font-display text-lg font-bold text-primaryAccent mt-1">Next-Gen Bundlers</div>
+                  <div className="text-[10px] text-neutral-500 font-mono mt-0.5">Ultrafast builds & optimized assets</div>
+                </div>
+
+
+              </div>
+            </div>
+
+            {/* Right Column: Interactive Skills & Tech Matrix */}
+            <div id="home-dashboard-section" className="lg:col-span-6 relative">
+              <div className="absolute -inset-2 bg-gradient-to-tr from-primaryAccent/5 to-secondaryAccent/5 blur-2xl opacity-40 pointer-events-none" />
+              <SkillsShowcase />
+            </div>
           </div>
 
         </div>
@@ -650,53 +669,57 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         
         {/* Card 1: UI/UX & Web Design */}
-        <div className="bg-surface-dark border border-neutral-850 p-5 rounded-none space-y-4 relative overflow-hidden group hover:border-secondaryAccent/50 transition-colors">
-          <div className="flex items-center gap-3">
-            <div className="p-2 bg-neutral-900 border border-neutral-850 text-secondaryAccent rounded-none">
-              <Monitor className="w-5 h-5" />
+        <div className="bg-surface-dark border border-neutral-850 p-5 rounded-none relative overflow-hidden group hover:border-primaryAccent/50 transition-colors flex flex-col justify-between gap-6">
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="p-2 bg-neutral-900 border border-neutral-850 text-primaryAccent rounded-none">
+                <Monitor className="w-5 h-5" />
+              </div>
+              <div>
+                <h3 className="font-display text-sm font-black text-primaryText uppercase tracking-tight">
+                  High-End Web Design
+                </h3>
+                <span className="font-mono text-[8px] text-primaryAccent uppercase font-bold tracking-widest">aesthetic & conversion</span>
+              </div>
             </div>
-            <div>
-              <h3 className="font-display text-sm font-black text-primaryText uppercase tracking-tight">
-                High-End Web Design
-              </h3>
-              <span className="font-mono text-[8px] text-secondaryAccent uppercase font-bold tracking-widest">aesthetic & conversion</span>
-            </div>
+            <p className="text-xs text-mutedText leading-relaxed font-sans">
+              A beautiful website is useless if it loads slowly or confuses your users. I build high-fidelity layouts based on modern typographic rules, generous whitespace, and purposeful micro-interactions.
+            </p>
           </div>
-          <p className="text-xs text-mutedText leading-relaxed font-sans">
-            A beautiful website is useless if it loads slowly or confuses your users. I build high-fidelity layouts based on modern typographic rules, generous whitespace, and purposeful micro-interactions.
-          </p>
           <ul className="space-y-1.5 font-mono text-[10px] text-primaryText">
             <li className="flex items-center gap-2">
-              <span className="text-secondaryAccent">»</span>
+              <span className="text-primaryAccent">»</span>
               <span>Figma Prototypes & Clickable Wireframes</span>
             </li>
             <li className="flex items-center gap-2">
-              <span className="text-secondaryAccent">»</span>
+              <span className="text-primaryAccent">»</span>
               <span>Responsive Grid & Typographic Hierarchies</span>
             </li>
             <li className="flex items-center gap-2">
-              <span className="text-secondaryAccent">»</span>
+              <span className="text-primaryAccent">»</span>
               <span>Custom Vector SVGs & Animated Assets</span>
             </li>
           </ul>
         </div>
 
         {/* Card 2: App Development */}
-        <div className="bg-surface-dark border border-neutral-850 p-5 rounded-none space-y-4 relative overflow-hidden group hover:border-primaryAccent/50 transition-colors">
-          <div className="flex items-center gap-3">
-            <div className="p-2 bg-neutral-900 border border-neutral-850 text-primaryAccent rounded-none">
-              <Code className="w-5 h-5" />
+        <div className="bg-surface-dark border border-neutral-850 p-5 rounded-none relative overflow-hidden group hover:border-primaryAccent/50 transition-colors flex flex-col justify-between gap-6">
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="p-2 bg-neutral-900 border border-neutral-850 text-primaryAccent rounded-none">
+                <Code className="w-5 h-5" />
+              </div>
+              <div>
+                <h3 className="font-display text-sm font-black text-primaryText uppercase tracking-tight">
+                  Robust App Development
+                </h3>
+                <span className="font-mono text-[8px] text-primaryAccent uppercase font-bold tracking-widest">full-stack & type-safe</span>
+              </div>
             </div>
-            <div>
-              <h3 className="font-display text-sm font-black text-primaryText uppercase tracking-tight">
-                Robust App Development
-              </h3>
-              <span className="font-mono text-[8px] text-primaryAccent uppercase font-bold tracking-widest">full-stack & type-safe</span>
-            </div>
+            <p className="text-xs text-mutedText leading-relaxed font-sans">
+              Moving beyond simple pages into functional software. I develop secure applications with custom-built servers, scalable databases, fast client state management, and strict TypeScript integration.
+            </p>
           </div>
-          <p className="text-xs text-mutedText leading-relaxed font-sans">
-            Moving beyond simple pages into functional software. I develop secure applications with custom-built servers, scalable databases, fast client state management, and strict TypeScript integration.
-          </p>
           <ul className="space-y-1.5 font-mono text-[10px] text-primaryText">
             <li className="flex items-center gap-2">
               <span className="text-primaryAccent">»</span>
@@ -714,26 +737,28 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
         </div>
 
         {/* Card 3: Performance Standards */}
-        <div className="bg-surface-dark border border-neutral-850 p-5 rounded-none space-y-4 relative overflow-hidden group hover:border-green-500/40 transition-colors">
-          <div className="flex items-center gap-3">
-            <div className="p-2 bg-neutral-900 border border-neutral-850 text-green-400 rounded-none">
-              <Zap className="w-5 h-5" />
+        <div className="bg-surface-dark border border-neutral-850 p-5 rounded-none relative overflow-hidden group hover:border-primaryAccent/50 transition-colors flex flex-col justify-between gap-6">
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="p-2 bg-neutral-900 border border-neutral-850 text-primaryAccent rounded-none">
+                <Zap className="w-5 h-5" />
+              </div>
+              <div>
+                <h3 className="font-display text-sm font-black text-primaryText uppercase tracking-tight">
+                  Optimization Metrics
+                </h3>
+                <span className="font-mono text-[8px] text-primaryAccent uppercase font-bold tracking-widest">sub-second execution</span>
+              </div>
             </div>
-            <div>
-              <h3 className="font-display text-sm font-black text-primaryText uppercase tracking-tight">
-                Optimization Metrics
-              </h3>
-              <span className="font-mono text-[8px] text-green-400 uppercase font-bold tracking-widest">sub-second execution</span>
-            </div>
+            <p className="text-xs text-mutedText leading-relaxed font-sans">
+              Every millisecond added to loading times directly reduces conversion rates. My products are compiled with tree-shaken bundlers, gzip/brotli compression, and lazy image loader pipelines to guarantee elite performance.
+            </p>
           </div>
-          <p className="text-xs text-mutedText leading-relaxed font-sans">
-            Every millisecond added to loading times directly reduces conversion rates. My products are compiled with tree-shaken bundlers, gzip/brotli compression, and lazy image loader pipelines to guarantee elite performance.
-          </p>
           
           <div className="grid grid-cols-2 gap-2 bg-neutral-950 p-2.5 border border-neutral-900 font-mono text-[10px]">
             <div>
               <span className="text-neutral-500 block text-[8px]">LIGHTHOUSE</span>
-              <span className="text-green-400 font-extrabold">100 / 100</span>
+              <span className="text-primaryAccent font-extrabold">100 / 100</span>
             </div>
             <div>
               <span className="text-neutral-500 block text-[8px]">INTERACTIVE</span>
@@ -763,15 +788,15 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
         
         {/* Top selection bar */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-neutral-900 pb-4">
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
             {FLOW_SCENARIOS.map((scenario) => (
               <button
                 key={scenario.id}
                 onClick={() => handleScenarioChange(scenario.id)}
                 disabled={isSimulating}
-                className={`px-3 py-1.5 text-left font-mono text-[10px] sm:text-xs font-bold uppercase border tracking-wider transition-all cursor-pointer ${
+                className={`px-3 py-1.5 text-center sm:text-left font-mono text-[10px] sm:text-xs font-bold uppercase border tracking-wider transition-all cursor-pointer w-full sm:w-auto ${
                   activeScenario === scenario.id
-                    ? 'bg-secondaryAccent/10 border-secondaryAccent text-secondaryAccent'
+                    ? 'bg-primaryAccent/10 border-primaryAccent text-primaryAccent'
                     : 'bg-neutral-900/40 border-neutral-850 text-mutedText hover:text-primaryText hover:border-neutral-700'
                 } disabled:opacity-50 disabled:cursor-not-allowed rounded-none`}
               >
@@ -782,15 +807,16 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
 
           {/* Simulation Trigger Button wrapped in ElectricBorder effect */}
           <ElectricBorder
-            color="#ff0000"
+            color="#50C878"
             borderRadius={0}
             speed={isSimulating ? 2.5 : 0.8}
             chaos={isSimulating ? 0.25 : 0.08}
+            className="w-full sm:w-auto"
           >
             <button
               onClick={startSimulation}
               disabled={isSimulating}
-              className="flex items-center gap-2 bg-black hover:bg-zinc-900 disabled:bg-neutral-800 text-white font-mono font-bold uppercase tracking-wider text-[10px] py-2 px-4 border-none transition-all cursor-pointer rounded-none relative z-10"
+              className="flex items-center justify-center gap-2 bg-black hover:bg-zinc-900 disabled:bg-neutral-800 text-white font-mono font-bold uppercase tracking-wider text-[10px] py-2 px-4 border-none transition-all cursor-pointer rounded-none relative z-10 w-full sm:w-auto"
             >
               {isSimulating ? (
                 <>
@@ -809,7 +835,7 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
 
         {/* Scenario Overview */}
         <div className="space-y-1">
-          <span className="font-mono text-[9px] text-secondaryAccent uppercase tracking-widest font-bold">
+          <span className="font-mono text-[9px] text-primaryAccent uppercase tracking-widest font-bold">
             Pipeline Scenario Profile
           </span>
           <p className="text-xs sm:text-sm text-primaryText font-sans font-medium">
@@ -830,9 +856,9 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
                   <div 
                     className={`flex-1 p-3 border transition-all duration-300 relative ${
                       isActive 
-                        ? 'bg-secondaryAccent/10 border-secondaryAccent shadow-[0_0_12px_rgba(236,72,153,0.15)] scale-[1.02]' 
+                        ? 'bg-primaryAccent/10 border-primaryAccent shadow-[0_0_12px_rgba(80,200,120,0.15)] scale-[1.02]' 
                         : isPast 
-                          ? 'bg-neutral-900/80 border-green-500/40 opacity-90'
+                          ? 'bg-neutral-900/80 border-primaryAccent/40 opacity-90'
                           : 'bg-neutral-900/30 border-neutral-850 opacity-60'
                     } rounded-none flex flex-col gap-1.5`}
                   >
@@ -842,10 +868,10 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
                         STEP 0{idx + 1}
                       </span>
                       {isActive && (
-                        <span className="w-1.5 h-1.5 bg-secondaryAccent rounded-full animate-ping" />
+                        <span className="w-1.5 h-1.5 bg-primaryAccent rounded-full animate-ping" />
                       )}
                       {isPast && (
-                        <span className="text-[8px] font-mono text-green-400 font-bold uppercase">✔ DONE</span>
+                        <span className="text-[8px] font-mono text-primaryAccent font-bold uppercase">✔ DONE</span>
                       )}
                     </div>
 
@@ -853,9 +879,9 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
                     <div className="flex items-center gap-2">
                       <div className={`p-1 border rounded-none ${
                         isActive 
-                          ? 'bg-secondaryAccent/20 border-secondaryAccent text-secondaryAccent' 
+                          ? 'bg-primaryAccent/20 border-primaryAccent text-primaryAccent' 
                           : isPast 
-                            ? 'bg-green-500/10 border-green-500/20 text-green-400' 
+                            ? 'bg-primaryAccent/10 border-primaryAccent/20 text-primaryAccent' 
                             : 'bg-neutral-950 border-neutral-800 text-mutedText'
                       }`}>
                         {getStepIcon(step.icon)}
@@ -872,7 +898,7 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
 
                     {/* Scanline active overlay */}
                     {isActive && (
-                      <div className="absolute top-0 left-0 w-full h-[1px] bg-secondaryAccent shadow-[0_0_8px_#ec4899] animate-pulse" />
+                      <div className="absolute top-0 left-0 w-full h-[1px] bg-primaryAccent shadow-[0_0_8px_#50C878] animate-pulse" />
                     )}
                   </div>
 
@@ -888,10 +914,60 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
           </div>
         </div>
 
+        {/* Live Terminal Output Console */}
+        <div className="border border-neutral-850 bg-black rounded-none overflow-hidden font-mono text-[11px] leading-relaxed relative z-10">
+          {/* Header Bar */}
+          <div className="flex items-center justify-between bg-neutral-900 px-3.5 py-2 border-b border-neutral-850">
+            <div className="flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-red-500/20 border border-red-500/50" />
+              <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/20 border border-yellow-500/50" />
+              <span className="w-2.5 h-2.5 rounded-full bg-green-500/20 border border-green-500/50" />
+              <span className="text-[9px] text-neutral-400 font-bold ml-1.5 uppercase tracking-wider">SYSTEM EXECUTION CONSOLE</span>
+            </div>
+            <div className="flex items-center gap-2 text-[9px]">
+              <span className={`w-1.5 h-1.5 rounded-full ${isSimulating ? 'bg-primaryAccent animate-ping' : 'bg-neutral-600'}`} />
+              <span className={`uppercase font-bold ${isSimulating ? 'text-primaryAccent' : 'text-neutral-500'}`}>
+                {isSimulating ? 'EXECUTING PIPELINE' : 'IDLE'}
+              </span>
+            </div>
+          </div>
+          
+          {/* Body */}
+          <div className="p-3.5 space-y-1.5 bg-[#050505] min-h-[120px] max-h-[220px] overflow-y-auto scrollbar-thin scrollbar-thumb-neutral-800 scrollbar-track-transparent">
+            {logs.map((log, index) => {
+              // Highlight based on prefixes
+              let logColor = 'text-neutral-400';
+              if (log.startsWith('SUCCESS') || log.startsWith('PIPELINE_SUCCESS')) {
+                logColor = 'text-green-400 font-medium';
+              } else if (log.startsWith('START') || log.startsWith('TRIGGERED')) {
+                logColor = 'text-primaryAccent font-medium';
+              } else if (log.startsWith('STATUS')) {
+                logColor = 'text-cyan-400';
+              } else if (log.startsWith('ERROR')) {
+                logColor = 'text-red-400 font-bold';
+              } else if (log.startsWith('DISPATCHED')) {
+                logColor = 'text-secondaryAccent';
+              }
+
+              return (
+                <div key={index} className="flex items-start gap-2.5 transition-all duration-300">
+                  <span className="text-neutral-600 select-none">[{new Date().toLocaleTimeString([], { hour12: false })}]</span>
+                  <span className="text-primaryAccent select-none">$&gt;</span>
+                  <span className={logColor}>{log}</span>
+                </div>
+              );
+            })}
+            <div className="flex items-center gap-1.5 text-neutral-500 text-[10px] pt-1">
+              <span>root@nino-systems:~#</span>
+              <span className="w-1.5 h-3.5 bg-primaryAccent animate-pulse" />
+            </div>
+          </div>
+        </div>
+
         {/* Summary / Technical SLA Commit */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-neutral-950 p-4 border border-neutral-900 font-mono text-[11px] text-neutral-500">
           <div className="space-y-1">
-            <div className="text-secondaryAccent font-bold">⚡ PIPELINE SPECIFICATIONS & FAILSAFES</div>
+            <div className="text-primaryAccent font-bold">⚡ PIPELINE SPECIFICATIONS & FAILSAFES</div>
             <div>• Automatic retries with exponential backoff on HTTP/gateway timeouts</div>
             <div>• Dead-letter queues (DLQ) to isolate and alert on schema mismatch</div>
           </div>
@@ -927,38 +1003,49 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
           <div className="bg-surface-dark border border-neutral-850 p-5 rounded-none space-y-4 flex-1 relative overflow-hidden group hover:border-neutral-800 transition-colors">
             
             <h3 className="font-display text-base font-black text-primaryText uppercase tracking-tight pb-1 border-b border-neutral-900">
-              The Executive Mandate
+              The Personal & Virtual Assistant Mandate
             </h3>
             
             <p className="text-xs text-mutedText leading-relaxed font-sans font-medium">
-              Busy founders and high-achievers should not be bogged down by scheduling friction, administrative overhead, or manual coordination. My goal is simple: <strong>provide absolute operational and lifestyle relief</strong>.
+              Busy individuals, professionals, and teams should not be bogged down by scheduling friction, administrative overhead, or manual coordination. My goal is simple: <strong>provide absolute personal, operational, and lifestyle relief</strong>.
             </p>
 
             <div className="space-y-3 pt-2">
               <div className="flex items-start gap-2 text-xs">
                 <div className="p-1.5 bg-neutral-900 border border-neutral-850 text-primaryAccent shrink-0">
-                  <Clock className="w-3.5 h-3.5" />
+                  <Calendar className="w-3.5 h-3.5" />
                 </div>
                 <div>
                   <div className="font-mono text-[9px] text-neutral-500 uppercase tracking-wider">AVAILABILITY CADENCE</div>
-                  <div className="text-primaryText font-medium">Mon–Fri, 9:00 AM – 6:00 PM (GMT+8)</div>
-                  <div className="text-[10px] text-neutral-500 font-mono">Continuous async support & daily updates</div>
+                  <div className="text-primaryText font-medium">Mon–Sun (7 Days a Week)</div>
+                  <div className="text-[10px] text-neutral-500 font-mono">Continuous coverage including weekends and holidays</div>
                 </div>
               </div>
 
               <div className="flex items-start gap-2 text-xs">
-                <div className="p-1.5 bg-neutral-900 border border-neutral-850 text-secondaryAccent shrink-0">
+                <div className="p-1.5 bg-neutral-900 border border-neutral-850 text-primaryAccent shrink-0">
+                  <Clock className="w-3.5 h-3.5" />
+                </div>
+                <div>
+                  <div className="font-mono text-[9px] text-neutral-500 uppercase tracking-wider">PREFERRED WORKING TIME</div>
+                  <div className="text-primaryAccent font-bold">100% Client-Preferred Hours</div>
+                  <div className="text-[10px] text-neutral-500 font-mono">Tailored to match your active business hours and local timezone</div>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-2 text-xs">
+                <div className="p-1.5 bg-neutral-900 border border-neutral-850 text-primaryAccent shrink-0">
                   <Activity className="w-3.5 h-3.5" />
                 </div>
                 <div>
                   <div className="font-mono text-[9px] text-neutral-500 uppercase tracking-wider">URGENT REQUEST RESPONSE</div>
-                  <div className="text-secondaryAccent font-bold">Sub-1 Hour SLA Guaranteed</div>
+                  <div className="text-primaryAccent font-bold">Sub-1 Hour SLA Guaranteed</div>
                   <div className="text-[10px] text-neutral-500 font-mono">Immediate triage for scheduling conflicts or urgent travels</div>
                 </div>
               </div>
 
               <div className="flex items-start gap-2 text-xs">
-                <div className="p-1.5 bg-neutral-900 border border-neutral-850 text-green-400 shrink-0">
+                <div className="p-1.5 bg-neutral-900 border border-neutral-850 text-primaryAccent shrink-0">
                   <Server className="w-3.5 h-3.5" />
                 </div>
                 <div>
@@ -979,8 +1066,6 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
               </button>
             </div>
           </div>
-
-
 
         </div>
 
@@ -1048,11 +1133,11 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
                 <div className="grid grid-cols-2 gap-2 pt-2 border-t border-neutral-900 font-mono text-[9px]">
                   <div>
                     <span className="text-neutral-500 uppercase block font-bold text-[8px]">RESPONSE SLA</span>
-                    <span className="text-secondaryAccent font-semibold">{task.sla}</span>
+                    <span className="text-primaryAccent font-semibold">{task.sla}</span>
                   </div>
                   <div className="text-right">
-                    <span className="text-neutral-500 uppercase block font-bold text-[8px]">EXECUTIVE VALUE</span>
-                    <span className="text-green-400 font-semibold truncate block" title={task.impact}>{task.impact}</span>
+                    <span className="text-neutral-500 uppercase block font-bold text-[8px]">ASSISTANT VALUE</span>
+                    <span className="text-primaryAccent font-semibold truncate block" title={task.impact}>{task.impact}</span>
                   </div>
                 </div>
               </div>
@@ -1062,11 +1147,11 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
           {/* Bottom Callout Info */}
           <div className="p-3 bg-neutral-950/80 border border-neutral-900 rounded-none font-mono text-[10px] text-neutral-500">
             <div className="text-primaryText font-bold uppercase mb-0.5 flex items-center gap-1">
-              <Zap className="w-3 h-3 text-secondaryAccent animate-pulse" />
+              <Zap className="w-3 h-3 text-primaryAccent animate-pulse" />
               PRODUCTIVITY SYSTEM INTEGRATIONS
             </div>
             <p className="leading-relaxed font-sans font-medium">
-              Seamlessly operating across modern executive stacks: Google Workspace, Microsoft 365, Notion, Slack, Zoom, Calendly, and custom CRM architectures. Adapting instantly to your preferred communication rhythms.
+              Seamlessly operating across modern productivity stacks: Google Workspace, Microsoft 365, Notion, Slack, Zoom, Calendly, and custom CRM architectures. Adapting instantly to your preferred communication rhythms.
             </p>
           </div>
 

@@ -354,18 +354,6 @@ export default function App() {
                       {tab.label}
                     </button>
                   ))}
-                  
-                  <div className="pt-2">
-                    <button
-                      onClick={() => {
-                        setActiveTab('contact');
-                        setMobileMenuOpen(false);
-                      }}
-                      className="w-full bg-neutral-900 border border-neutral-800 hover:border-primaryAccent text-primary-text py-3 rounded text-center text-xs font-bold uppercase tracking-wider cursor-pointer"
-                    >
-                      CONTACT ME
-                    </button>
-                  </div>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -403,7 +391,7 @@ export default function App() {
             </div>
             
             {/* Navigation links of Services, Results, About, Contact */}
-            <div className="flex items-center gap-3 mr-16 sm:mr-24">
+            <div className={`${(mobileMenuOpen || menuDropdownOpen) ? 'hidden' : 'flex'} items-center gap-2 sm:gap-3 text-[9px] sm:text-[10px] mr-0 sm:mr-24`}>
               <button 
                 onClick={() => setActiveTab('services')} 
                 className={`transition-colors uppercase cursor-pointer hover:text-primaryAccent ${activeTab === 'services' ? 'text-primaryAccent font-bold' : ''}`}

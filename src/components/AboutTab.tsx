@@ -10,6 +10,8 @@ import {
 } from 'lucide-react';
 import { TabType } from '../types';
 import ninoPortrait from '../assets/images/nino_portrait.jpeg';
+import { BlackHoleEffect } from './BlackHoleEffect';
+import { SpecialText } from './ui/SpecialText';
 
 interface AboutTabProps {
   setActiveTab: (tab: TabType) => void;
@@ -55,12 +57,15 @@ export default function AboutTab({ setActiveTab }: AboutTabProps) {
         
         {/* COLUMN 1: Niño Verdejo Specs Terminal */}
         <div className="md:col-span-1 lg:col-span-4 flex flex-col">
-          <div className="glass-panel border border-neutral-800 rounded-none p-5 space-y-5 relative overflow-hidden flex-1 flex flex-col justify-between">
-            {/* Corner bracket decorators */}
-            <div className="absolute top-0 right-0 w-6 h-6 border-t border-r border-neutral-700 pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-6 h-6 border-b border-l border-neutral-700 pointer-events-none" />
+          <div className="glass-panel border border-neutral-800 rounded-none p-5 space-y-5 relative overflow-hidden flex-1 flex flex-col justify-between bg-black/40">
+            {/* Beautiful Black Hole Vortex background effect */}
+            <BlackHoleEffect />
             
-            <div className="space-y-5">
+            {/* Corner bracket decorators */}
+            <div className="absolute top-0 right-0 w-6 h-6 border-t border-r border-neutral-700 pointer-events-none z-20" />
+            <div className="absolute bottom-0 left-0 w-6 h-6 border-b border-l border-neutral-700 pointer-events-none z-20" />
+            
+            <div className="space-y-5 relative z-10">
               {/* Header Spec */}
               <div className="flex items-center justify-between border-b border-neutral-900 pb-3">
                 <div className="space-y-0.5">
@@ -93,25 +98,25 @@ export default function AboutTab({ setActiveTab }: AboutTabProps) {
                 
                 <div className="border-b border-neutral-900/60 pb-1.5 items-center">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <span className="text-primaryText font-semibold">Web Design & App Development</span>
+                    <SpecialText className="text-primaryText font-semibold">Web Design & App Development</SpecialText>
                     <span className="px-1.5 py-0.5 bg-primaryAccent/20 text-primaryAccent font-mono text-[8px] font-bold uppercase tracking-wider rounded border border-primaryAccent/30">Primary</span>
                   </div>
                 </div>
 
                 <div className="border-b border-neutral-900/60 pb-1.5">
-                  <span className="text-primaryText font-semibold">AI Automation Developer</span>
+                  <SpecialText className="text-primaryText font-semibold">AI Automation Developer</SpecialText>
                 </div>
 
                 <div className="border-b border-neutral-900/60 pb-1.5">
-                  <span className="text-primaryText font-semibold">Virtual Assistant</span>
+                  <SpecialText className="text-primaryText font-semibold">UI/UX Engineer</SpecialText>
                 </div>
 
                 <div className="border-b border-neutral-900/60 pb-1.5">
-                  <span className="text-primaryText font-semibold">Global (Remote)</span>
+                  <SpecialText className="text-primaryText font-semibold">Global (Remote)</SpecialText>
                 </div>
 
                 <div className="border-b border-neutral-900/60 pb-1.5">
-                  <span className="text-primaryText font-bold">Restoring 15h+ weekly</span>
+                  <SpecialText className="text-primaryText font-bold">Pristine layout fidelity</SpecialText>
                 </div>
 
               </div>
@@ -122,7 +127,7 @@ export default function AboutTab({ setActiveTab }: AboutTabProps) {
                   CORE INFRASTRUCTURE STACK
                 </div>
                 <div className="flex flex-wrap gap-1.5">
-                  {['React 19', 'TypeScript', 'Vite', 'Node.js', 'Tailwind v4', 'Framer Motion', 'REST APIs', 'Gemini AI', 'Webhooks', 'PostgreSQL', 'GitHub', 'CI/CD'].map((tech) => (
+                  {['React 19', 'TypeScript', 'Vite', 'Node.js', 'Tailwind v4', 'Framer Motion', 'REST APIs', 'Gemini AI', 'Webhooks', 'PostgreSQL', 'GitHub'].map((tech) => (
                     <span key={tech} className="px-2 py-0.5 bg-neutral-900 border border-neutral-850 text-primaryText font-mono text-[9px] uppercase rounded-none">
                       {tech}
                     </span>
@@ -132,11 +137,11 @@ export default function AboutTab({ setActiveTab }: AboutTabProps) {
             </div>
 
             {/* Micro-terminal text */}
-            <div className="mt-6 bg-neutral-950 p-2.5 border border-neutral-900 font-mono text-[10px] text-neutral-500 space-y-0.5 leading-tight">
-              <div className="text-primaryAccent font-bold">{`System Logs`}</div>
-              <div>• Direct business pipelines established.</div>
-              <div>• Redundant database index locks resolved.</div>
-              <div>• Active server monitors fully configured.</div>
+            <div className="mt-6 bg-neutral-950/90 backdrop-blur-xs p-2.5 border border-neutral-900 font-mono text-[10px] text-neutral-500 space-y-0.5 leading-tight relative z-10">
+              <div className="text-primaryAccent font-bold">{`Development Logs`}</div>
+              <div>• Dynamic React rendering loops optimized.</div>
+              <div>• Responsive viewport layout specs verified.</div>
+              <div>• Framer Motion fluid animations active.</div>
             </div>
 
           </div>
