@@ -979,8 +979,22 @@ function SplashCursor({
       return hash;
     }
 
+    function isInteractive(target) {
+      if (!target) return false;
+      const el = target.closest('button, a, select, input, textarea, [role="button"], .cursor-pointer');
+      if (el) return true;
+      try {
+        const style = window.getComputedStyle(target);
+        if (style && style.cursor === 'pointer') {
+          return true;
+        }
+      } catch (e) {}
+      return false;
+    }
+
     // Named event handlers for proper cleanup
     function handleMouseDown(e) {
+      if (isInteractive(e.target)) return;
       let pointer = pointers[0];
       let posX = scaleByPixelRatio(e.clientX);
       let posY = scaleByPixelRatio(e.clientY);
@@ -990,6 +1004,7 @@ function SplashCursor({
 
     let firstMouseMoveHandled = false;
     function handleMouseMove(e) {
+      if (isInteractive(e.target)) return;
       let pointer = pointers[0];
       let posX = scaleByPixelRatio(e.clientX);
       let posY = scaleByPixelRatio(e.clientY);
@@ -1003,6 +1018,7 @@ function SplashCursor({
     }
 
     function handleTouchStart(e) {
+      if (isInteractive(e.target)) return;
       const touches = e.targetTouches;
       let pointer = pointers[0];
       for (let i = 0; i < touches.length; i++) {
@@ -1013,6 +1029,7 @@ function SplashCursor({
     }
 
     function handleTouchMove(e) {
+      if (isInteractive(e.target)) return;
       const touches = e.targetTouches;
       let pointer = pointers[0];
       for (let i = 0; i < touches.length; i++) {

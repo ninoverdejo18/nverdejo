@@ -30,7 +30,7 @@ interface ResultsTabProps {
 
 export default function ResultsTab({ setActiveTab }: ResultsTabProps) {
   const [activeCard, setActiveCard] = useState<string>('portfolio');
-  const [devgenSubTab, setDevgenSubTab] = useState<'strategy' | 'design' | 'engineering' | 'outcomes'>('strategy');
+  const [devgenSubTab, setDevgenSubTab] = useState<'strategy' | 'design'>('strategy');
 
   const resultCards: ResultCard[] = [
     {
@@ -54,28 +54,6 @@ export default function ResultsTab({ setActiveTab }: ResultsTabProps) {
       impactLabel: 'Responsive & Lighthouse Score optimized',
       beforeText: 'Slow template, weak brand perception, 3.8s initial load, unresponsive components.',
       afterText: 'Polished micro-interactions, flawless responsive scaling, lightning-fast loads, robust framework.'
-    },
-    {
-      id: 'ecommerce',
-      client: 'Peak Apparel Group',
-      industry: 'Direct-to-Consumer SaaS',
-      challenge: 'Operations managers spent 14 hours every single week copying sales items, compiling spreadsheet tallies, and manually entering logistics invoices into their CRM. The lag resulted in late order updates and customer service logs.',
-      solution: 'Configured a type-safe multi-platform API webhook pipeline. Orders are now instantly captured, cross-referenced with active stock databases, auto-invoiced, and dispatched to fulfillment queues.',
-      impactMetric: '14 hrs',
-      impactLabel: 'Weekly Manual Overhead Eliminated',
-      beforeText: '14 hours of spreadsheet data entry, 3.2% error rate, delayed customer shipping alerts.',
-      afterText: '0 hours. 100% background accuracy, instantaneous logistics notifications.'
-    },
-    {
-      id: 'saas-leads',
-      client: 'CoreFlow Analytics',
-      industry: 'B2B SaaS Startup',
-      challenge: 'Incoming trials remained cold for up to 4 hours. Staff spent valuable time manually scraping LinkedIn profiles to verify lead sizes before routing them to sales agents, losing warm prospects to faster vendors.',
-      solution: 'Constructed an instant domain enrichment script. The moment a signup registers, webhooks fetch business data, qualify the lead, determine seat potential, and route high-value accounts with custom context on Slack.',
-      impactMetric: '92%',
-      impactLabel: 'Response Latency Reduced',
-      beforeText: 'Average 4-hour delay on lead classification, sales agents manually compiling info.',
-      afterText: 'Instant 45-second verification and Slack alert. Deal win rates accelerated by 22%.'
     },
     {
       id: 'agency-systems',
@@ -221,12 +199,10 @@ export default function ResultsTab({ setActiveTab }: ResultsTabProps) {
 
                   {/* Sub-Tabs Selector */}
                   <div className="border-b border-neutral-900 flex flex-wrap gap-1">
-                    {(['strategy', 'design', 'engineering', 'outcomes'] as const).map((tab) => {
+                    {(['strategy', 'design'] as const).map((tab) => {
                       const labels = {
                         strategy: { name: 'Overview & Strategy', icon: BookOpen },
                         design: { name: 'Design & UX', icon: Palette },
-                        engineering: { name: 'Engineering & Tech', icon: Code },
-                        outcomes: { name: 'Challenges & Outcomes', icon: TrendingUp },
                       };
                       const TabIcon = labels[tab].icon;
                       const isActive = devgenSubTab === tab;
@@ -583,14 +559,14 @@ export default function ResultsTab({ setActiveTab }: ResultsTabProps) {
                     ))}
                   </div>
 
+
+
                   {/* Sub-Tabs Selector */}
                   <div className="border-b border-neutral-900 flex flex-wrap gap-1">
-                    {(['strategy', 'design', 'engineering', 'outcomes'] as const).map((tab) => {
+                    {(['strategy', 'design'] as const).map((tab) => {
                       const labels = {
                         strategy: { name: 'Overview & Strategy', icon: BookOpen },
                         design: { name: 'Design & UX', icon: Palette },
-                        engineering: { name: 'Engineering & Tech', icon: Code },
-                        outcomes: { name: 'Challenges & Outcomes', icon: TrendingUp },
                       };
                       const TabIcon = labels[tab].icon;
                       const isActive = devgenSubTab === tab;

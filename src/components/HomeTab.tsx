@@ -511,10 +511,10 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
             className="font-display text-[clamp(1.6rem,4.1vw,4.5rem)] font-black uppercase tracking-tighter leading-tight sm:leading-[0.9] text-center"
           >
             <span className={`block sm:whitespace-nowrap ${isLight ? 'text-black' : 'text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-100 to-neutral-400'}`}>
-              WE WEAVE FLUID PIPELINES
+              FLAWLESS USER EXPERIENCE
             </span>
             <span className="block sm:whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-r from-primaryAccent via-green-400 to-secondaryAccent">
-              & HIGH-SPEED PRODUCTS
+              SPEED-DRIVEN DESIGN
             </span>
           </motion.h1>
 

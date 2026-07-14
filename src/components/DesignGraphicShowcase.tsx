@@ -513,11 +513,7 @@ export default function DesignGraphicShowcase() {
               <span className="text-neutral-800 font-normal">|</span>
               <span>MODE: {activeMode.toUpperCase()}</span>
             </div>
-            <div className="flex items-center gap-2">
-              <span>CONTRAST: AAA PASS</span>
-              <span className="text-neutral-800 font-normal">|</span>
-              <span>SCALE: 1.618 (GOLDEN)</span>
-            </div>
+
           </div>
         </div>
 

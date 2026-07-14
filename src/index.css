@@ -431,6 +431,10 @@
   * {
     @apply border-border outline-ring/50;
   }
+  ::selection {
+    background-color: rgba(80, 200, 120, 0.25) !important;
+    color: inherit !important;
+  }
   body {
     @apply bg-background text-foreground;
     overflow-x: hidden;
