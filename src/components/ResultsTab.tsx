@@ -37,30 +37,30 @@ export default function ResultsTab({ setActiveTab }: ResultsTabProps) {
       id: 'portfolio',
       client: 'NVerdejo Personal Portfolio',
       industry: 'Personal Brand & Showcase',
-      challenge: 'Over-reliance on generic developer templates, sluggish performance, jumpy unoptimized animations, and high-friction contact workflows.',
-      solution: 'Engineered a high-performance, immersive digital experience inspired by modern SaaS aesthetics utilizing precise typography, hardware-accelerated fluid motion design, and optimal asset bundling.',
+      challenge: 'Using slow, generic website templates, unoptimized mobile layouts, jumpy animations, and hard-to-use contact forms.',
+      solution: 'Rebuilt the website from scratch with clean, professional layouts, smooth animations, highly optimized image files, and an elegant, fast-loading design.',
       impactMetric: 'Sub-1s',
       impactLabel: 'First Contentful Paint (FCP) Performance',
       beforeText: 'Generic layouts, unoptimized asset packages, slow loads, high bounce rate.',
-      afterText: 'Sub-second rendering, near-perfect Core Web Vitals, flawless 60fps animations, seamless communication pipeline.'
+      afterText: 'Sub-second rendering, near-perfect speed scores, smooth animations, seamless communication pipeline.'
     },
     {
       id: 'devgen',
       client: 'DevGen Website',
       industry: 'Software Agency Platform',
-      challenge: 'Many software agency websites suffer from generic templates, poor mobile responsiveness, sluggish performance, weak visual identities, and cluttered layouts that lead to low conversion rates and poor trust.',
-      solution: 'Designed and engineered a premium, minimal, lightweight digital experience with modular architecture, highly optimized lazy-loaded assets, adaptive layout grid systems, and strategic CTA focus.',
+      challenge: 'The website suffered from slow template performance, poor responsiveness on mobile phones, a cluttered layout, and low trust from visitors.',
+      solution: 'Designed a clean, modern, lightweight website with organized navigation, optimized files for faster loading, and clear contact buttons to increase client inquiries.',
       impactMetric: '100%',
-      impactLabel: 'Responsive & Lighthouse Score optimized',
+      impactLabel: 'Responsive & Speed Score optimized',
       beforeText: 'Slow template, weak brand perception, 3.8s initial load, unresponsive components.',
-      afterText: 'Polished micro-interactions, flawless responsive scaling, lightning-fast loads, robust framework.'
+      afterText: 'Polished button clicks, clean responsive layouts, lightning-fast loads, robust framework.'
     },
     {
       id: 'agency-systems',
       client: 'ScaleShift Marketing',
       industry: 'Growth Agency Network',
-      challenge: 'Unindexed PostgreSQL tables and slow cloud database queries caused constant application server latency. Server restarts were required daily, distracting internal developers from client deliverables.',
-      solution: 'Optimized server-side query indexes, structured database connection pools, deployed automated daily backups, and constructed lightweight uptime health-check alerts.',
+      challenge: 'Slow database queries and unoptimized configurations caused frequent application slow-downs, requiring daily system restarts and disrupting client work.',
+      solution: 'Optimized query speeds, improved database connections, scheduled secure daily backups, and set up simple automatic alerts to monitor system uptime.',
       impactMetric: '100%',
       impactLabel: 'Server Continuity & Zero Crashes',
       beforeText: 'Frequent database crashes, 3.4-second response times, developer burnout.',
@@ -75,11 +75,11 @@ export default function ResultsTab({ setActiveTab }: ResultsTabProps) {
       <div className="space-y-3 max-w-3xl">
         
         <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black tracking-tighter text-primaryText uppercase leading-none">
-          MEASURABLE OPERATIONAL IMPACTS
+          VERIFIED CASE STUDIES & RESULTS
         </h2>
         
         <p className="text-mutedText/90 text-sm sm:text-base font-sans">
-          I do not trade in aesthetic portfolios. I trade in efficiency metrics. Below are verified business optimizations.
+          I focus on delivering clear, measurable results for your business. Below are detailed studies of how I helped optimize performance and reliability.
         </p>
       </div>
 
@@ -240,10 +240,10 @@ export default function ResultsTab({ setActiveTab }: ResultsTabProps) {
                               PROJECT SUMMARY
                             </h4>
                             <p className="text-xs sm:text-sm text-primaryText/95 leading-relaxed font-sans">
-                              NVerdejo is a premium personal portfolio website designed to showcase professional front-end development expertise, highlight featured projects, and provide a seamless contact stream for potential clients and recruiters. The primary objective was to move away from generic developer templates and engineer a high-performance, immersive digital experience inspired by modern SaaS aesthetics—utilizing precise typography, fluid motion design, and a minimalist aesthetic.
+                              nverdejo.vercel.app is a professional personal portfolio website designed to showcase web development projects and make it incredibly easy for clients to get in touch. The goal was to move away from generic templates and build a fast, clean, and modern website with excellent typography and smooth navigation.
                             </p>
                             <p className="text-xs sm:text-sm text-mutedText leading-relaxed font-sans">
-                              The website functions as both a functional resume and a living proof-of-concept of advanced UI/UX implementation, focusing on lightning-fast response times and smooth micro-interactions.
+                              The site acts as both a professional bio and a real-world example of clean web design, focusing on sub-second loading times and reliable interactive elements.
                             </p>
                           </div>
 
@@ -255,12 +255,12 @@ export default function ResultsTab({ setActiveTab }: ResultsTabProps) {
                               </div>
                               <ul className="list-none space-y-1 font-sans text-xs text-mutedText">
                                 {[
-                                  'Over-reliance on generic, recognizable template layouts',
-                                  'Cluttered or overly busy interfaces that distract from the work',
-                                  'Jumpy, unoptimized animations that degrade mobile frame rates',
-                                  'Sluggish performance caused by bloated asset packages',
-                                  'Weak or forgettable personal visual branding',
-                                  'Hidden or high-friction contact workflows'
+                                  'Generic layouts that fail to stand out',
+                                  'Cluttered interfaces that distract visitors',
+                                  'Choppy animations that slow down mobile devices',
+                                  'Slow loading speeds caused by oversized files',
+                                  'Forgettable brand presentation',
+                                  'Hard-to-use contact options'
                                 ].map((item) => (
                                   <li key={item} className="flex items-start gap-1.5">
                                     <span className="text-red-400/80 mt-0.5">•</span>
@@ -277,10 +277,10 @@ export default function ResultsTab({ setActiveTab }: ResultsTabProps) {
                               </div>
                               <div className="space-y-2 text-xs font-sans text-mutedText">
                                 <div>
-                                  <span className="font-bold text-primaryText">Primary Goals:</span> Establish a distinct premium personal brand identity, keep session drop-offs low with engaging fluid transitions, showcase production-ready engineering, lower friction for recruiter outreach, and present scannable cases.
+                                  <span className="font-bold text-primaryText">Primary Goals:</span> Build a distinct professional brand, keep visitors engaged with smooth transitions, showcase clean and secure code, make it easy for clients to reach out, and present case studies clearly.
                                 </div>
                                 <div className="border-t border-neutral-900/50 pt-1.5">
-                                  <span className="font-bold text-primaryText">Research Takeaways:</span> Heavily influenced by top-tier modern software design ecosystems (such as Linear, Vercel, and Stripe) prioritizing strategic whitespace, crisp high-contrast typography, and purposeful micro-interactions.
+                                  <span className="font-bold text-primaryText">Design Inspiration:</span> Inspired by modern, clean websites (like Stripe and Vercel) that prioritize clear layout spacing, high-contrast typography, and simple, intuitive buttons.
                                 </div>
                               </div>
                             </div>
@@ -292,58 +292,58 @@ export default function ResultsTab({ setActiveTab }: ResultsTabProps) {
                         <div className="space-y-4">
                           <div className="space-y-1.5">
                             <h4 className="font-mono text-[10px] text-primaryAccent font-bold uppercase tracking-wider">
-                              THE DESIGN PROCESS & BRANDING
+                              THE DESIGN PROCESS
                             </h4>
                             <p className="text-xs sm:text-sm text-mutedText leading-relaxed font-sans">
-                              Built from the ground up to tell a progressive story about capabilities while reinforcing professional trust through polished micro-interactions and zero layout shifts.
+                              Built from scratch to guide visitors through my services and experience, establishing trust with fast loading times and a reliable layout.
                             </p>
                           </div>
 
                           <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5">
                             <div className="p-3 bg-neutral-900/40 border border-neutral-850 rounded-none space-y-1">
                               <div className="font-mono text-[9px] text-primaryText uppercase font-bold tracking-wider">
-                                1. INFORMATION ARCHITECTURE
+                                1. CLEAR NAVIGATION
                               </div>
                               <p className="text-[11px] text-mutedText font-sans leading-relaxed">
-                                Singular, highly cohesive flow: Hero (value prop), About (technical philosophy), Featured Work, Skills Matrix, and low-friction Contact endpoints.
+                                Organized into an easy-to-follow flow: services, project examples, technical skills, and clear contact forms.
                               </p>
                             </div>
 
                             <div className="p-3 bg-neutral-900/40 border border-neutral-850 rounded-none space-y-1">
                               <div className="font-mono text-[9px] text-primaryText uppercase font-bold tracking-wider">
-                                2. VISUAL IDENTITY
+                                2. PROFESSIONAL THEME
                               </div>
                               <p className="text-[11px] text-mutedText font-sans leading-relaxed">
-                                Dark-mode-first ambient background colors paired with vibrant green/accent tones and strict geometric typography hierarchies readable at all scales.
+                                A modern dark theme paired with bright accents and clean, highly readable text across all devices.
                               </p>
                             </div>
 
                             <div className="p-3 bg-neutral-900/40 border border-neutral-850 rounded-none space-y-1">
                               <div className="font-mono text-[9px] text-primaryText uppercase font-bold tracking-wider">
-                                3. RESPONSIVE DESIGN
+                                3. FULLY RESPONSIVE
                               </div>
                               <p className="text-[11px] text-mutedText font-sans leading-relaxed">
-                                Fluid grid system scaling perfectly from mobile tap targets up to large monitors and ultrawides utilizing strict structural max-widths.
+                                A flexible grid layout that automatically adjusts to look great on small phone screens, tablets, laptops, and large monitors.
                               </p>
                             </div>
                           </div>
 
                           <div className="p-3.5 bg-neutral-950 border border-neutral-900 rounded-none space-y-1">
                             <div className="font-mono text-[10px] text-primaryAccent font-bold uppercase tracking-wider">
-                              CORE USER EXPERIENCE FEATURES
+                              CORE USER EXPERIENCE PRIORITIES
                             </div>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-1 text-xs font-sans text-mutedText">
                               <div>
                                 <span className="font-bold text-primaryText uppercase block text-[10px] mb-0.5">Absolute Clarity</span>
-                                Visitors grasp the full stack, specialties, and active roles within 3 seconds of landing.
+                                Visitors understand exactly what services are offered within a few seconds of arriving.
                               </div>
                               <div>
-                                <span className="font-bold text-primaryText uppercase block text-[10px] mb-0.5">Responsive Grids</span>
-                                Hardware-accelerated layouts and custom-curated interactive portfolio filters.
+                                <span className="font-bold text-primaryText uppercase block text-[10px] mb-0.5">Clean Transitions</span>
+                                Fluid menus and snappy button clicks that make navigation effortless.
                               </div>
                               <div>
                                 <span className="font-bold text-primaryText uppercase block text-[10px] mb-0.5">Professional Trust</span>
-                                Polished micro-interactions, complete lack of CLS (layout shifts), and flawless responsiveness.
+                                High-quality layouts and error-free forms build credibility and peace of mind.
                               </div>
                             </div>
                           </div>

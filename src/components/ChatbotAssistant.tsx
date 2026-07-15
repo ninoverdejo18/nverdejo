@@ -182,7 +182,7 @@ export default function ChatbotAssistant({ setActiveTab }: ChatbotAssistantProps
       setFlowState('idle');
       setFallbackMessage('');
       triggerBotResponse(
-        "Perfect! I've sent that over to Niño Verdejo. You can expect a response within 24–48 hours. In the meantime, feel free to keep exploring the site! 🚀",
+        "Perfect! I've sent that over to Niño. You can expect a response within 24 hours. In the meantime, feel free to keep exploring the site! 🚀",
         ['⬅️ Back to Main Menu']
       );
     } 
@@ -249,68 +249,68 @@ export default function ChatbotAssistant({ setActiveTab }: ChatbotAssistantProps
     // Handle options
     if (option === '💼 View Services & Rates') {
       triggerBotResponse(
-        "I offer a few specialized services to help you achieve your goals. Here is what I can do for you:\n\n• **Full-Stack Web Development**\n• **UI/UX Design & Prototyping**\n• **Virtual Assistant**\n• **AI Automation**",
+        "I can help you with several types of projects:\n\n• **Web Design & Development**: Clean, responsive, and fast-loading websites.\n• **Virtual Assistant Support**: Email, scheduling, and admin tasks.\n• **System Integrations**: Connecting your software tools to automate tasks.",
         ['💰 View Pricing/Packages', '📁 See Past Work (Portfolio)', '📅 Book a Consultation', '⬅️ Back to Main Menu']
       );
     } 
     else if (option === '🛠️ See My Skills & Tech Stack') {
       triggerBotResponse(
-        "Here is a quick snapshot of Niño's core expertise:\n\n• **Languages/Frameworks**: React, Node.js, TypeScript, Express, Tailwind CSS\n• **Tools & Platforms**: Supabase, Firebase, AWS, Figma, Git\n• **Soft Skills**: Active communication, timely delivery, problem-solving, and attention to detail.",
+        "Here is a summary of the tools and languages I work with:\n\n• **Web Tech**: React, TypeScript, Node.js, Express, Tailwind CSS\n• **Platforms**: Supabase, Firebase, AWS, Figma, Git\n• **Strengths**: Clear communication, fast response times, and highly organized work.",
         ['📄 Download Resume/CV', '💼 See Services', '⬅️ Back to Main Menu']
       );
     } 
     else if (option === '📖 About Niño Verdejo') {
       triggerBotResponse(
-        "Niño is a Web Designer/Developer with 2 years of experience. He loves solving complex problems and has worked with startups, global brands, and local businesses to bring their digital products to life.",
+        "Niño is a passionate Web Designer and Developer with 2 years of experience. He enjoys building easy-to-use digital tools for startups, individuals, and small businesses to help them get organized and grow.",
         ['🔗 Read Full Bio on Website', '📸 View Personal Projects', '⬅️ Back to Main Menu']
       );
     } 
     else if (option === '📬 Get in Touch / Hire Me' || option === '📅 Book a Consultation' || option === 'Leave a Message') {
       setFlowState('lead_name');
       triggerBotResponse(
-        "Awesome! I'd love to connect you with Niño Verdejo. First, what is your name?",
+        "I'd love to help you get in touch with Niño. To start, what is your name?",
         ['⬅️ Back to Main Menu']
       );
     }
     else if (option === '💰 View Pricing/Packages') {
       setActiveTab('services');
       triggerBotResponse(
-        "I offer competitive pricing and flexible monthly retainer packages designed to scale your business. You can view our full transparent pricing tables on our Services tab, or we can discuss a custom scope right now!",
+        "I've opened the Services tab for you! There you can view standard pricing tables and packages. If you need something else, we can always discuss a custom plan.",
         ['📬 Get in Touch / Hire Me', '⬅️ Back to Main Menu']
       );
     }
     else if (option === '📁 See Past Work (Portfolio)') {
       setActiveTab('results');
       triggerBotResponse(
-        "Switching you to the Case Studies & Results view! There you can browse in-depth metrics and see real examples of systems we built.",
+        "I've switched you to the Case Studies & Results page where you can see real examples of websites and systems I've built.",
         ['📬 Get in Touch / Hire Me', '⬅️ Back to Main Menu']
       );
     }
     else if (option === '📄 Download Resume/CV') {
       window.open('https://github.com/ninoverdejo', '_blank');
       triggerBotResponse(
-        "Opening Niño's professional resume! In his resume, you'll find complete career details, credentials, and references.",
+        "Opening my professional links and resume. It lists my experience, skills, and qualifications.",
         ['💼 See Services', '⬅️ Back to Main Menu']
       );
     }
     else if (option === '🔗 Read Full Bio on Website') {
       setActiveTab('about');
       triggerBotResponse(
-        "Navigating to Niño's profile and full bio page!",
+        "I've navigated to the About page so you can read Niño's full profile and background.",
         ['📬 Get in Touch / Hire Me', '⬅️ Back to Main Menu']
       );
     }
     else if (option === '📸 View Personal Projects') {
       setActiveTab('results');
       triggerBotResponse(
-        "Navigating to the showcase page, where you can view live web projects, design graphics, and interactive scenes!",
+        "I've switched you to the results section where you can view live web projects and designs.",
         ['📬 Get in Touch / Hire Me', '⬅️ Back to Main Menu']
       );
     }
     else if (option === '💼 See Services') {
       setActiveTab('services');
       triggerBotResponse(
-        "Navigating to the Services page!",
+        "I've navigated to the Services page for you!",
         ['💰 View Pricing/Packages', '⬅️ Back to Main Menu']
       );
     }

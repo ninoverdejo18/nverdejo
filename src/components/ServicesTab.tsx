@@ -187,55 +187,55 @@ export default function ServicesTab({ setActiveTab }: ServicesTabProps) {
     {
       id: 'web-dev',
       title: 'Web & App Development',
-      tagline: 'Engineered for sub-second delivery and robust data systems.',
-      description: 'Slow, bloated interfaces quietly drain conversion rates. I design, compile, and deploy lightweight web architectures that handle massive traffic spikes with zero lag. No unnecessary plugins, no template bloat.',
-      roi: 'Reduces user attrition and turns visitors into high-ticket leads through pristine client state management.',
+      tagline: 'Designed to load instantly and run reliably.',
+      description: 'Slow websites lose customers and lower search rankings. I build clean, fast, and secure web applications designed to load instantly on any connection, without unnecessary files or bloated templates.',
+      roi: 'Keeps visitors on your site longer, improves user trust, and makes it easier for potential clients to reach you.',
       features: [
-        'Vite + React single-page compiling',
-        'Custom interactive analytics panels',
-        'Strict type-safe client engines',
-        'Fluid layout animations and responsive design'
+        'Modern React web applications',
+        'Interactive dashboards and forms',
+        'Clean, secure codebases',
+        'Responsive layouts for mobile and desktop'
       ],
       metrics: [
-        '100/100 Google Core Web Vitals',
-        '<1.2s interactive transition time',
-        'Zero manual rendering overhead'
+        'Excellent speed & performance scores',
+        'Sub-second loading times',
+        'Smooth page transitions'
       ]
     },
     {
       id: 'ai-automation',
       title: 'AI & Automations',
       tagline: 'Connect apps and automate repetitive manual processes.',
-      description: 'Founders and teams often spend hours copying data between spreadsheets, forms, and emails. I build simple webhook integrations and set up basic Gemini API prompts to help sync platforms and automate everyday tasks.',
-      roi: 'Saves time, reduces manual entry errors, and helps keep your systems synchronized automatically.',
+      description: 'Teams often lose hours copying data between spreadsheets, forms, and email platforms. I build simple integrations and use helpful tools like the Gemini API to synchronize your software and automate routine steps.',
+      roi: 'Reduces manual errors, saves hours of admin work, and automatically keeps your records up to date.',
       features: [
-        'Simple API & webhook integrations',
-        'Basic text categorization via Gemini API',
-        'Google Sheets & form automation setup',
-        'Clean data transfers & error alerts'
+        'Automated software integrations',
+        'Email & form sorting via Gemini AI',
+        'Automatic Google Sheets updates',
+        'Reliable notifications & status alerts'
       ],
       metrics: [
-        '5+ hours saved weekly on average',
-        'Automated document & data updates',
-        'Consistent and reliable notifications'
+        'Hours saved on manual admin work',
+        'Instant database synchronization',
+        'Reliable automated notifications'
       ]
     },
     {
       id: 'personal-va',
       title: 'Personal & Virtual Assistance',
-      tagline: 'Continuous calendar, inbox, and administrative synchronization.',
-      description: 'Daily administrative and coordination loops consume valuable time and energy. I act as an elite assistant multi-tool, managing your meetings, triaging incoming communication streams, organizing files, and executing research so you stay focused.',
-      roi: 'Restores focus hours, protects daily calendars, and eliminates administrative overhead with continuous reliable support.',
+      tagline: 'Reliable email, calendar, and daily administrative support.',
+      description: 'Managing emails, coordination, and schedules can distract you from high-level goals. I handle daily administrative tasks, organize meetings, research topics, and keep your files structured so you can stay productive.',
+      roi: 'Frees up your time, protects your calendar from double-bookings, and handles routine tasks with complete reliability.',
       features: [
-        'Inbox triage & detailed response drafts',
-        'Personal & Virtual calendar alignment & scheduling',
-        'Comprehensive travel planning & itineraries',
-        'Market research & digital record management'
+        'Email triage & detailed draft responses',
+        'Calendar coordination & meeting setups',
+        'Detailed travel booking & itineraries',
+        'Online research & structured file organization'
       ],
       metrics: [
-        '<1 hour response for critical tasks',
-        '8+ cognitive hours restored weekly',
-        'Seamless standard tool integration'
+        'Under-hour response for urgent tasks',
+        'Frees up 8+ hours of focus time every week',
+        'Works with your favorite communication tools'
       ]
     }
   ];
@@ -263,7 +263,7 @@ export default function ServicesTab({ setActiveTab }: ServicesTabProps) {
         </h2>
         
         <p className="text-mutedText/90 text-sm sm:text-base leading-relaxed">
-          I build high-performance web and app solutions, integrate intelligent AI automations, and step into dedicated personal and virtual assistant roles to streamline your operational workflows and optimize daily tasks.
+          I build fast, responsive websites, integrate simple AI automations, and provide reliable administrative assistance to streamline your daily work and keep your systems synchronized.
         </p>
       </div>
 
@@ -362,10 +362,10 @@ export default function ServicesTab({ setActiveTab }: ServicesTabProps) {
       <div className="border-t border-neutral-900 pt-12 lg:pt-16 space-y-6 lg:space-y-8">
         <div className="space-y-2">
           <h2 className="font-display text-2xl sm:text-3xl font-black text-primaryText uppercase tracking-tight">
-            HIGH-PERFORMANCE CLIENT-SERVER STACK
+            CLEAN & RELIABLE TECHNICAL ARCHITECTURE
           </h2>
           <p className="text-mutedText/90 text-xs sm:text-sm max-w-3xl leading-relaxed font-sans">
-            I construct lightweight, type-safe digital products using a hand-optimized technical blueprint. Here is the exact architectural stack and pipeline that powers every system I deploy.
+            I build lightweight, secure websites and systems using modern, reliable technologies. Here are the core pillars that ensure your applications remain fast and secure.
           </p>
         </div>
 
@@ -383,30 +383,30 @@ export default function ServicesTab({ setActiveTab }: ServicesTabProps) {
                 <div className="space-y-1">
                   <div className="flex items-center gap-2 text-xs font-mono font-bold text-primaryAccent uppercase">
                     <Zap className="w-3.5 h-3.5 animate-pulse" />
-                    1. COMPILING & BUNDLING
+                    1. SPEED & BUNDLING
                   </div>
                   <p className="text-xs text-mutedText leading-relaxed pl-5 font-sans">
-                    Vite compiles JSX/TSX instantly with pre-configured Rollup treeshaking. Production assets are minified, compressed, and split into lazy-loaded chunks to ensure a sub-1.2s First Contentful Paint (FCP).
+                    Your website is optimized using modern compilation tools to reduce file sizes. This ensures pages load instantly on mobile networks and slow internet connections.
                   </p>
                 </div>
 
                 <div className="space-y-1">
                   <div className="flex items-center gap-2 text-xs font-mono font-bold text-primaryAccent uppercase">
                     <Database className="w-3.5 h-3.5" />
-                    2. SECURE STATE & PERSISTENCE
+                    2. SECURE DATA STORAGE
                   </div>
                   <p className="text-xs text-mutedText leading-relaxed pl-5 font-sans">
-                    Data storage scales seamlessly. I leverage Postgres managed instances for relational compliance, with schema validation handled programmatically via TypeScript and structured JSON layers.
+                    Your business information is stored securely in structured databases. I use reliable, modern data services to keep your customer records protected and easily accessible.
                   </p>
                 </div>
 
                 <div className="space-y-1">
                   <div className="flex items-center gap-2 text-xs font-mono font-bold text-primaryAccent uppercase">
                     <Shield className="w-3.5 h-3.5" />
-                    3. API & MIDDLEWARE SECURITY
+                    3. API & ENDPOINT SECURITY
                   </div>
                   <p className="text-xs text-mutedText leading-relaxed pl-5 font-sans">
-                    All third-party credentials (Stripe, Gemini, SendGrid) are encapsulated server-side via Express routes. Sensitive operations enforce CSRF, CORS policies, and rate-limiting to prevent automated exploitation.
+                    To protect your private integrations (such as Stripe payments or Gemini AI keys), all connections are handled through secure server-side routes, keeping your sensitive API keys completely hidden.
                   </p>
                 </div>
               </div>
@@ -433,10 +433,10 @@ export default function ServicesTab({ setActiveTab }: ServicesTabProps) {
                 </span>
               </div>
               <h3 className="font-display text-lg font-black text-primaryText uppercase">
-                WEB DEVELOPMENT COMPILATION SIMULATOR
+                WEBSITE PERFORMANCE SIMULATOR
               </h3>
               <p className="text-mutedText text-xs leading-relaxed font-sans">
-                Observe the lifecycle of a high-performance app deployment. Select a deployment pipeline to simulate asset compilation, tree-shaking, bundle size audit, and TLS routing in real-time.
+                See how a modern website is optimized for production. Select an action below to simulate code optimization, secure database connections, or speed audits in real-time.
               </p>
             </div>
 

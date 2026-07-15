@@ -56,162 +56,162 @@ interface HomeTabProps {
 const FLOW_SCENARIOS = [
   {
     id: 'lead-ingest',
-    title: 'Lead Ingest & Custom Routing',
-    description: 'Automates customer ingestion pipelines, categorizing inquiries smoothly as they come in.',
+    title: 'Lead Capture & Routing',
+    description: 'Automatically captures contact form submissions and routes them to your team.',
     steps: [
-      { label: 'Customer Form', icon: 'Globe', desc: 'Visitor submits contact or quote request' },
-      { label: 'Validator', icon: 'Shield', desc: 'Validates email format & filters spam' },
-      { label: 'Gemini Prompt', icon: 'Cpu', desc: 'Summarizes bottleneck and flags key categories' },
-      { label: 'CRM Injection', icon: 'Database', desc: 'Creates lead record with mapped attributes' },
-      { label: 'Notification', icon: 'MessageSquare', desc: 'Dispatches standard email or Slack notifications' }
+      { label: 'Customer Form', icon: 'Globe', desc: 'Visitor fills out your contact form' },
+      { label: 'Validator', icon: 'Shield', desc: 'Validates email format and filters spam' },
+      { label: 'AI Categorization', icon: 'Cpu', desc: 'AI summarizes the request and flags urgent needs' },
+      { label: 'CRM Sync', icon: 'Database', desc: 'Saves lead details to your sales database' },
+      { label: 'Instant Alert', icon: 'MessageSquare', desc: 'Sends an automatic notification via Slack or email' }
     ]
   },
   {
     id: 'invoice-payment',
-    title: 'Order Processing & PDF Delivery',
-    description: 'Handles financial handshakes and issues compliant receipts instantly.',
+    title: 'Payment & Invoice Delivery',
+    description: 'Processes client payments securely and sends automated invoices.',
     steps: [
-      { label: 'Stripe Hook', icon: 'Zap', desc: 'Payment confirmation event received' },
-      { label: 'Database Auth', icon: 'Database', desc: 'Updates customer subscription status' },
-      { label: 'PDF Compiler', icon: 'FileText', desc: 'Dynamically generates branded PDF invoice' },
-      { label: 'SMTP Mailer', icon: 'Mail', desc: 'Dispatches receipt to client via Resend' },
-      { label: 'Sheet Parity', icon: 'RefreshCw', desc: 'Logs transaction to Google Sheets ledger' }
+      { label: 'Stripe Hook', icon: 'Zap', desc: 'Receives secure payment confirmation from Stripe' },
+      { label: 'Database Sync', icon: 'Database', desc: 'Updates customer account or subscription status' },
+      { label: 'Invoice Generator', icon: 'FileText', desc: 'Generates a professional PDF invoice' },
+      { label: 'Email Delivery', icon: 'Mail', desc: 'Emails the invoice and receipt to the client automatically' },
+      { label: 'Ledger Sync', icon: 'RefreshCw', desc: 'Logs the transaction in a Google Sheet for your records' }
     ]
   },
   {
     id: 'system-sync',
-    title: 'High-Frequency Database Sync',
-    description: 'Synchronizes primary database records with marketing databases and tracking ledgers.',
+    title: 'Database & App Sync',
+    description: 'Automatically synchronizes your databases with your marketing platforms.',
     steps: [
-      { label: 'Db Trigger', icon: 'Database', desc: 'New row or state change in PostgreSQL' },
-      { label: 'Redis Queue', icon: 'Layers', desc: 'Ingests event to guarantee delivery order' },
-      { label: 'Parser Engine', icon: 'Cpu', desc: 'Transforms internal schemas to target formats' },
-      { label: 'API Gateway', icon: 'RefreshCw', desc: 'Dispatches batch updates to HubSpot/ActiveCampaign' },
-      { label: 'Telemetry Log', icon: 'Activity', desc: 'Verifies 100% parity and records execution speed' }
+      { label: 'Database Trigger', icon: 'Database', desc: 'Detects a new record or change in your database' },
+      { label: 'Delivery Queue', icon: 'Layers', desc: 'Queues the update to ensure ordered delivery' },
+      { label: 'Data Formatter', icon: 'Cpu', desc: 'Formats the data to match your target platform' },
+      { label: 'Platform Update', icon: 'RefreshCw', desc: 'Updates your marketing tool (e.g., ActiveCampaign)' },
+      { label: 'Verification Log', icon: 'Activity', desc: 'Verifies the update was successful and logs the completion' }
     ]
   }
 ];
 
 const VA_TASK_CATEGORIES = [
   { id: 'all', label: 'All Services' },
-  { id: 'admin-inbox', label: 'Admin & Inbox' },
-  { id: 'calendar-sched', label: 'Calendar & Scheduling' },
-  { id: 'travel-events', label: 'Travel & Events' },
+  { id: 'admin-inbox', label: 'Email & Admin' },
+  { id: 'calendar-sched', label: 'Schedules & Meetings' },
+  { id: 'travel-events', label: 'Travel & Trips' },
   { id: 'data-research', label: 'Research & Data' },
-  { id: 'creative-content', label: 'Content & Support' },
-  { id: 'lifestyle-errands', label: 'Lifestyle & Errands' },
+  { id: 'creative-content', label: 'Support & Content' },
+  { id: 'lifestyle-errands', label: 'Personal & Errands' },
 ];
 
 const VA_TASKS = [
   {
     id: 'email-triage',
     category: 'admin-inbox',
-    title: 'Inbox Triage & Response Drafts',
-    description: 'Monitor daily incoming communications, filter out spam, organize priority threads, and prepare context-rich drafts for swift approval.',
-    freq: 'Daily (AM/PM)',
-    sla: '< 2 hours',
-    impact: 'Keep inboxes clear, organized, and focused on high-priority client relations',
+    title: 'Email Management & Drafts',
+    description: 'Organize your daily inbox, filter spam, flag priority emails, and prepare draft responses for your approval.',
+    freq: 'Daily (Morning & Evening)',
+    sla: 'Within 2 hours',
+    impact: 'Keeps your inbox clean and ensures your clients get quick answers',
     icon: 'Mail'
   },
   {
     id: 'document-management',
     category: 'admin-inbox',
-    title: 'Document Control & Digital Archiving',
-    description: 'File invoices, digitize receipts, index resources, and manage shared cloud folder permissions securely.',
+    title: 'File & Document Organizing',
+    description: 'Organize digital invoices, save receipts, structure shared folders, and keep files secure and easy to find.',
     freq: 'Weekly',
     sla: 'Same day',
-    impact: 'Find any critical asset instantly without searching through endless chats',
+    impact: 'Find any document or receipt instantly without searching through endless folders',
     icon: 'FileText'
   },
   {
     id: 'calendar-coordination',
     category: 'calendar-sched',
-    title: 'Personal & Virtual Calendar Management',
-    description: 'Cross-coordinate multi-party schedules, block deep work time, buffer appointments, and resolve meeting conflicts seamlessly.',
-    freq: 'Continuous',
-    sla: '< 1 hour',
-    impact: 'Optimize daily routines without over-scheduling or double-booking',
+    title: 'Calendar & Scheduling Support',
+    description: 'Coordinate appointments across time zones, set aside focused work hours, and resolve meeting conflicts.',
+    freq: 'Daily / Continuous',
+    sla: 'Within 1 hour',
+    impact: 'Optimizes your daily schedule so you never have double-bookings',
     icon: 'Calendar'
   },
   {
     id: 'appointment-reminder',
     category: 'calendar-sched',
-    title: 'Briefing Packets & Meeting Preps',
-    description: 'Prepare concise briefing briefs on attendees, company profiles, and key objectives before major calls.',
+    title: 'Meeting Preparation Packets',
+    description: 'Prepare helpful summaries with information about attendees, company backgrounds, and key talking points before your calls.',
     freq: 'Before meetings',
-    sla: '< 4 hours',
-    impact: 'Go into every call fully prepared, armed with key context and talking points',
+    sla: 'Within 4 hours',
+    impact: 'Enter every meeting fully prepared with all the background context you need',
     icon: 'Briefcase'
   },
   {
     id: 'travel-itineraries',
     category: 'travel-events',
-    title: 'Multi-Destination Travel Planning',
-    description: 'Research flights, reserve properties, organize ground transfers, and compile beautiful interactive itineraries.',
-    freq: 'Ad-hoc',
-    sla: '< 24 hours',
-    impact: 'Stress-free journeys with custom travel preferences pre-loaded',
+    title: 'Travel Planning & Itineraries',
+    description: 'Research the best flights, find top hotels, organize airport transfers, and build easy-to-read travel plans.',
+    freq: 'As needed',
+    sla: 'Within 24 hours',
+    impact: 'Enjoy stress-free travel with all reservation details organized in one place',
     icon: 'Plane'
   },
 
   {
     id: 'market-research',
     category: 'data-research',
-    title: 'Competitor & Market Research',
-    description: 'Extract market dynamics, compile product pricing sheets, and summarize industry trends into digestible tables.',
-    freq: 'On-demand',
-    sla: '< 48 hours',
-    impact: 'Data-driven decision making backed by structured research dossiers',
+    title: 'Market & Competitor Research',
+    description: 'Gather information on industry trends, find pricing details, and summarize competitor activities into clean spreadsheets.',
+    freq: 'As needed',
+    sla: 'Within 48 hours',
+    impact: 'Make informed business decisions based on clear, organized research',
     icon: 'Search'
   },
   {
     id: 'spreadsheet-analytics',
     category: 'data-research',
-    title: 'Data Entry & Reporting Audits',
-    description: 'Consolidate CSV reports, sanitize customer contact sheets, identify outliers, and compile monthly KPIs.',
+    title: 'Data Entry & Spreadsheet Updates',
+    description: 'Clean up customer lists, combine reports, update spreadsheet data, and compile monthly performance metrics.',
     freq: 'Monthly',
-    sla: '< 12 hours',
-    impact: 'Pristine records that keep marketing systems running smoothly',
+    sla: 'Within 12 hours',
+    impact: 'Keep your records accurate and your customer lists clean and useful',
     icon: 'Database'
   },
   {
     id: 'social-scheduling',
     category: 'creative-content',
-    title: 'Content Distribution & Scheduling',
-    description: 'Schedule social media feeds, format blog drafts in Notion, publish newsletters, and monitor comments.',
+    title: 'Social Media & Newsletter Scheduling',
+    description: 'Schedule ready-to-go social media posts, format newsletter drafts, and keep your content calendar organized.',
     freq: 'Weekly',
     sla: 'On schedule',
-    impact: 'Consistent brand touchpoints without taking up core creative hours',
+    impact: 'Maintain a consistent online presence without spending hours on scheduling tools',
     icon: 'Globe'
   },
   {
     id: 'customer-support',
     category: 'creative-content',
     title: 'First-Line Customer Support',
-    description: 'Acknowledge tier-1 customer inquiries, handle basic help desk tickets, and escalate technical requests to developers.',
+    description: 'Acknowledge customer questions quickly, answer common inquiries, and direct complex issues to the right team member.',
     freq: 'Daily',
-    sla: '< 4 hours',
-    impact: 'Provides responsive, friendly assistance to protect user satisfaction',
+    sla: 'Within 4 hours',
+    impact: 'Provides friendly and fast support to keep your customers happy',
     icon: 'MessageSquare'
   },
   {
     id: 'lifestyle-coordination',
     category: 'lifestyle-errands',
-    title: 'Lifestyle & Errand Coordination',
-    description: 'Coordinate home repair services, schedule dental visits, locate bespoke gifts, and manage personal subscriptions.',
-    freq: 'On-demand',
-    sla: '< 6 hours',
-    impact: 'Clear mental bandwidth by outsourcing domestic logistics',
+    title: 'Personal & Lifestyle Bookings',
+    description: 'Coordinate home services (like plumber bookings), schedule medical appointments, find gifts, and manage personal subscriptions.',
+    freq: 'As needed',
+    sla: 'Within 6 hours',
+    impact: 'Outsource personal chores so you can save time and focus on your priorities',
     icon: 'User'
   },
   {
     id: 'gift-concierge',
     category: 'lifestyle-errands',
-    title: 'Gift Sourcing & Card Deliveries',
-    description: 'Curate custom gift catalogs for family/clients, write custom card drafts, and manage timely flower or hamper dropoffs.',
-    freq: 'Ad-hoc',
-    sla: '< 12 hours',
-    impact: 'Never miss birthdays or work anniversaries, showing thoughtful attention',
+    title: 'Gift Sourcing & Deliveries',
+    description: 'Find custom gift suggestions for friends or clients, write custom cards, and coordinate flower or gift deliveries.',
+    freq: 'As needed',
+    sla: 'Within 12 hours',
+    impact: 'Show thoughtful appreciation to clients and family without missing important dates',
     icon: 'Zap'
   },
 ];
@@ -577,10 +577,10 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
             <div id="home-copy-section" className="lg:col-span-6 space-y-4">
               <h2 className="font-display text-2xl sm:text-3xl font-black text-primaryText uppercase tracking-tight">
-                Modern Front-End Engineering
+                Custom Web Design & Development
               </h2>
               <p className="text-mutedText/90 text-sm leading-relaxed font-sans">
-                I specialize in crafting pixel-perfect, lightning-fast web applications with modular architecture, strict type-safety, and interactive user interfaces. By blending cutting-edge frontend tooling with rich design-system methodologies, I build products that are beautiful, accessible, and performant.
+                I specialize in building clean, responsive, and fast-loading websites and applications. By combining professional design with modern coding practices, I build easy-to-use digital products that help your business succeed.
               </p>
             </div>
           </div>
@@ -592,51 +592,51 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div className="p-3.5 bg-surface-dark border border-neutral-850 rounded-none relative">
                   <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-neutral-700" />
-                  <div className="font-mono text-[9px] text-mutedText uppercase tracking-wider">01. ARCHITECTURE</div>
-                  <div className="font-display text-lg font-bold text-primaryAccent mt-1">Component-Driven</div>
-                  <div className="text-[10px] text-neutral-500 font-mono mt-0.5">Highly reusable, DRY codebases</div>
+                  <div className="font-mono text-[9px] text-mutedText uppercase tracking-wider">01. RELIABILITY</div>
+                  <div className="font-display text-lg font-bold text-primaryAccent mt-1">Solid Structure</div>
+                  <div className="text-[10px] text-neutral-500 font-mono mt-0.5">Clean and well-organized codebases</div>
                 </div>
                 
                 <div className="p-3.5 bg-surface-dark border border-neutral-850 rounded-none relative">
                   <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-neutral-700" />
-                  <div className="font-mono text-[9px] text-mutedText uppercase tracking-wider">02. PERFORMANCE</div>
-                  <div className="font-display text-lg font-bold text-primaryAccent mt-1">100% Core Web Vitals</div>
-                  <div className="text-[10px] text-neutral-500 font-mono mt-0.5">Optimized payloads & fast loads</div>
+                  <div className="font-mono text-[9px] text-mutedText uppercase tracking-wider">02. SPEED</div>
+                  <div className="font-display text-lg font-bold text-primaryAccent mt-1">Instant Loading</div>
+                  <div className="text-[10px] text-neutral-500 font-mono mt-0.5">Optimized files for quick page loading</div>
                 </div>
 
                 <div className="p-3.5 bg-surface-dark border border-neutral-850 rounded-none relative">
                   <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-neutral-700" />
-                  <div className="font-mono text-[9px] text-mutedText uppercase tracking-wider">03. TYPE SAFETY</div>
-                  <div className="font-display text-lg font-bold text-primaryAccent mt-1">TypeScript Native</div>
-                  <div className="text-[10px] text-neutral-500 font-mono mt-0.5">Bulletproof compile-time checking</div>
+                  <div className="font-mono text-[9px] text-mutedText uppercase tracking-wider">03. ACCURACY</div>
+                  <div className="font-display text-lg font-bold text-primaryAccent mt-1">Type-Safe Code</div>
+                  <div className="text-[10px] text-neutral-500 font-mono mt-0.5">Strict error checking to prevent bugs</div>
                 </div>
 
                 <div className="p-3.5 bg-surface-dark border border-neutral-850 rounded-none relative">
                   <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-neutral-700" />
                   <div className="font-mono text-[9px] text-mutedText uppercase tracking-wider">04. RESPONSIVE</div>
-                  <div className="font-display text-lg font-bold text-primaryAccent mt-1">Universal Fluidity</div>
-                  <div className="text-[10px] text-neutral-500 font-mono mt-0.5">Seamless across all breakpoints</div>
+                  <div className="font-display text-lg font-bold text-primaryAccent mt-1">All Devices</div>
+                  <div className="text-[10px] text-neutral-500 font-mono mt-0.5">Perfect scaling on phones and laptops</div>
                 </div>
 
                 <div className="p-3.5 bg-surface-dark border border-neutral-850 rounded-none relative">
                   <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-neutral-700" />
-                  <div className="font-mono text-[9px] text-mutedText uppercase tracking-wider">05. STATE MANAGEMENT</div>
-                  <div className="font-display text-lg font-bold text-primaryAccent mt-1">Predictable Flow</div>
-                  <div className="text-[10px] text-neutral-500 font-mono mt-0.5">Clean custom hooks & atomic state</div>
+                  <div className="font-mono text-[9px] text-mutedText uppercase tracking-wider">05. SIMPLICITY</div>
+                  <div className="font-display text-lg font-bold text-primaryAccent mt-1">Easy Navigation</div>
+                  <div className="text-[10px] text-neutral-500 font-mono mt-0.5">Intuitive forms and clear menus</div>
                 </div>
 
                 <div className="p-3.5 bg-surface-dark border border-neutral-850 rounded-none relative">
                   <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-neutral-700" />
-                  <div className="font-mono text-[9px] text-mutedText uppercase tracking-wider">06. MOTION & UX</div>
-                  <div className="font-display text-lg font-bold text-primaryAccent mt-1">Interactive Gestures</div>
-                  <div className="text-[10px] text-neutral-500 font-mono mt-0.5">Staggered entry flows & layout morphing</div>
+                  <div className="font-mono text-[9px] text-mutedText uppercase tracking-wider">06. INTERACTION</div>
+                  <div className="font-display text-lg font-bold text-primaryAccent mt-1">Smooth Transitions</div>
+                  <div className="text-[10px] text-neutral-500 font-mono mt-0.5">Micro-animations that feel natural</div>
                 </div>
 
                 <div className="p-3.5 bg-surface-dark border border-neutral-850 rounded-none relative">
                   <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-neutral-700" />
-                  <div className="font-mono text-[9px] text-mutedText uppercase tracking-wider">07. MODERN TOOLING</div>
-                  <div className="font-display text-lg font-bold text-primaryAccent mt-1">Next-Gen Bundlers</div>
-                  <div className="text-[10px] text-neutral-500 font-mono mt-0.5">Ultrafast builds & optimized assets</div>
+                  <div className="font-mono text-[9px] text-mutedText uppercase tracking-wider">07. FUTURE-PROOF</div>
+                  <div className="font-display text-lg font-bold text-primaryAccent mt-1">Modern Tech</div>
+                  <div className="text-[10px] text-neutral-500 font-mono mt-0.5">Built to be easily updated as you grow</div>
                 </div>
 
 
@@ -658,10 +658,10 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
       <div id="design-development-section" className="border-t border-neutral-900 pt-12 lg:pt-16 space-y-6 lg:space-y-8">
       <div className="space-y-2">
         <h2 className="font-display text-2xl sm:text-3xl font-black text-primaryText uppercase tracking-tight">
-          CRAFTING HIGH-CONVERTING DIGITAL PRODUCTS
+          CREATING FAST, RELIABLE WEBSITES
         </h2>
         <p className="text-mutedText/90 text-xs sm:text-sm max-w-3xl leading-relaxed font-sans">
-          I don't build generic templates. I design intuitive interfaces and engineer scalable full-stack applications with an absolute focus on performance, aesthetics, and clean user-state management.
+          I build custom websites and applications tailored to your business. I prioritize user-friendly navigation, professional design, and excellent performance.
         </p>
       </div>
 
@@ -677,27 +677,27 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
               </div>
               <div>
                 <h3 className="font-display text-sm font-black text-primaryText uppercase tracking-tight">
-                  High-End Web Design
+                  Professional Web Design
                 </h3>
-                <span className="font-mono text-[8px] text-primaryAccent uppercase font-bold tracking-widest">aesthetic & conversion</span>
+                <span className="font-mono text-[8px] text-primaryAccent uppercase font-bold tracking-widest">clean & effective</span>
               </div>
             </div>
             <p className="text-xs text-mutedText leading-relaxed font-sans">
-              A beautiful website is useless if it loads slowly or confuses your users. I build high-fidelity layouts based on modern typographic rules, generous whitespace, and purposeful micro-interactions.
+              A beautiful website is only effective if it loads quickly and is easy to use. I design clean layouts with clear typography, balanced spacing, and helpful buttons.
             </p>
           </div>
           <ul className="space-y-1.5 font-mono text-[10px] text-primaryText">
             <li className="flex items-center gap-2">
               <span className="text-primaryAccent">»</span>
-              <span>Figma Prototypes & Clickable Wireframes</span>
+              <span>Polished layouts & clickable mockups</span>
             </li>
             <li className="flex items-center gap-2">
               <span className="text-primaryAccent">»</span>
-              <span>Responsive Grid & Typographic Hierarchies</span>
+              <span>Highly readable typography & grids</span>
             </li>
             <li className="flex items-center gap-2">
               <span className="text-primaryAccent">»</span>
-              <span>Custom Vector SVGs & Animated Assets</span>
+              <span>Clean icons & custom visual assets</span>
             </li>
           </ul>
         </div>
@@ -711,27 +711,27 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
               </div>
               <div>
                 <h3 className="font-display text-sm font-black text-primaryText uppercase tracking-tight">
-                  Robust App Development
+                  Custom App Development
                 </h3>
-                <span className="font-mono text-[8px] text-primaryAccent uppercase font-bold tracking-widest">full-stack & type-safe</span>
+                <span className="font-mono text-[8px] text-primaryAccent uppercase font-bold tracking-widest">secure & reliable</span>
               </div>
             </div>
             <p className="text-xs text-mutedText leading-relaxed font-sans">
-              Moving beyond simple pages into functional software. I develop secure applications with custom-built servers, scalable databases, fast client state management, and strict TypeScript integration.
+              I build functional web applications to solve business problems. This includes secure forms, organized database connections, and type-safe backend integrations.
             </p>
           </div>
           <ul className="space-y-1.5 font-mono text-[10px] text-primaryText">
             <li className="flex items-center gap-2">
               <span className="text-primaryAccent">»</span>
-              <span>Single Page React Applications (Vite)</span>
+              <span>Modern, fast-loading React apps</span>
             </li>
             <li className="flex items-center gap-2">
               <span className="text-primaryAccent">»</span>
-              <span>Type-Safe Client State & Robust API Proxying</span>
+              <span>Secure, error-free client code</span>
             </li>
             <li className="flex items-center gap-2">
               <span className="text-primaryAccent">»</span>
-              <span>Relational Database Schemas & Integrations</span>
+              <span>Structured databases & API integrations</span>
             </li>
           </ul>
         </div>
@@ -745,13 +745,13 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
               </div>
               <div>
                 <h3 className="font-display text-sm font-black text-primaryText uppercase tracking-tight">
-                  Optimization Metrics
+                  Speed Optimization
                 </h3>
-                <span className="font-mono text-[8px] text-primaryAccent uppercase font-bold tracking-widest">sub-second execution</span>
+                <span className="font-mono text-[8px] text-primaryAccent uppercase font-bold tracking-widest">instant delivery</span>
               </div>
             </div>
             <p className="text-xs text-mutedText leading-relaxed font-sans">
-              Every millisecond added to loading times directly reduces conversion rates. My products are compiled with tree-shaken bundlers, gzip/brotli compression, and lazy image loader pipelines to guarantee elite performance.
+              Slow loading times can cause visitors to leave. I optimize every page using file compression, fast asset loading, and clean code to ensure your site performs perfectly.
             </p>
           </div>
           
@@ -776,10 +776,10 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
       <div className="border-t border-neutral-900 pt-12 lg:pt-16 space-y-6 lg:space-y-8">
       <div className="space-y-2">
         <h2 className="font-display text-2xl sm:text-3xl font-black text-primaryText uppercase tracking-tight">
-          AUTOMATION DIAGRAMS
+          HELPFUL INTEGRATIONS & WORKFLOWS
         </h2>
         <p className="text-mutedText/90 text-xs sm:text-sm max-w-3xl leading-relaxed font-sans">
-          I don't just write scripts; I build highly visual, fault-tolerant logic maps. Select an operational scenario below and trigger the high-speed simulation to observe exactly how data flows, validates, and synchronizes across systems in real-time.
+          I build reliable integrations to connect your software tools. Select an example workflow below and trigger the simulation to see how data moves and synchronizes across your systems automatically.
         </p>
       </div>
 
@@ -836,7 +836,7 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
         {/* Scenario Overview */}
         <div className="space-y-1">
           <span className="font-mono text-[9px] text-primaryAccent uppercase tracking-widest font-bold">
-            Pipeline Scenario Profile
+            Workflow Scenario
           </span>
           <p className="text-xs sm:text-sm text-primaryText font-sans font-medium">
             {FLOW_SCENARIOS.find((s) => s.id === activeScenario)?.description}
@@ -915,7 +915,7 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
         </div>
 
         {/* Live Terminal Output Console */}
-        <div className="border border-neutral-850 bg-black rounded-none overflow-hidden font-mono text-[11px] leading-relaxed relative z-10">
+        <div className="border border-neutral-850 bg-neutral-950 rounded-none overflow-hidden font-mono text-[11px] leading-relaxed relative z-10">
           {/* Header Bar */}
           <div className="flex items-center justify-between bg-neutral-900 px-3.5 py-2 border-b border-neutral-850">
             <div className="flex items-center gap-2">
@@ -933,18 +933,18 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
           </div>
           
           {/* Body */}
-          <div className="p-3.5 space-y-1.5 bg-[#050505] min-h-[120px] max-h-[220px] overflow-y-auto scrollbar-thin scrollbar-thumb-neutral-800 scrollbar-track-transparent">
+          <div className="p-3.5 space-y-1.5 bg-neutral-950 min-h-[120px] max-h-[220px] overflow-y-auto scrollbar-thin scrollbar-thumb-neutral-800 scrollbar-track-transparent">
             {logs.map((log, index) => {
               // Highlight based on prefixes
               let logColor = 'text-neutral-400';
               if (log.startsWith('SUCCESS') || log.startsWith('PIPELINE_SUCCESS')) {
-                logColor = 'text-green-400 font-medium';
+                logColor = 'text-green-600 dark:text-green-400 font-medium';
               } else if (log.startsWith('START') || log.startsWith('TRIGGERED')) {
                 logColor = 'text-primaryAccent font-medium';
               } else if (log.startsWith('STATUS')) {
-                logColor = 'text-cyan-400';
+                logColor = 'text-cyan-600 dark:text-cyan-400';
               } else if (log.startsWith('ERROR')) {
-                logColor = 'text-red-400 font-bold';
+                logColor = 'text-red-600 dark:text-red-400 font-bold';
               } else if (log.startsWith('DISPATCHED')) {
                 logColor = 'text-secondaryAccent';
               }
@@ -987,10 +987,10 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
       <div id="va-operations-section" className="border-t border-neutral-900 pt-12 lg:pt-16 space-y-6 lg:space-y-8">
       <div className="space-y-2">
         <h2 className="font-display text-2xl sm:text-3xl font-black text-primaryText uppercase tracking-tight">
-          ASSISTANCE ROLES & ACTIVE TASK LEDGER
+          VIRTUAL ASSISTANT ROLES & TASK LEDGER
         </h2>
         <p className="text-mutedText/90 text-xs sm:text-sm max-w-3xl leading-relaxed font-sans font-medium">
-          As your Personal & Virtual Assistant, I streamline daily administrative work, coordinate schedules, plan complex logistics, and manage research so you can focus entirely on growth and high-level decisions.
+          As your virtual assistant, I handle daily administrative tasks, coordinate schedules, organize travel plans, and manage online research so you can stay focused on growing your business.
         </p>
       </div>
 
@@ -1003,11 +1003,11 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
           <div className="bg-surface-dark border border-neutral-850 p-5 rounded-none space-y-4 flex-1 relative overflow-hidden group hover:border-neutral-800 transition-colors">
             
             <h3 className="font-display text-base font-black text-primaryText uppercase tracking-tight pb-1 border-b border-neutral-900">
-              The Personal & Virtual Assistant Mandate
+              Virtual Assistant Services
             </h3>
             
             <p className="text-xs text-mutedText leading-relaxed font-sans font-medium">
-              Busy individuals, professionals, and teams should not be bogged down by scheduling friction, administrative overhead, or manual coordination. My goal is simple: <strong>provide absolute personal, operational, and lifestyle relief</strong>.
+              Busy founders, professionals, and teams should not lose hours to scheduling conflicts, emails, or administrative tasks. I provide reliable support to keep your operations running smoothly.
             </p>
 
             <div className="space-y-3 pt-2">
@@ -1016,9 +1016,9 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
                   <Calendar className="w-3.5 h-3.5" />
                 </div>
                 <div>
-                  <div className="font-mono text-[9px] text-neutral-500 uppercase tracking-wider">AVAILABILITY CADENCE</div>
-                  <div className="text-primaryText font-medium">Mon–Sun (7 Days a Week)</div>
-                  <div className="text-[10px] text-neutral-500 font-mono">Continuous coverage including weekends and holidays</div>
+                  <div className="font-mono text-[9px] text-neutral-500 uppercase tracking-wider">AVAILABILITY</div>
+                  <div className="text-primaryText font-medium">Monday to Sunday</div>
+                  <div className="text-[10px] text-neutral-500 font-mono">Consistent daily support, including weekends when needed</div>
                 </div>
               </div>
 
@@ -1027,9 +1027,9 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
                   <Clock className="w-3.5 h-3.5" />
                 </div>
                 <div>
-                  <div className="font-mono text-[9px] text-neutral-500 uppercase tracking-wider">PREFERRED WORKING TIME</div>
-                  <div className="text-primaryAccent font-bold">100% Client-Preferred Hours</div>
-                  <div className="text-[10px] text-neutral-500 font-mono">Tailored to match your active business hours and local timezone</div>
+                  <div className="font-mono text-[9px] text-neutral-500 uppercase tracking-wider">WORKING HOURS</div>
+                  <div className="text-primaryAccent font-bold">Flexible Working Hours</div>
+                  <div className="text-[10px] text-neutral-500 font-mono">Aligned to match your active business hours and timezone</div>
                 </div>
               </div>
 
@@ -1038,9 +1038,9 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
                   <Activity className="w-3.5 h-3.5" />
                 </div>
                 <div>
-                  <div className="font-mono text-[9px] text-neutral-500 uppercase tracking-wider">URGENT REQUEST RESPONSE</div>
-                  <div className="text-primaryAccent font-bold">Sub-1 Hour SLA Guaranteed</div>
-                  <div className="text-[10px] text-neutral-500 font-mono">Immediate triage for scheduling conflicts or urgent travels</div>
+                  <div className="font-mono text-[9px] text-neutral-500 uppercase tracking-wider">RESPONSE TIME</div>
+                  <div className="text-primaryAccent font-bold">Within 1 Hour for Urgent Tasks</div>
+                  <div className="text-[10px] text-neutral-500 font-mono">Quick attention for scheduling conflicts or urgent travel updates</div>
                 </div>
               </div>
 
@@ -1049,9 +1049,9 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
                   <Server className="w-3.5 h-3.5" />
                 </div>
                 <div>
-                  <div className="font-mono text-[9px] text-neutral-500 uppercase tracking-wider">COMMUNICATION SYNC</div>
-                  <div className="text-primaryText font-medium">Slack / WhatsApp / Email / Discord</div>
-                  <div className="text-[10px] text-neutral-500 font-mono">Direct chat channels, no complex ticketing hierarchies</div>
+                  <div className="font-mono text-[9px] text-neutral-500 uppercase tracking-wider">COMMUNICATION</div>
+                  <div className="text-primaryText font-medium">Slack, WhatsApp, or Email</div>
+                  <div className="text-[10px] text-neutral-500 font-mono">Direct communication channels for quick updates</div>
                 </div>
               </div>
             </div>
@@ -1061,7 +1061,7 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
                 onClick={() => setActiveTab('contact')}
                 className="w-full flex items-center justify-center gap-2 bg-neutral-950 hover:bg-primaryAccent hover:text-white border border-neutral-900 hover:border-primaryAccent text-primaryText font-mono font-bold uppercase text-[10px] py-2.5 rounded-none cursor-pointer transition-colors"
               >
-                BOOK A COGNITIVE LOAD AUDIT
+                SCHEDULE A FREE CONSULTATION
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>

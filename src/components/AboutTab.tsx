@@ -12,6 +12,7 @@ import { TabType } from '../types';
 import ninoPortrait from '../assets/images/nino_portrait.jpeg';
 import { BlackHoleEffect } from './BlackHoleEffect';
 import { SpecialText } from './ui/SpecialText';
+import TubesBackground from './ui/neon-flow';
 
 interface AboutTabProps {
   setActiveTab: (tab: TabType) => void;
@@ -20,20 +21,20 @@ interface AboutTabProps {
 export default function AboutTab({ setActiveTab }: AboutTabProps) {
   const coreCompetencies = [
     {
-      title: 'Interactive Web Design',
-      description: 'Crafting unique, distinctive, and high-fidelity interfaces utilizing gorgeous typography pairings, rich spacing grids, and sleek color tokens.'
+      title: 'Clean Web Design',
+      description: 'Creating clean, responsive, and easy-to-use websites designed to match your brand and convert visitors into clients.'
     },
     {
-      title: 'Fluid Motion & Animation',
-      description: 'Breathing life into applications with purposeful, staggered entrance animations, gesture-based triggers, and layout morphing vectors.'
+      title: 'Interactive Transitions',
+      description: 'Adding smooth transitions and micro-interactions that make your website feel fast, responsive, and natural to navigate.'
     },
     {
-      title: 'Responsive Engineering',
-      description: 'Writing desktop-first precision and mobile-first code to guarantee your app adapts seamlessly to standard phones, tablets, and wide-screen monitors.'
+      title: 'Mobile-First Layouts',
+      description: 'Writing clean, responsive code so your website works perfectly on mobile phones, tablets, laptops, and large screens.'
     },
     {
-      title: 'Professional Architecture',
-      description: 'Organizing modular React components, clean state orchestration layers, and optimized Vite build paths for lightning-fast performance.'
+      title: 'Reliable Codebases',
+      description: 'Structuring modern, modular frontend code to ensure your website loads quickly, remains secure, and scales easily as your needs grow.'
     }
   ];
 
@@ -48,7 +49,7 @@ export default function AboutTab({ setActiveTab }: AboutTabProps) {
         </h2>
         
         <p className="text-mutedText/90 text-sm sm:text-base">
-          I replace operational complexity with programmatic leverage, restoring speed so founders can scale.
+          I design custom websites, build helpful automations, and manage daily workflows so you can focus on growing your business.
         </p>
       </div>
 
@@ -57,14 +58,14 @@ export default function AboutTab({ setActiveTab }: AboutTabProps) {
         
         {/* COLUMN 1: Niño Verdejo Specs Terminal */}
         <div className="md:col-span-1 lg:col-span-4 flex flex-col">
-          <div className="glass-panel border border-neutral-800 rounded-none p-5 space-y-5 relative overflow-hidden flex-1 flex flex-col justify-between bg-black/40">
+          <TubesBackground className="glass-panel neon-flow-container border border-neutral-800 rounded-none p-5 space-y-5 relative overflow-hidden flex-1 flex flex-col justify-between bg-black/40 min-h-0 select-none">
             {/* Beautiful Black Hole Vortex background effect */}
             <BlackHoleEffect />
             
             {/* Corner bracket decorators */}
             <div className="absolute -top-[1px] -right-[1px] w-6 h-6 border-t border-r border-neutral-700 pointer-events-none z-20" />
             
-            <div className="space-y-5 relative z-10">
+            <div className="space-y-5 relative z-10 pointer-events-auto">
               {/* Header Spec */}
               <div className="flex items-center justify-between border-b border-neutral-900 pb-3">
                 <div className="space-y-0.5">
@@ -80,16 +81,16 @@ export default function AboutTab({ setActiveTab }: AboutTabProps) {
               </div>
 
               {/* Profile Image Header */}
-              <div className="relative border border-neutral-900 overflow-hidden bg-neutral-950 aspect-square">
+              <div className="group relative border border-neutral-900 overflow-hidden bg-neutral-950 aspect-square cursor-crosshair pointer-events-auto">
                 <img
                   src={ninoPortrait}
                   alt="Niño Verdejo Portrait"
-                  className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-300 opacity-80 hover:opacity-100"
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 opacity-80 group-hover:opacity-100"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/90 via-transparent to-transparent pointer-events-none transition-opacity duration-500 group-hover:opacity-0" />
                 {/* Scanline overlay effect to fit terminal theme */}
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[size:100%_4px,3px_100%] pointer-events-none opacity-30" />
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[size:100%_4px,3px_100%] pointer-events-none opacity-30 transition-opacity duration-500 group-hover:opacity-0" />
               </div>
 
               {/* Niño specification sheets */}
@@ -136,14 +137,14 @@ export default function AboutTab({ setActiveTab }: AboutTabProps) {
             </div>
 
             {/* Micro-terminal text */}
-            <div className="mt-6 bg-neutral-950/90 backdrop-blur-xs p-2.5 border border-neutral-900 font-mono text-[10px] text-neutral-500 space-y-0.5 leading-tight relative z-10">
+            <div className="mt-6 bg-neutral-950/90 backdrop-blur-xs p-2.5 border border-neutral-900 font-mono text-[10px] text-neutral-500 space-y-0.5 leading-tight relative z-10 pointer-events-auto">
               <div className="text-primaryAccent font-bold">{`Development Logs`}</div>
               <div>• Dynamic React rendering loops optimized.</div>
               <div>• Responsive viewport layout specs verified.</div>
               <div>• Framer Motion fluid animations active.</div>
             </div>
 
-          </div>
+          </TubesBackground>
         </div>
 
         {/* COLUMN 2: High Velocity Copywriting */}
@@ -151,23 +152,23 @@ export default function AboutTab({ setActiveTab }: AboutTabProps) {
           
           <div className="space-y-4">
             <h3 className="font-display text-xl sm:text-2xl font-bold text-primaryText uppercase tracking-tight">
-              Creating digital experiences that engage, convert, and perform. Visually stunning and rigorously engineered.
+              Building fast, reliable websites and custom systems designed to grow your business and simplify your work.
             </h3>
             
             <p className="text-mutedText/95 text-sm sm:text-base leading-relaxed font-sans">
-              A great user interface is more than just clean aesthetics—it is a functional system that translates brand identity into flawless user journeys. Every line of code, every transition curve, and every responsive breakpoint should work in complete harmony to provide a seamless, elite experience across all screen sizes.
+              A great website is more than just a beautiful page—it is a functional tool that represents your brand and guides visitors to take action. Every detail, from loading times to visual layout, is built to provide an easy and intuitive experience for your customers on any device.
             </p>
 
             <p className="text-mutedText/95 text-sm sm:text-base leading-relaxed font-sans">
-              I specialize in bridging the gap between artistic visual design and bulletproof technical architecture. Leveraging modern front-end frameworks, high-performance animation engines, and meticulous responsive layouts, I build professional web applications that load instantly and respond dynamically to user touch or click gestures.
+              I specialize in bringing designs to life with solid technical engineering. Using modern web standards, reliable frameworks, and clean layouts, I build fast-loading websites and applications that are responsive, highly interactive, and easy to use.
             </p>
 
             <p className="text-mutedText/95 text-sm sm:text-base leading-relaxed font-sans">
-              By combining custom typography hierarchies, elegant whitespace distribution, and custom glassmorphic panels, I design websites that look stunning on 4K retina displays down to the smallest mobile devices. Every transition, hover state, and interactive layout change is built with clean motion curves to maximize tactile satisfaction and user retention.
+              By using clean typography, balanced spacing, and refined color palettes, I design websites that look professional on everything from high-resolution screens to small smartphones. Every transition and button click is polished to feel snappy and natural, helping keep users engaged.
             </p>
 
             <p className="text-mutedText/95 text-sm sm:text-base leading-relaxed font-sans">
-              Behind the visual beauty lies standard-compliant semantic markup, robust TypeScript modularity, and optimized production bundlers. This professional approach guarantees high lighthouse scores, superb accessibility controls (WCAG/ARIA), and a future-proof development ecosystem that scales effortlessly as your project requirements grow.
+              Behind the design, I write search-engine-friendly code, use strong security practices, and optimize files for speed. This approach ensures high search visibility, complete accessibility for all users, and a secure system that you can easily update as your business grows.
             </p>
           </div>
 
@@ -194,7 +195,7 @@ export default function AboutTab({ setActiveTab }: AboutTabProps) {
           <div className="p-4 bg-neutral-950 border border-neutral-900 rounded-none flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div className="space-y-0.5">
               <div className="font-mono text-[10px] text-primaryAccent font-bold">ENGAGEMENT MODEL</div>
-              <div className="text-xs sm:text-sm text-primaryText font-bold font-display uppercase">Fractional Sprints or Monthly Retainers</div>
+              <div className="text-xs sm:text-sm text-primaryText font-bold font-display uppercase">Flexible Project-Based or Monthly Retainers</div>
             </div>
             <button
               onClick={() => setActiveTab('contact')}

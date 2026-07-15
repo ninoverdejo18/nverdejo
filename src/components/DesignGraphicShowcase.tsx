@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import TubesBackground from './ui/neon-flow';
 import { 
   Monitor, 
   Layout, 
@@ -52,7 +53,7 @@ const PALETTES: Palette[] = [
   }
 ];
 
-type ShowcaseMode = 'render' | 'spec' | 'grid' | 'typography';
+type ShowcaseMode = 'render' | 'spec' | 'grid' | 'typography' | 'neon';
 
 export default function DesignGraphicShowcase() {
   const [activePalette, setActivePalette] = useState<Palette>(PALETTES[0]);
@@ -138,6 +139,17 @@ export default function DesignGraphicShowcase() {
             >
               <Type className="w-3 h-3" />
               Type Scale
+            </button>
+            <button
+              onClick={() => setActiveMode('neon')}
+              className={`px-2.5 py-1 flex items-center gap-1 transition-all cursor-pointer ${
+                activeMode === 'neon' 
+                  ? 'bg-neutral-800 text-primaryText border border-neutral-700' 
+                  : 'text-mutedText hover:text-primaryText'
+              }`}
+            >
+              <Sparkles className="w-3 h-3" />
+              Neon Flow
             </button>
           </div>
         </div>
@@ -312,6 +324,13 @@ export default function DesignGraphicShowcase() {
           {/* Mockup Canvas */}
           <div className="p-6 relative bg-[#090909] min-h-[400px] flex-1 flex flex-col justify-between overflow-hidden">
             
+            {/* Neon Flow Background Specimen */}
+            {activeMode === 'neon' && (
+              <div className="absolute inset-0 z-0">
+                <TubesBackground className="border-none w-full h-full min-h-0 bg-transparent" />
+              </div>
+            )}
+
             {/* GRID OVERLAY LAYER (Only when 'grid' active) */}
             {activeMode === 'grid' && (
               <div className="absolute inset-x-6 inset-y-0 grid grid-cols-12 gap-4 pointer-events-none z-30">

@@ -980,6 +980,7 @@ function SplashCursor({
     }
 
     function isInteractive(target) {
+      if ((window as any).disableSplashCursor) return true;
       if (!target) return false;
       if (target.nodeType === 3) return true; // TEXT_NODE
       const el = target.closest('button, a, select, input, textarea, [role="button"], .cursor-pointer, p, span, h1, h2, h3, h4, h5, h6, li, label, strong, em, b, i, small, code');

@@ -17,7 +17,9 @@ import {
   Clock,
   Minimize2,
   Maximize2,
-  ChevronDown
+  ChevronDown,
+  Github,
+  Linkedin
 } from 'lucide-react';
 import { TabType } from './types';
 import HomeTab from './components/HomeTab';
@@ -386,8 +388,29 @@ export default function App() {
 
           {/* BOTTOM FOOTER */}
           <footer className="border-t border-neutral-900 py-6 flex flex-col md:flex-row items-center justify-between gap-4 font-mono text-[10px] text-neutral-500 pointer-events-auto">
-            <div className="text-center md:text-left space-y-1">
+            <div className="text-center md:text-left space-y-1.5">
               <div>© {new Date().getFullYear()} NIÑO VERDEJO. ALL RIGHTS RESERVED.</div>
+              <div className="flex items-center justify-center md:justify-start gap-3 text-[9px] text-neutral-400">
+                <a 
+                  href="https://github.com/ninoverdejo18?utm_source=chatgpt.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1 transition-colors hover:text-secondaryAccent"
+                >
+                  <Github className="w-3 h-3" />
+                  <span>GITHUB</span>
+                </a>
+                <span className="text-neutral-800">•</span>
+                <a 
+                  href="https://www.linkedin.com/in/ni%C3%B1o-verdejo-949198330/?utm_source=chatgpt.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1 transition-colors hover:text-primaryAccent"
+                >
+                  <Linkedin className="w-3 h-3" />
+                  <span>LINKEDIN</span>
+                </a>
+              </div>
             </div>
             
             {/* Navigation links of Services, Results, About, Contact */}

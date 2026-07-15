@@ -14,11 +14,104 @@ import {
   ExternalLink, 
   Zap, 
   Clock, 
-  Terminal
+  Terminal,
+  Volume2
 } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { ContactFormInput } from '../types';
 import { SplineSceneHero } from './SplineSceneHero';
+
+const playRobotVoice = (text: string) => {
+  if (typeof window === 'undefined') return;
+  
+  // 1. Play sci-fi modular robotic beep-boop synth sequence using Web Audio API
+  try {
+    const AudioContext = window.AudioContext || (window as any).webkitAudioContext;
+    if (AudioContext) {
+      const ctx = new AudioContext();
+      const now = ctx.currentTime;
+      
+      // Let's queue up a rapid sequence of modular synthetic laser/beep pulses
+      const pulses = [
+        { time: 0, freq: 190, dur: 0.08 },
+        { time: 0.08, freq: 140, dur: 0.06 },
+        { time: 0.14, freq: 280, dur: 0.12 }
+      ];
+      
+      pulses.forEach((p) => {
+        const osc = ctx.createOscillator();
+        const modOsc = ctx.createOscillator();
+        const gainNode = ctx.createGain();
+        const filter = ctx.createBiquadFilter();
+        const modGain = ctx.createGain();
+        
+        // Main metallic timbre
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(p.freq, now + p.time);
+        osc.frequency.exponentialRampToValueAtTime(p.freq * 0.7, now + p.time + p.dur);
+        
+        // Ring modulation carrier to give it that "Dalek" / electronic ring
+        modOsc.type = 'sine';
+        modOsc.frequency.setValueAtTime(65, now + p.time);
+        
+        modGain.gain.setValueAtTime(45, now + p.time);
+        
+        // Bandpass filter to add electronic resonance
+        filter.type = 'bandpass';
+        filter.frequency.setValueAtTime(1400, now + p.time);
+        filter.Q.setValueAtTime(6, now + p.time);
+        
+        // Volume envelope
+        gainNode.gain.setValueAtTime(0, now + p.time);
+        gainNode.gain.linearRampToValueAtTime(0.12, now + p.time + 0.01);
+        gainNode.gain.exponentialRampToValueAtTime(0.001, now + p.time + p.dur);
+        
+        // Connections
+        modOsc.connect(modGain);
+        modGain.connect(osc.frequency);
+        
+        osc.connect(filter);
+        filter.connect(gainNode);
+        gainNode.connect(ctx.destination);
+        
+        modOsc.start(now + p.time);
+        osc.start(now + p.time);
+        
+        modOsc.stop(now + p.time + p.dur);
+        osc.stop(now + p.time + p.dur);
+      });
+    }
+  } catch (err) {
+    console.warn('Web Audio synthesis is blocked or unsupported:', err);
+  }
+
+  // 2. Synthesize deep-pitched robotic speech voice via SpeechSynthesis API
+  try {
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      
+      // Select the best voice
+      const voices = window.speechSynthesis.getVoices();
+      const preferredVoice = voices.find(v => 
+        v.lang.startsWith('en') && 
+        (v.name.includes('Google US English') || v.name.includes('Microsoft') || v.name.includes('Male') || v.name.includes('David'))
+      ) || voices.find(v => v.lang.startsWith('en')) || voices[0];
+      
+      if (preferredVoice) {
+        utterance.voice = preferredVoice;
+      }
+      
+      utterance.rate = 0.85;  // Slow, methodical pacing
+      utterance.pitch = 0.45; // Low-pitched mechanical sound
+      utterance.volume = 1.0;
+      
+      window.speechSynthesis.speak(utterance);
+    }
+  } catch (err) {
+    console.warn('SpeechSynthesis is blocked or unsupported:', err);
+  }
+};
 
 export default function ContactTab() {
   const [form, setForm] = useState<ContactFormInput>({
@@ -61,29 +154,17 @@ export default function ContactTab() {
     setStatus({ type: 'idle', message: '' });
 
     // Retrieve EmailJS configuration from environment variables safely in strict TS
-    const viteMeta = import.meta as unknown as { env: Record<string, string | undefined> };
-    const serviceId = viteMeta.env.VITE_EMAILJS_SERVICE_ID || '';
-    const templateId = viteMeta.env.VITE_EMAILJS_TEMPLATE_ID || '';
-    const publicKey = viteMeta.env.VITE_EMAILJS_PUBLIC_KEY || '';
+    const serviceId = (import.meta.env.VITE_EMAILJS_SERVICE_ID as string) || 'service_pdnki0s';
+    const templateId = (import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string) || 'template_sym6wks';
+    const publicKey = (import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string) || 'Um40NagmPxC9YUZAO';
 
     // Check if keys exist
     if (!serviceId || !templateId || !publicKey) {
-      // Simulate successful submission and provide clear debugging configuration details
-      setTimeout(() => {
-        setLoading(false);
-        setStatus({
-          type: 'simulated',
-          message: 'Project pipeline inquiry initiated (Simulation Mode).'
-        });
-        // Clear form
-        setForm({
-          name: '',
-          email: '',
-          business: '',
-          projectType: 'AI Automation',
-          message: ''
-        });
-      }, 1500);
+      setLoading(false);
+      setStatus({
+        type: 'error',
+        message: 'EmailJS Public Key is required! Please configure the VITE_EMAILJS_PUBLIC_KEY environment variable in your Settings menu to enable live message delivery.'
+      });
       return;
     }
 
@@ -98,7 +179,18 @@ export default function ContactTab() {
         to_email: 'ninoverdejo@gmail.com'
       };
 
-      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      // Create a 10-second timeout promise to avoid getting stuck if adblockers silently drop the request
+      const timeoutPromise = new Promise((_, reject) => {
+        setTimeout(() => {
+          reject(new Error('TRANSMISSION_TIMEOUT'));
+        }, 10000);
+      });
+
+      // Race the EmailJS dispatch against the timeout promise
+      await Promise.race([
+        emailjs.send(serviceId, templateId, templateParams, publicKey),
+        timeoutPromise
+      ]);
       
       setLoading(false);
       setStatus({
@@ -114,10 +206,23 @@ export default function ContactTab() {
         message: ''
       });
     } catch (err: unknown) {
+      console.error('EmailJS transmission error:', err);
       setLoading(false);
+      
+      let errorMessage = 'Pipeline communication failure. Please send direct email to ninoverdejo@gmail.com.';
+      if (err instanceof Error) {
+        if (err.message === 'TRANSMISSION_TIMEOUT') {
+          errorMessage = 'Transmission timed out. This typically happens when an ad-blocker (like uBlock Origin, Brave Shields, or Ghostery) silently blocks/drops the request to api.emailjs.com, or if your network is unstable. Please temporarily disable your ad-blocker or contact Niño directly at ninoverdejo@gmail.com.';
+        } else {
+          errorMessage = `${err.message} (Please verify your EmailJS keys or contact Niño directly at ninoverdejo@gmail.com)`;
+        }
+      } else if (typeof err === 'object' && err !== null && 'text' in err) {
+        errorMessage = `${(err as { text: string }).text} (Please verify your EmailJS keys or contact Niño directly at ninoverdejo@gmail.com)`;
+      }
+      
       setStatus({
         type: 'error',
-        message: err instanceof Error ? err.message : 'Pipeline communication failure. Please use direct email.'
+        message: errorMessage
       });
     }
   };
@@ -159,8 +264,16 @@ export default function ContactTab() {
 
             {/* Social Channels panel */}
             <div className="p-5 bg-neutral-900/40 border-b border-neutral-800/80 rounded-none space-y-3">
-              <div className="font-mono text-[9px] text-neutral-500 uppercase tracking-widest font-bold">
-                EXTERNAL NETWORKS
+              <div 
+                onClick={() => playRobotVoice('External Networks')}
+                className="font-mono text-[9px] text-neutral-500 hover:text-primaryAccent uppercase tracking-widest font-bold flex items-center gap-1.5 cursor-pointer transition-all group select-none"
+                title="Click to play robot voice transmission"
+              >
+                <Volume2 className="w-3.5 h-3.5 text-neutral-500 group-hover:text-primaryAccent group-hover:scale-110 transition-all shrink-0" />
+                <span>EXTERNAL NETWORKS</span>
+                <span className="text-[8px] text-primaryAccent font-mono opacity-0 group-hover:opacity-100 transition-opacity ml-auto tracking-normal">
+                  [PLAY AUDIO TRANSMISSION]
+                </span>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <a 
@@ -196,10 +309,10 @@ export default function ContactTab() {
           <div className="bg-transparent rounded-none font-mono text-[11px] text-neutral-500 space-y-1.5">
             <div className="flex items-center gap-1.5 text-primaryText font-bold">
               <Clock className="w-3.5 h-3.5" />
-              RESPONSE COMMITTED PROTOCOL
+              RESPONSE TIME
             </div>
             <p className="leading-normal">
-              Every inquiry is triaged within 120 minutes. If accepted, you will receive an active workspace diagram detailing exact milestones, development timelines, and fixed retainer metrics.
+              Inquiries are typically reviewed within 24 hours.
             </p>
           </div>
 
@@ -211,10 +324,10 @@ export default function ContactTab() {
             
             <div className="pb-3">
               <h3 className="font-display text-base font-black text-primaryText uppercase tracking-tight">
-                TRANSMISSION FORM
+                WEB PROJECT INQUIRY
               </h3>
               <p className="text-[10px] text-mutedText font-mono">
-                SECURE SSL PIPELINE ACTIVE
+                DESIGN & DEVELOPMENT BRIEFING ACTIVE
               </p>
             </div>
 
@@ -231,7 +344,7 @@ export default function ContactTab() {
                     name="name"
                     value={form.name}
                     onChange={handleChange}
-                    placeholder="Niño Verdejo" 
+                    placeholder="Type your name" 
                     required
                     className="w-full bg-neutral-950 border border-neutral-800 focus:border-primaryAccent text-primaryText py-2.5 px-3 rounded-none outline-none font-sans transition-colors text-xs"
                   />
@@ -246,7 +359,7 @@ export default function ContactTab() {
                     name="email"
                     value={form.email}
                     onChange={handleChange}
-                    placeholder="ninoverdejo@gmail.com" 
+                    placeholder="Type your email address" 
                     required
                     className="w-full bg-neutral-950 border border-neutral-800 focus:border-primaryAccent text-primaryText py-2.5 px-3 rounded-none outline-none font-sans transition-colors text-xs"
                   />
@@ -264,7 +377,7 @@ export default function ContactTab() {
                     name="business"
                     value={form.business}
                     onChange={handleChange}
-                    placeholder="SaaS Corp" 
+                    placeholder="Type your business name" 
                     className="w-full bg-neutral-950 border border-neutral-800 focus:border-primaryAccent text-primaryText py-2.5 px-3 rounded-none outline-none font-sans transition-colors text-xs"
                   />
                 </div>
@@ -290,14 +403,14 @@ export default function ContactTab() {
               {/* Message */}
               <div className="space-y-1">
                 <label className="font-mono text-[9px] text-mutedText uppercase tracking-widest font-bold">
-                  Bottleneck Description & Goal *
+                  Project Scope & Visual Style *
                 </label>
                 <textarea 
                   name="message"
                   value={form.message}
                   onChange={handleChange}
                   rows={4}
-                  placeholder="Describe your current manual bottlenecks, workflows requiring optimization, or active server faults. (Minimum 10 words)"
+                  placeholder="Describe your design aesthetics, desired pages/features, responsive layout needs, or custom backend services. (Minimum 10 words)"
                   required
                   className="w-full bg-neutral-950 border border-neutral-800 focus:border-primaryAccent text-primaryText py-2.5 px-3 rounded-none outline-none font-sans transition-colors resize-none leading-relaxed text-xs"
                 />
