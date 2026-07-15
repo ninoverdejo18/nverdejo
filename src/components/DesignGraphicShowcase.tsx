@@ -84,9 +84,9 @@ export default function DesignGraphicShowcase() {
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-neutral-900 pb-5 relative z-10">
         <div>
 
-          <h3 className="font-display text-lg font-black text-primaryText uppercase tracking-tight">
+          <h2 className="font-display text-2xl sm:text-3xl font-black text-primaryText uppercase tracking-tight">
             POLISHED WEB LAYOUT & STYLE SPECIMEN
-          </h3>
+          </h2>
           <p className="text-xs text-mutedText max-w-xl font-sans mt-1">
             Explore structural rules, typographic scales, grids, and customized color parameters. Toggle overlays to examine design fidelity.
           </p>

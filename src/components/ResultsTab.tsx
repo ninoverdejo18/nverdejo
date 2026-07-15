@@ -71,7 +71,7 @@ export default function ResultsTab({ setActiveTab }: ResultsTabProps) {
   ];
 
   return (
-    <div id="results-tab-container" className="space-y-12 lg:space-y-16 pb-8">
+    <div id="results-tab-container" className="pt-24 pb-8 lg:pt-28 lg:pb-12 space-y-12 lg:space-y-16">
       
       {/* Title block */}
       <div className="space-y-3 max-w-3xl">

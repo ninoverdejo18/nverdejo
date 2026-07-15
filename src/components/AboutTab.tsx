@@ -39,7 +39,7 @@ export default function AboutTab({ setActiveTab }: AboutTabProps) {
   ];
 
   return (
-    <div id="about-tab-container" className="space-y-12 lg:space-y-16 pb-8 animate-fade-in">
+    <div id="about-tab-container" className="pt-24 pb-8 lg:pt-28 lg:pb-12 space-y-12 lg:space-y-16 animate-fade-in">
       
       {/* Title block */}
       <div className="space-y-3 max-w-3xl">

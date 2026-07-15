@@ -342,14 +342,14 @@ export default function App() {
             </div>
 
             {/* Desktop Navigation Interface: Minimize Only with Dropdown List */}
-            <div ref={dropdownRef} className="hidden md:flex relative items-center gap-2">
+            <div ref={dropdownRef} className="hidden md:flex relative flex-col items-center w-[110px]">
               <button
                 onClick={() => setMenuDropdownOpen(!menuDropdownOpen)}
-                className={`flex items-center gap-2 bg-transparent hover:bg-neutral-900/30 px-4 py-2.5 rounded-lg text-xs font-mono font-bold tracking-wider text-primaryAccent hover:text-primary-text transition-all duration-300 cursor-pointer shadow-none border-none group ${isScrolled ? 'opacity-40' : 'opacity-100'}`}
+                className={`relative w-full flex items-center justify-center bg-transparent hover:bg-transparent px-3 py-2.5 rounded-lg text-xs font-mono font-bold tracking-wider text-primaryAccent hover:text-primary-text transition-all duration-300 cursor-pointer shadow-none border-none group ${isScrolled ? 'opacity-40' : 'opacity-100'}`}
                 title="Toggle Menu"
               >
                 <span className="text-white">MENU</span>
-                <ChevronDown className={`w-3.5 h-3.5 text-white transition-transform duration-200 ${menuDropdownOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`absolute right-3 w-3.5 h-3.5 text-white transition-transform duration-200 ${menuDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
 
               <AnimatePresence>
@@ -359,7 +359,7 @@ export default function App() {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 10, scale: 0.95 }}
                     transition={{ duration: 0.15, ease: 'easeOut' }}
-                    className="absolute left-0 right-0 top-full mt-1.5 bg-neutral-950/95 backdrop-blur-md rounded-lg shadow-xl z-50 overflow-hidden"
+                    className="absolute left-0 right-0 top-full mt-1.5 bg-transparent backdrop-blur-none rounded-lg shadow-none z-50 overflow-hidden border border-transparent"
                   >
                     {tabList.map((tab) => {
                       const isActive = activeTab === tab.id;
@@ -370,8 +370,8 @@ export default function App() {
                             setActiveTab(tab.id);
                             setMenuDropdownOpen(false);
                           }}
-                          className={`w-full text-center px-2 py-2.5 font-display text-[10px] font-semibold uppercase tracking-wider transition-colors cursor-pointer block hover:bg-neutral-900 ${
-                            isActive ? 'text-primaryAccent bg-neutral-900/40 font-bold' : 'text-muted-text hover:text-primary-text'
+                          className={`w-full text-center px-2 py-2.5 font-display text-[10px] font-semibold uppercase tracking-wider transition-colors cursor-pointer block bg-transparent hover:bg-transparent border-none ${
+                            isActive ? 'text-primaryAccent bg-transparent font-bold' : 'text-muted-text hover:text-primary-text'
                           }`}
                         >
                           {tab.label}
@@ -425,7 +425,7 @@ export default function App() {
           </AnimatePresence>
 
           {/* ACTIVE CONTENT VIEW WINDOW */}
-          <main className={`flex-1 pointer-events-auto ${(activeTab === 'home' || activeTab === 'contact') ? '' : 'pt-24 pb-8 lg:pt-28 lg:pb-12'}`}>
+          <main className="flex-1 pointer-events-auto">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}

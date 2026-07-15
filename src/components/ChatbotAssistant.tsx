@@ -7,6 +7,7 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   X, 
+  Minus,
   Send, 
   Sparkles, 
   Bot 
@@ -384,16 +385,31 @@ export default function ChatbotAssistant({ setActiveTab }: ChatbotAssistantProps
                 </div>
               </div>
 
-              <button 
-                onClick={() => setIsOpen(false)}
-                className="text-neutral-500 hover:text-primaryText transition-colors p-1 cursor-pointer"
-              >
-                <X className="w-3.5 h-3.5" />
-              </button>
+              <div className="flex items-center gap-1.5">
+                <button 
+                  onClick={() => setIsOpen(false)}
+                  className="text-neutral-500 hover:text-primaryText transition-colors p-1 cursor-pointer"
+                  title="Minimize"
+                  aria-label="Minimize"
+                >
+                  <Minus className="w-3.5 h-3.5" />
+                </button>
+                <button 
+                  onClick={() => setIsOpen(false)}
+                  className="text-neutral-500 hover:text-primaryText transition-colors p-1 cursor-pointer"
+                  title="Close"
+                  aria-label="Close"
+                >
+                  <X className="w-3.5 h-3.5" />
+                </button>
+              </div>
             </div>
 
             {/* Chat Messages Body */}
-            <div className="flex-1 p-4 overflow-y-auto space-y-4 bg-neutral-950/40">
+            <div 
+              data-lenis-prevent
+              className="flex-1 p-4 overflow-y-auto space-y-4 bg-neutral-950/40"
+            >
               
               {messages.map((msg) => (
                 <div 
