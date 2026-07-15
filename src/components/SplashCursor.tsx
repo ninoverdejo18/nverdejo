@@ -981,11 +981,12 @@ function SplashCursor({
 
     function isInteractive(target) {
       if (!target) return false;
-      const el = target.closest('button, a, select, input, textarea, [role="button"], .cursor-pointer');
+      if (target.nodeType === 3) return true; // TEXT_NODE
+      const el = target.closest('button, a, select, input, textarea, [role="button"], .cursor-pointer, p, span, h1, h2, h3, h4, h5, h6, li, label, strong, em, b, i, small, code');
       if (el) return true;
       try {
         const style = window.getComputedStyle(target);
-        if (style && style.cursor === 'pointer') {
+        if (style && (style.cursor === 'pointer' || style.cursor === 'text')) {
           return true;
         }
       } catch (e) {}
