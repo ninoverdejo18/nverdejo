@@ -23,6 +23,8 @@ import {
   Palette
 } from 'lucide-react';
 import { ResultCard, TabType } from '../types';
+import Hyperspeed from './Hyperspeed';
+import { HeroGeometricBackground } from './ui/shape-landing-hero';
 
 interface ResultsTabProps {
   setActiveTab: (tab: TabType) => void;
@@ -144,9 +146,15 @@ export default function ResultsTab({ setActiveTab }: ResultsTabProps) {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.25 }}
-                  className="bg-surface-dark border border-neutral-800 rounded-none p-5 lg:p-6 space-y-6 relative overflow-hidden"
+                  className="bg-surface-dark border border-neutral-800 rounded-none p-5 lg:p-6 relative overflow-hidden"
                 >
-                  {/* Case Header */}
+                  {devgenSubTab === 'design' && (
+                    <div className="absolute inset-0 pointer-events-none z-0 opacity-40 overflow-hidden">
+                      <Hyperspeed />
+                    </div>
+                  )}
+                  <div className="relative z-10 space-y-6">
+                    {/* Case Header */}
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-neutral-900 pb-4">
                     <div className="space-y-1">
                       <div className="flex flex-wrap items-center gap-2">
@@ -494,6 +502,7 @@ export default function ResultsTab({ setActiveTab }: ResultsTabProps) {
                       <ArrowRight className="w-3.5 h-3.5" />
                     </button>
                   </div>
+                  </div>
 
                 </motion.div>
               );
@@ -506,9 +515,13 @@ export default function ResultsTab({ setActiveTab }: ResultsTabProps) {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.25 }}
-                  className="bg-surface-dark border border-neutral-800 rounded-none p-5 lg:p-6 space-y-6 relative overflow-hidden"
+                  className="bg-surface-dark border border-neutral-800 rounded-none p-5 lg:p-6 relative overflow-hidden"
                 >
-                  {/* Case Header */}
+                  {devgenSubTab === 'design' && (
+                    <HeroGeometricBackground />
+                  )}
+                  <div className="relative z-10 space-y-6">
+                    {/* Case Header */}
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-neutral-900 pb-4">
                     <div className="space-y-1">
                       <div className="flex flex-wrap items-center gap-2">
@@ -857,6 +870,7 @@ export default function ResultsTab({ setActiveTab }: ResultsTabProps) {
                       GET STARTED TODAY
                       <ArrowRight className="w-3.5 h-3.5" />
                     </button>
+                  </div>
                   </div>
 
                 </motion.div>

@@ -82,13 +82,73 @@ export default function App() {
     };
   }, []);
 
-  // Scroll to top on active tab change
+  // Sync URL Hash with activeTab to support deep linking and back/forward browser navigation
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '');
+      const validTabs: TabType[] = ['home', 'services', 'results', 'about', 'contact'];
+      if (validTabs.includes(hash as TabType)) {
+        setActiveTab(hash as TabType);
+      } else if (!hash) {
+        setActiveTab('home');
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    
+    // Check initial hash on first load to support direct deep linking
+    const initialHash = window.location.hash.replace('#', '');
+    const validTabs: TabType[] = ['home', 'services', 'results', 'about', 'contact'];
+    if (validTabs.includes(initialHash as TabType)) {
+      setActiveTab(initialHash as TabType);
+    }
+
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  // Update URL Hash when activeTab changes
+  useEffect(() => {
+    const currentHash = window.location.hash.replace('#', '');
+    if (activeTab === 'home') {
+      if (currentHash !== '' && currentHash !== 'home') {
+        window.history.pushState(null, '', window.location.pathname + window.location.search);
+      }
+    } else {
+      if (currentHash !== activeTab) {
+        window.location.hash = activeTab;
+      }
+    }
+  }, [activeTab]);
+
+  // Update browser tab title dynamically based on the current section
+  useEffect(() => {
+    switch (activeTab) {
+      case 'about':
+        document.title = 'About • NVerdejo';
+        break;
+      case 'services':
+        document.title = 'Services • NVerdejo';
+        break;
+      case 'results':
+        document.title = 'Results • NVerdejo';
+        break;
+      case 'contact':
+        document.title = 'Contact • NVerdejo';
+        break;
+      default:
+        document.title = 'NVerdejo';
+        break;
+    }
+  }, [activeTab]);
+
+  // Scroll smoothly to top of the newly displayed section on active tab change
   useEffect(() => {
     const lenisInstance = (window as any).lenis;
     if (lenisInstance) {
-      lenisInstance.scrollTo(0, { immediate: true });
+      // Smooth scroll using Lenis to the top of the section
+      lenisInstance.scrollTo(0, { duration: 1.2 });
     } else {
-      window.scrollTo(0, 0);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }, [activeTab]);
 
