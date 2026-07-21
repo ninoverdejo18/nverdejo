@@ -511,10 +511,10 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
             className="font-display text-[clamp(1.6rem,4.1vw,4.5rem)] font-black uppercase tracking-tighter leading-tight sm:leading-[0.9] text-center"
           >
             <span className={`block sm:whitespace-nowrap ${isLight ? 'text-black' : 'text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-100 to-neutral-400'}`}>
-              FLAWLESS USER EXPERIENCE
+              WEB & APP DEVELOPMENT
             </span>
             <span className="block sm:whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-r from-primaryAccent via-green-400 to-secondaryAccent">
-              SPEED-DRIVEN DESIGN
+              ASSISTANT & AUTOMATION
             </span>
           </motion.h1>
 
@@ -677,27 +677,27 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
               </div>
               <div>
                 <h3 className="font-display text-sm font-black text-primaryText uppercase tracking-tight">
-                  Professional Web Design
+                  Web Development & Design
                 </h3>
-                <span className="font-mono text-[8px] text-primaryAccent uppercase font-bold tracking-widest">clean & effective</span>
+                <span className="font-mono text-[8px] text-primaryAccent uppercase font-bold tracking-widest font-sans">clean & modern</span>
               </div>
             </div>
             <p className="text-xs text-mutedText leading-relaxed font-sans">
-              A beautiful website is only effective if it loads quickly and is easy to use. I design clean layouts with clear typography, balanced spacing, and helpful buttons.
+              I design and build beautiful websites that are super easy to use. I focus on clear text, balanced spacing, and helpful buttons so visitors enjoy using your site.
             </p>
           </div>
           <ul className="space-y-1.5 font-mono text-[10px] text-primaryText">
             <li className="flex items-center gap-2">
               <span className="text-primaryAccent">»</span>
-              <span>Polished layouts & clickable mockups</span>
+              <span>Simple, beautiful layouts</span>
             </li>
             <li className="flex items-center gap-2">
               <span className="text-primaryAccent">»</span>
-              <span>Highly readable typography & grids</span>
+              <span>Clear text and clean spacing</span>
             </li>
             <li className="flex items-center gap-2">
               <span className="text-primaryAccent">»</span>
-              <span>Clean icons & custom visual assets</span>
+              <span>Modern look on all devices</span>
             </li>
           </ul>
         </div>
@@ -711,27 +711,27 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
               </div>
               <div>
                 <h3 className="font-display text-sm font-black text-primaryText uppercase tracking-tight">
-                  Custom App Development
+                  App Development
                 </h3>
-                <span className="font-mono text-[8px] text-primaryAccent uppercase font-bold tracking-widest">secure & reliable</span>
+                <span className="font-mono text-[8px] text-primaryAccent uppercase font-bold tracking-widest font-sans">safe & secure</span>
               </div>
             </div>
             <p className="text-xs text-mutedText leading-relaxed font-sans">
-              I build functional web applications to solve business problems. This includes secure forms, organized database connections, and type-safe backend integrations.
+              I build simple, fast, and secure web applications to make your daily work easier. This includes responsive contact forms, account logins, and interactive dashboards.
             </p>
           </div>
           <ul className="space-y-1.5 font-mono text-[10px] text-primaryText">
             <li className="flex items-center gap-2">
               <span className="text-primaryAccent">»</span>
-              <span>Modern, fast-loading React apps</span>
+              <span>Fast and lightweight apps</span>
             </li>
             <li className="flex items-center gap-2">
               <span className="text-primaryAccent">»</span>
-              <span>Secure, error-free client code</span>
+              <span>Safe and reliable setup</span>
             </li>
             <li className="flex items-center gap-2">
               <span className="text-primaryAccent">»</span>
-              <span>Structured databases & API integrations</span>
+              <span>Connects to your databases</span>
             </li>
           </ul>
         </div>
@@ -745,24 +745,24 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
               </div>
               <div>
                 <h3 className="font-display text-sm font-black text-primaryText uppercase tracking-tight">
-                  Speed Optimization
+                  Fast Loading Speed
                 </h3>
-                <span className="font-mono text-[8px] text-primaryAccent uppercase font-bold tracking-widest">instant delivery</span>
+                <span className="font-mono text-[8px] text-primaryAccent uppercase font-bold tracking-widest font-sans">optimized</span>
               </div>
             </div>
             <p className="text-xs text-mutedText leading-relaxed font-sans">
-              Slow loading times can cause visitors to leave. I optimize every page using file compression, fast asset loading, and clean code to ensure your site performs perfectly.
+              Nobody likes slow websites. I optimize images, files, and code so your pages load almost instantly on any internet connection, on both phones and laptops.
             </p>
           </div>
           
           <div className="grid grid-cols-2 gap-2 bg-neutral-950 p-2.5 border border-neutral-900 font-mono text-[10px]">
             <div>
-              <span className="text-neutral-500 block text-[8px]">LIGHTHOUSE</span>
+              <span className="text-neutral-500 block text-[8px] font-sans">GOOGLE SCORE</span>
               <span className="text-primaryAccent font-extrabold">100 / 100</span>
             </div>
             <div>
-              <span className="text-neutral-500 block text-[8px]">INTERACTIVE</span>
-              <span className="text-primaryAccent font-extrabold">&lt; 1.2s SLA</span>
+              <span className="text-neutral-500 block text-[8px] font-sans">LOAD TIME</span>
+              <span className="text-primaryAccent font-extrabold">&lt; 1 Second</span>
             </div>
           </div>
         </div>
@@ -1028,7 +1028,7 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
                 </div>
                 <div>
                   <div className="font-mono text-[9px] text-neutral-500 uppercase tracking-wider">WORKING HOURS</div>
-                  <div className="text-primaryAccent font-bold">Flexible Working Hours</div>
+                  <div className="text-white font-bold">Flexible Working Hours</div>
                   <div className="text-[10px] text-neutral-500 font-mono">Aligned to match your active business hours and timezone</div>
                 </div>
               </div>
@@ -1039,7 +1039,7 @@ export default function HomeTab({ setActiveTab, theme = 'dark' }: HomeTabProps) 
                 </div>
                 <div>
                   <div className="font-mono text-[9px] text-neutral-500 uppercase tracking-wider">RESPONSE TIME</div>
-                  <div className="text-primaryAccent font-bold">Within 1 Hour for Urgent Tasks</div>
+                  <div className="text-white font-bold">Within 1 Hour for Urgent Tasks</div>
                   <div className="text-[10px] text-neutral-500 font-mono">Quick attention for scheduling conflicts or urgent travel updates</div>
                 </div>
               </div>

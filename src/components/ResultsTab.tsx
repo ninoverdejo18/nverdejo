@@ -56,17 +56,6 @@ export default function ResultsTab({ setActiveTab }: ResultsTabProps) {
       impactLabel: 'Responsive & Speed Score optimized',
       beforeText: 'Slow template, weak brand perception, 3.8s initial load, unresponsive components.',
       afterText: 'Polished button clicks, clean responsive layouts, lightning-fast loads, robust framework.'
-    },
-    {
-      id: 'agency-systems',
-      client: 'ScaleShift Marketing',
-      industry: 'Growth Agency Network',
-      challenge: 'Slow database queries and unoptimized configurations caused frequent application slow-downs, requiring daily system restarts and disrupting client work.',
-      solution: 'Optimized query speeds, improved database connections, scheduled secure daily backups, and set up simple automatic alerts to monitor system uptime.',
-      impactMetric: '100%',
-      impactLabel: 'Server Continuity & Zero Crashes',
-      beforeText: 'Frequent database crashes, 3.4-second response times, developer burnout.',
-      afterText: 'Zero unexpected server crashes, 110ms database response times, full peace of mind.'
     }
   ];
 
@@ -530,13 +519,13 @@ export default function ResultsTab({ setActiveTab }: ResultsTabProps) {
                         </span>
                         <span className="text-neutral-700 font-mono text-[9px]">|</span>
                         <a 
-                          href="https://devgen-omega.vercel.app/" 
+                          href="https://developerengine.vercel.app/" 
                           target="_blank" 
                           rel="noopener noreferrer"
                           className="font-mono text-[9px] text-mutedText hover:text-primaryAccent flex items-center gap-1 transition-colors group/link"
                         >
                           <Globe className="w-2.5 h-2.5 text-primaryAccent group-hover/link:animate-pulse" />
-                          devgen-omega.vercel.app
+                          developerengine.vercel.app
                           <ExternalLink className="w-2.5 h-2.5 shrink-0" />
                         </a>
                       </div>
@@ -855,7 +844,7 @@ export default function ResultsTab({ setActiveTab }: ResultsTabProps) {
                   {/* Call to action */}
                   <div className="flex justify-between items-center pt-3 border-t border-neutral-900 gap-4 flex-wrap">
                     <a 
-                      href="https://devgen-omega.vercel.app/" 
+                      href="https://developerengine.vercel.app/" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="font-mono text-[10px] text-primaryAccent hover:text-secondaryAccent font-bold uppercase flex items-center gap-1 transition-colors"

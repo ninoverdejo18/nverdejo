@@ -72,9 +72,9 @@ export default function AboutTab({ setActiveTab }: AboutTabProps) {
                   <div className="font-mono text-[9px] text-primaryAccent uppercase tracking-widest font-bold">
                     Developer Profile
                   </div>
-                  <h3 className="font-display text-xl font-black text-primaryText">
+                  <h2 className="font-display text-2xl sm:text-3xl font-black text-primaryText uppercase tracking-tight">
                     NIÑO VERDEJO
-                  </h3>
+                  </h2>
                 </div>
                 <div className="text-right">
                 </div>
@@ -151,9 +151,9 @@ export default function AboutTab({ setActiveTab }: AboutTabProps) {
         <div className="md:col-span-2 lg:col-span-8 flex flex-col justify-between space-y-6">
           
           <div className="space-y-4">
-            <h3 className="font-display text-xl sm:text-2xl font-bold text-primaryText uppercase tracking-tight">
+            <h2 className="font-display text-2xl sm:text-3xl font-black text-primaryText uppercase tracking-tight">
               Building fast, reliable websites and custom systems designed to grow your business and simplify your work.
-            </h3>
+            </h2>
             
             <p className="text-mutedText/95 text-sm sm:text-base leading-relaxed font-sans">
               A great website is more than just a beautiful page—it is a functional tool that represents your brand and guides visitors to take action. Every detail, from loading times to visual layout, is built to provide an easy and intuitive experience for your customers on any device.

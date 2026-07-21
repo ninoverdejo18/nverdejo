@@ -10,8 +10,7 @@ import {
   Check, 
   Eye,
   Grid,
-  Settings,
-  Code
+  Settings
 } from 'lucide-react';
 
 interface Palette {
@@ -536,41 +535,6 @@ export default function DesignGraphicShowcase() {
           </div>
         </div>
 
-      </div>
-
-      {/* Code Spec Box */}
-      <div className="border border-neutral-900 bg-neutral-950 p-4 font-mono text-[10px] space-y-2">
-        <div className="flex items-center justify-between border-b border-neutral-900 pb-2">
-          <div className="flex items-center gap-1.5 text-neutral-400">
-            <Code className="w-3.5 h-3.5" />
-            <span className="text-[8px] text-neutral-600">COMPILED SUCCESSFULLY</span>
-          </div>
-        </div>
-        <pre className="text-mutedText overflow-x-auto leading-relaxed">
-{`{
-  "theme": {
-    "fontFamily": {
-      "display": ["Space Grotesk", "sans-serif"],
-      "sans": ["Inter", "sans-serif"]
-    },
-    "colors": {
-      "accent": {
-        "primary": "${activePalette.primary}",
-        "secondary": "${activePalette.secondary}"
-      }
-    },
-    "spacing": {
-      "layout-ratio": 1.618,
-      "container-padding": "24px"
-    },
-    "grid": {
-      "columns": 12,
-      "gutter": "16px"
-    },
-    "output_targets": [".tsx", ".js", ".css"]
-  }
-}`}
-        </pre>
       </div>
 
     </div>

@@ -27,6 +27,7 @@ import ServicesTab from './components/ServicesTab';
 import ResultsTab from './components/ResultsTab';
 import AboutTab from './components/AboutTab';
 import ContactTab from './components/ContactTab';
+import FAQSection from './components/FAQSection';
 import ChatbotAssistant from './components/ChatbotAssistant';
 import SplashCursor from './components/SplashCursor';
 import { SpecialText } from './components/ui/special-text';
@@ -318,7 +319,7 @@ export default function App() {
                 <img 
                   src="/nv-logo1.svg" 
                   alt="NV Logo" 
-                  className={`w-full h-full object-cover transition-opacity duration-300 ${isScrolled ? 'opacity-40' : 'opacity-100'}`}
+                  className={`w-full h-full object-cover transition-opacity duration-300 ${isScrolled ? 'opacity-40' : 'opacity-100'} hover:opacity-100`}
                 />
               </div>
               <div className={`transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] origin-left flex flex-col justify-center ${isScrolled ? 'opacity-0 -translate-x-3 pointer-events-none' : 'opacity-100 translate-x-0'}`}>
@@ -342,10 +343,15 @@ export default function App() {
             </div>
 
             {/* Desktop Navigation Interface: Minimize Only with Dropdown List */}
-            <div ref={dropdownRef} className="hidden md:flex relative flex-col items-center w-[110px]">
+            <div 
+              ref={dropdownRef} 
+              className="hidden md:flex relative flex-col items-center w-[110px]"
+              onMouseEnter={() => setMenuDropdownOpen(true)}
+              onMouseLeave={() => setMenuDropdownOpen(false)}
+            >
               <button
                 onClick={() => setMenuDropdownOpen(!menuDropdownOpen)}
-                className={`relative w-full flex items-center justify-center bg-transparent hover:bg-transparent px-3 py-2.5 rounded-lg text-xs font-mono font-bold tracking-wider text-primaryAccent hover:text-primary-text transition-all duration-300 cursor-pointer shadow-none border-none group ${isScrolled ? 'opacity-40' : 'opacity-100'}`}
+                className={`relative w-full flex items-center justify-center bg-transparent hover:bg-transparent px-3 py-2.5 rounded-lg text-xs font-mono font-bold tracking-wider text-primaryAccent hover:text-primary-text transition-all duration-300 cursor-pointer shadow-none border-none group ${isScrolled && !menuDropdownOpen ? 'opacity-40' : 'opacity-100'} hover:opacity-100`}
                 title="Toggle Menu"
               >
                 <span className="text-white">MENU</span>
@@ -443,6 +449,9 @@ export default function App() {
             </AnimatePresence>
           </main>
 
+          {/* SYSTEM SPECIFICATIONS & FAQ ACCORDION */}
+          {activeTab === 'home' && <FAQSection />}
+
           {/* FLOATING BOTTLENECK DIAGNOSTIC CONSULTANT */}
           <ChatbotAssistant setActiveTab={setActiveTab} />
 
@@ -450,58 +459,29 @@ export default function App() {
           <footer className="border-t border-neutral-900 py-6 flex flex-col md:flex-row items-center justify-between gap-4 font-mono text-[10px] text-neutral-500 pointer-events-auto">
             <div className="text-center md:text-left space-y-1.5">
               <div>© {new Date().getFullYear()} NIÑO VERDEJO. ALL RIGHTS RESERVED.</div>
-              <div className="flex items-center justify-center md:justify-start gap-3 text-[9px] text-neutral-400">
-                <a 
-                  href="https://github.com/ninoverdejo18?utm_source=chatgpt.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1 transition-colors hover:text-secondaryAccent"
-                >
-                  <Github className="w-3 h-3" />
-                  <span>GITHUB</span>
-                </a>
-                <span className="text-neutral-800">•</span>
-                <a 
-                  href="https://www.linkedin.com/in/ni%C3%B1o-verdejo-949198330/?utm_source=chatgpt.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1 transition-colors hover:text-primaryAccent"
-                >
-                  <Linkedin className="w-3 h-3" />
-                  <span>LINKEDIN</span>
-                </a>
-              </div>
             </div>
             
-            {/* Navigation links of Services, Results, About, Contact */}
-            <div className={`${(mobileMenuOpen || menuDropdownOpen) ? 'hidden' : 'flex'} items-center gap-2 sm:gap-3 text-[9px] sm:text-[10px] mr-0 sm:mr-24`}>
-              <button 
-                onClick={() => setActiveTab('services')} 
-                className={`transition-colors uppercase cursor-pointer hover:text-primaryAccent ${activeTab === 'services' ? 'text-primaryAccent font-bold' : ''}`}
+            {/* Social Link specimens replacing older nav menu */}
+            <div className="flex items-center gap-3 text-[9px] sm:text-[10px] mr-0 sm:mr-24 text-neutral-400">
+              <a 
+                href="https://github.com/ninoverdejo18?utm_source=chatgpt.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1 transition-colors hover:text-secondaryAccent"
               >
-                Services
-              </button>
-              <span className="text-neutral-800">|</span>
-              <button 
-                onClick={() => setActiveTab('results')} 
-                className={`transition-colors uppercase cursor-pointer hover:text-primaryAccent ${activeTab === 'results' ? 'text-primaryAccent font-bold' : ''}`}
+                <Github className="w-3.5 h-3.5" />
+                <span>GITHUB</span>
+              </a>
+              <span className="text-neutral-800">•</span>
+              <a 
+                href="https://www.linkedin.com/in/ni%C3%B1o-verdejo-949198330/?utm_source=chatgpt.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1 transition-colors hover:text-primaryAccent"
               >
-                Results
-              </button>
-              <span className="text-neutral-800">|</span>
-              <button 
-                onClick={() => setActiveTab('about')} 
-                className={`transition-colors uppercase cursor-pointer hover:text-primaryAccent ${activeTab === 'about' ? 'text-primaryAccent font-bold' : ''}`}
-              >
-                About
-              </button>
-              <span className="text-neutral-800">|</span>
-              <button 
-                onClick={() => setActiveTab('contact')} 
-                className={`transition-colors uppercase cursor-pointer hover:text-primaryAccent ${activeTab === 'contact' ? 'text-primaryAccent font-bold' : ''}`}
-              >
-                Contact
-              </button>
+                <Linkedin className="w-3.5 h-3.5" />
+                <span>LINKEDIN</span>
+              </a>
             </div>
           </footer>
 
